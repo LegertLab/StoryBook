@@ -10,11 +10,12 @@ import UIKit
 struct Profile {
     // main properties
     let name: String
-    let lastName: String
+    //let lastName: String
     //let sex: String
     //let photo: UIImage? = nil
-    //let kinship: Kinship? = nil
+    let kinship: String
     let dateOfBirth: String
+    let sections: [String]
     //let placeOfBirth: String? = nil
     
     // optional properties

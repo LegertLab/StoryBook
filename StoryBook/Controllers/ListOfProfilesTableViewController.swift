@@ -15,44 +15,39 @@ class ListOfProfilesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     profiles = [
-        Profile(name: "Надежда", lastName: "Легерт", dateOfBirth: "10 сентября 1958 г."),
-        Profile(name: "Николай", lastName: "Легерт", dateOfBirth: "22 сентября 1958 г.")
-    
+        Profile(name: "Надежда Легерт", kinship: "мама", dateOfBirth: "10 сентября 1958 г.", sections: ["Детство в Краснодаре", "Служба в армии", "Студенчество"]),
+        Profile(name: "Николай Легерт", kinship: "папа", dateOfBirth: "22 сентября 1958 г.", sections: ["Детство в Краснодаре", "Служба в армии", "Студенчество"]),
+        Profile(name: "Сергей Кюрегян", kinship: "супруг", dateOfBirth: "30 июня 1978 г.", sections: ["Детство в Краснодаре", "Служба в армии", "Студенчество"])
         ]
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        print(profiles.count)
         return profiles.count
         
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProfileTableViewCell
 
         let profile = profiles[indexPath.row]
-        //cell.imageView?.image = UIImage(named: "mom")
-        cell.detailTextLabel!.text = profile.dateOfBirth
-        cell.textLabel!.text = profile.name
-        cell.imageView!.layer.cornerRadius = cell.imageView!.frame.size.height / 2
-        //cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
+        cell.kinshipLabel.text = profile.kinship
+        cell.nameLabel.text = profile.name
+        cell.profileImage.image = UIImage(named: "mom")
+        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height / 2
+
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -88,15 +83,40 @@ class ListOfProfilesTableViewController: UITableViewController {
         return true
     }
     */
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let profile = profiles[indexPath.row]
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
+                   
+            self.profiles.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+               
+               return [deleteAction]
+    }
+    
+//    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//
+//    }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowProfile" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let showProfileVC = segue.destination as! ShowProfileVC
+                showProfileVC.profile = profiles[indexPath.row]
+            }
+           
+        }
+        
+        
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 
+
+    @IBAction func addProfileTapped(_ sender: UIBarButtonItem) {
+        
+    }
 }
