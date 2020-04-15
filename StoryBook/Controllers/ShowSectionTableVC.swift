@@ -1,25 +1,19 @@
 //
-//  ShowProfileVC.swift
+//  SectionTableVC.swift
 //  StoryBook
 //
-//  Created by Anastasia Legert on 9/4/20.
+//  Created by Anastasia Legert on 10/4/20.
 //  Copyright © 2020 Anastasia Legert. All rights reserved.
 //
 
 import UIKit
 
-class ShowProfileVC: UITableViewController {
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var kinshipLabel: UILabel!
-    
-    var profile = Profile(name: "", kinship: "", dateOfBirth: "", sections: [])
+class ShowSectionTableVC: UITableViewController {
+
+    var subsections: [Subsection] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        nameLabel.text = profile.name
-        kinshipLabel.text = profile.kinship
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,19 +31,19 @@ class ShowProfileVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return profile.sections.count
+        return subsections.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Section", for: indexPath) as! SectionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Subsection", for: indexPath) as! SubsectionTableViewCell
 
-        let sections = profile.sections
-        cell.sectionImage.image = UIImage(named: "section")
-        cell.titleLabel.text = sections[indexPath.row].title
+        cell.titleLabel.text = subsections[indexPath.row].title
+        cell.subsectionImage.image = UIImage(named: "section")
 
         return cell
     }
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         70
     }
@@ -94,13 +88,11 @@ class ShowProfileVC: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSection" {
+        if segue.identifier == "ShowMemories" {
                   if let indexPath = self.tableView.indexPathForSelectedRow {
-                  let showSectionTableVC = segue.destination as! ShowSectionTableVC
-                    showSectionTableVC.subsections = profile.sections[indexPath.row].subsections
+                  let showMemoriesTableVC = segue.destination as! ShowMemoriesTableVC
+                    showMemoriesTableVC.memories = subsections[indexPath.row].memories
                   }
         }
     }
-
-
 }

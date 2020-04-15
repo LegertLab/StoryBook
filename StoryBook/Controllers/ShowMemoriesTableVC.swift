@@ -1,25 +1,30 @@
 //
-//  ShowProfileVC.swift
+//  ShowMemoriesTableVC.swift
 //  StoryBook
 //
-//  Created by Anastasia Legert on 9/4/20.
+//  Created by Anastasia Legert on 10/4/20.
 //  Copyright © 2020 Anastasia Legert. All rights reserved.
 //
 
 import UIKit
 
-class ShowProfileVC: UITableViewController {
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var kinshipLabel: UILabel!
+protocol FirstViewControllerDelegate: class {
+    func update(newMemory: Memory)
+}
+
+class ShowMemoriesTableVC: UITableViewController, FirstViewControllerDelegate {
+
+    var memories: [Memory] = []
     
-    var profile = Profile(name: "", kinship: "", dateOfBirth: "", sections: [])
+    func update(newMemory: Memory) {
+        memories.append(newMemory)
+        print(memories)
+    }
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        nameLabel.text = profile.name
-        kinshipLabel.text = profile.kinship
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,22 +42,23 @@ class ShowProfileVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return profile.sections.count
+        return memories.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Section", for: indexPath) as! SectionTableViewCell
-
-        let sections = profile.sections
-        cell.sectionImage.image = UIImage(named: "section")
-        cell.titleLabel.text = sections[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Memory", for: indexPath) as! MemoryTableViewCell
+        cell.memoryImage.image = UIImage(named: "memory")
+        cell.titleLabel.text = memories[indexPath.row].title
+        cell.memoryImage.layer.cornerRadius = cell.memoryImage.frame.size.height / 2
 
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         70
     }
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -89,17 +95,23 @@ class ShowProfileVC: UITableViewController {
     }
     */
 
-
-    // MARK: - Navigation
+     //MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSection" {
+        if segue.identifier == "MemoryItem" {
                   if let indexPath = self.tableView.indexPathForSelectedRow {
-                  let showSectionTableVC = segue.destination as! ShowSectionTableVC
-                    showSectionTableVC.subsections = profile.sections[indexPath.row].subsections
+                  let showMemoryTableVC = segue.destination as! ShowMemoryTableVC
+
+                    showMemoryTableVC.memory = memories[indexPath.row]
                   }
         }
+        if segue.identifier == "AddMemory" {
+                         if let indexPath = self.tableView.indexPathForSelectedRow {
+                         let createMemoryVC = segue.source as! CreateMemoryVC
+                         createMemoryVC.delegate = self
+                         }
+               }
     }
 
 

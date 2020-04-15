@@ -11,22 +11,24 @@ import Firebase
 
 struct Memory {
     let title: String
-    let userId: String
+    //let userId: String
     //let ref: DatabaseReference?
     let note: String
     //let dateOfCreation: Date
-    //let dateOfMemory: Date
+    let dateOfMemory: String
+    let place: String
     //let photos: [UIImage]
     //let notes: [String]
     //let audios: AVAudioSession
     
-    init(title: String, userId: String, note: String) {
-        self.title = title
-        self.userId = userId
-        self.note = note
+    //init(title: String, userId: String, note: String) {
+//        self.title = title
+//        self.userId = userId
+//        self.note = note
        // self.ref = nil
-    }
+    //}
    
+    
     //init(snapshot: DataSnapshot) {
 //        let snapshotValue = snapshot.value as! [String: AnyObject]
 //        title = snapshotValue["title"] as! String
@@ -36,3 +38,5 @@ struct Memory {
 //    }
 
 }
+
+

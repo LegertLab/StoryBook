@@ -14,13 +14,51 @@ class ListOfProfilesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    profiles = [
-        Profile(name: "Надежда Легерт", kinship: "мама", dateOfBirth: "10 сентября 1958 г.", sections: ["Детство в Краснодаре", "Служба в армии", "Студенчество"]),
-        Profile(name: "Николай Легерт", kinship: "папа", dateOfBirth: "22 сентября 1958 г.", sections: ["Детство в Краснодаре", "Служба в армии", "Студенчество"]),
-        Profile(name: "Сергей Кюрегян", kinship: "супруг", dateOfBirth: "30 июня 1978 г.", sections: ["Детство в Краснодаре", "Служба в армии", "Студенчество"])
+        profiles = [
+//            Profile(name: "Надежда Легерт", kinship: "мама", dateOfBirth: "10 сентября 1958 г.", sections: [
+//                Section(title: "Детство", subsections: [
+//                    Subsection(title: "Школа", memories: []),
+//                    Subsection(title: "Работа в поле", memories: [])
+//                    ]),
+//                Section(title: "Работа", subsections: [
+//                    Subsection(title: "Завод", memories: []),
+//                    Subsection(title: "Мосэнергосбыт", memories: [])
+//                ]),
+//               Section(title: "Поездки", subsections: ["Шевченко", "Тула"])
+           // ]),
+//            Profile(name: "Николай Легерт", kinship: "папа", dateOfBirth: "22 сентября 1958 г.", sections: [       Section(title: "Детство", subsections: ["Школа", "Грозный"]),
+//                Section(title: "Поездки", subsections: ["Югославия", "Черное море"]),
+//                Section(title: "Хобби", subsections: ["Металлоискатель", "Выращивание табака"])
+//            ]),
+            Profile(name: "Сергей Кюрегян", kinship: "супруг", dateOfBirth: "30 июня 1978 г.", sections: [       //Section(title: "Детство", subsections: [
+               // "Школа", "Краснодар", "Походы"
+            //]),
+                Section(title: "Работа", subsections: [
+                    Subsection(title: "Мосэнергосбыт", memories: [])
+                ]),
+                Section(title: "Спорт", subsections: [
+                    Subsection(title: "Гольф", memories: [
+                    Memory(
+                        title: "Моя первая игра",
+                        note: "Впервые я решил начать играть в гольф в 2012 году, и в нашей новогодней поездке во Вьетнам я взял первые уроки у местного преподавателя. И тогда я понял, что гольф - это моя судьба!",
+                        dateOfMemory: "Январь 2013 года",
+                        place: "Вьетнам"
+                    ),
+                    Memory(
+                        title: "Уроки с Останкиным",
+                        note: "В Крылатском я решил продолжить совершенствоваться игре в гольф, и взял со своей любимой супругой уроки у Останкина Виктора. С ним я уже на русском языке понял, как правильно держать клюшку и вообще прилично вести себя на поле.",
+                        dateOfMemory: "Июнь 2013 года",
+                        place: "Москва, Крылатское"
+                    )
+                    ]),
+                    Subsection(title: "Хоккей", memories: []),
+                    Subsection(title: "Большой теннис", memories: [])
+                ])
+            ])
         ]
     }
 
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,7 +124,6 @@ class ListOfProfilesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let profile = profiles[indexPath.row]
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
-                   
             self.profiles.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             }

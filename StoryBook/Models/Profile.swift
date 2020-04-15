@@ -15,7 +15,7 @@ struct Profile {
     //let photo: UIImage? = nil
     let kinship: String
     let dateOfBirth: String
-    let sections: [String]
+    let sections: [Section]
     //let placeOfBirth: String? = nil
     
     // optional properties
@@ -26,4 +26,15 @@ struct Profile {
 //    let friends:
     
     
+}
+
+struct Section {
+    let title: String
+    let subsections: [Subsection]
+    
+}
+
+struct Subsection {
+    let title: String
+    let memories: [Memory]
 }
