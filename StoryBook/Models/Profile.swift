@@ -9,13 +9,54 @@
 import UIKit
 struct Profile {
     // main properties
-    let name: String
+    var name: String
     //let lastName: String
     //let sex: String
     //let photo: UIImage? = nil
-    let kinship: String
-    let dateOfBirth: String
-    let sections: [Section]
+    var kinship: String
+    var dateOfBirth: String
+    var documentID: String
+    //var sections: [Section]
+    
+    var dictionary: [String: Any] {
+      return [
+        "name": name,
+        "kinship": kinship,
+        "dateOfBirth": dateOfBirth,
+        "documentID": documentID//,
+        //"sections": sections
+      ]
+    }
+}
+
+protocol DocumentSerializable {
+    init?(dictionary: [String: Any], documentID: String)
+}
+    
+extension Profile: DocumentSerializable {
+    static let kinship = [
+      "мама", "папа", "дедушка", "бабушка", "дочь", "сын", "брат",
+      "сестра", "тетя", "дядя", "жена", "муж"
+    ]
+    
+    init?(dictionary: [String : Any], documentID: String) {
+      guard let name = dictionary["name"] as? String,
+          let kinship = dictionary["kinship"] as? String,
+          let dateOfBirth = dictionary["dateOfBirth"] as? String,
+          let documentID = documentID as? String //,
+         //let sections = dictionary["sections"] as? [Section]
+        else { return nil }
+
+      self.init(name: name,
+                kinship: kinship,
+                dateOfBirth: dateOfBirth,
+                documentID: documentID
+                //sections: sections
+        )
+    }
+}
+    
+    
     //let placeOfBirth: String? = nil
     
     // optional properties
@@ -26,7 +67,7 @@ struct Profile {
 //    let friends:
     
     
-}
+
 
 struct Section {
     let title: String
@@ -38,3 +79,4 @@ struct Subsection {
     let title: String
     let memories: [Memory]
 }
+

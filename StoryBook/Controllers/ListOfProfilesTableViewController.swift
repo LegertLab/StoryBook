@@ -7,56 +7,60 @@
 //
 
 import UIKit
+import Firebase
 
 class ListOfProfilesTableViewController: UITableViewController {
 
+    //var docRef: DocumentReference!
     var profiles: [Profile] = []
+    var documents: [DocumentSnapshot] = []
+    var listener: ListenerRegistration?
+    var query: Query?
+    var collRef: CollectionReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profiles = [
-//            Profile(name: "Надежда Легерт", kinship: "мама", dateOfBirth: "10 сентября 1958 г.", sections: [
-//                Section(title: "Детство", subsections: [
-//                    Subsection(title: "Школа", memories: []),
-//                    Subsection(title: "Работа в поле", memories: [])
-//                    ]),
-//                Section(title: "Работа", subsections: [
-//                    Subsection(title: "Завод", memories: []),
-//                    Subsection(title: "Мосэнергосбыт", memories: [])
-//                ]),
-//               Section(title: "Поездки", subsections: ["Шевченко", "Тула"])
-           // ]),
-//            Profile(name: "Николай Легерт", kinship: "папа", dateOfBirth: "22 сентября 1958 г.", sections: [       Section(title: "Детство", subsections: ["Школа", "Грозный"]),
-//                Section(title: "Поездки", subsections: ["Югославия", "Черное море"]),
-//                Section(title: "Хобби", subsections: ["Металлоискатель", "Выращивание табака"])
-//            ]),
-            Profile(name: "Сергей Кюрегян", kinship: "супруг", dateOfBirth: "30 июня 1978 г.", sections: [       //Section(title: "Детство", subsections: [
-               // "Школа", "Краснодар", "Походы"
-            //]),
-                Section(title: "Работа", subsections: [
-                    Subsection(title: "Мосэнергосбыт", memories: [])
-                ]),
-                Section(title: "Спорт", subsections: [
-                    Subsection(title: "Гольф", memories: [
-                    Memory(
-                        title: "Моя первая игра",
-                        note: "Впервые я решил начать играть в гольф в 2012 году, и в нашей новогодней поездке во Вьетнам я взял первые уроки у местного преподавателя. И тогда я понял, что гольф - это моя судьба!",
-                        dateOfMemory: "Январь 2013 года",
-                        place: "Вьетнам"
-                    ),
-                    Memory(
-                        title: "Уроки с Останкиным",
-                        note: "В Крылатском я решил продолжить совершенствоваться игре в гольф, и взял со своей любимой супругой уроки у Останкина Виктора. С ним я уже на русском языке понял, как правильно держать клюшку и вообще прилично вести себя на поле.",
-                        dateOfMemory: "Июнь 2013 года",
-                        place: "Москва, Крылатское"
-                    )
-                    ]),
-                    Subsection(title: "Хоккей", memories: []),
-                    Subsection(title: "Большой теннис", memories: [])
-                ])
-            ])
-        ]
+        Firestore.firestore().clearPersistence(completion: { Error in
+             print("Could not enable persistence")
+        })
+        
+        query = baseQuery()
+        collRef = baseQuery() as? CollectionReference
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        observeQuery()
+    }
+    
+    func baseQuery() -> Query {
+        return Firestore.firestore().collection("users/testUser/profiles")
+        //return Firestore.firestore().document("users/testUser")
+     }
+    
+    func observeQuery() {
+      guard let query = query else { return }
+        // ?? Разобраться, как создавать addSnapshotListener без параметров, как ниже
+      listener = query.addSnapshotListener { (snapshot, error) in
+        guard let snapshot = snapshot else { return }
+        let models = snapshot.documents.map { (document) -> Profile in
+            //print(document.documentID)
+            //print(document.data())
+            if let model = Profile(dictionary: document.data(), documentID: document.documentID) {
+            return model
+          } else {
+            //Don't use fatalError here in a real app.
+        fatalError("Unable to initialize type \(Profile.self) with dictionary \(document.data())")
+        }
+        }
+        self.profiles = models
+        self.documents = snapshot.documents
+
+        self.tableView.reloadData()
+      }
+
+    }
+    
 
     
     // MARK: - Table view data source
@@ -121,35 +125,47 @@ class ListOfProfilesTableViewController: UITableViewController {
         return true
     }
     */
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let profile = profiles[indexPath.row]
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
-            self.profiles.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-               
-               return [deleteAction]
-    }
-    
-//    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
+//            self.profiles.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//            }
 //
+//               return [deleteAction]
 //    }
 
+    
+        override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let profile = profiles[indexPath.row]
+        let deleteAction = UIContextualAction(style: .destructive, title: "Удалите") {  (contextualAction, view, boolValue) in
+       let deletedDocID = profile.documentID
+           print(deletedDocID)
+            print(Firestore.firestore().document("users/testUser/profiles/\(deletedDocID)"))
+            Firestore.firestore().document("users/testUser/profiles/\(deletedDocID)").delete()
+//            Firestore.firestore().clearPersistence(completion: { Error in
+//                 print("Could not enable persistence")
+//            })
+            //self.tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        }
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+
+        return swipeActions
+    }
+    
+    
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowProfile" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let showProfileVC = segue.destination as! ShowProfileVC
                 showProfileVC.profile = profiles[indexPath.row]
             }
-           
         }
-        
-        
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
 
 

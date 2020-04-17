@@ -13,7 +13,7 @@ class ShowProfileVC: UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var kinshipLabel: UILabel!
     
-    var profile = Profile(name: "", kinship: "", dateOfBirth: "", sections: [])
+    var profile = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "") //sections: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,18 +35,18 @@ class ShowProfileVC: UITableViewController {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return profile.sections.count
-    }
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return profile.sections.count
+//    }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Section", for: indexPath) as! SectionTableViewCell
 
-        let sections = profile.sections
-        cell.sectionImage.image = UIImage(named: "section")
-        cell.titleLabel.text = sections[indexPath.row].title
+//        let sections = profile.sections
+//        cell.sectionImage.image = UIImage(named: "section")
+//        cell.titleLabel.text = sections[indexPath.row].title
 
         return cell
     }
@@ -93,14 +93,14 @@ class ShowProfileVC: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSection" {
-                  if let indexPath = self.tableView.indexPathForSelectedRow {
-                  let showSectionTableVC = segue.destination as! ShowSectionTableVC
-                    showSectionTableVC.subsections = profile.sections[indexPath.row].subsections
-                  }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ShowSection" {
+//                  if let indexPath = self.tableView.indexPathForSelectedRow {
+//                  let showSectionTableVC = segue.destination as! ShowSectionTableVC
+//                    showSectionTableVC.subsections = profile.sections[indexPath.row].subsections
+//                  }
+//        }
+//    }
 
 
 }
