@@ -11,21 +11,23 @@ import Firebase
 
 class ListOfProfilesTableViewController: UITableViewController {
 
+    let db = Firestore.firestore()
+    let pathToProfiles = "users/testUser/profiles"
     //var docRef: DocumentReference!
     var profiles: [Profile] = []
     var documents: [DocumentSnapshot] = []
     var listener: ListenerRegistration?
     var query: Query?
-    var collRef: CollectionReference?
+    //var collRef: CollectionReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Firestore.firestore().clearPersistence(completion: { Error in
+        db.clearPersistence(completion: { Error in
              print("Could not enable persistence")
         })
-        
+        //collRef = Firestore.firestore().collection("users/testUser/profiles")
         query = baseQuery()
-        collRef = baseQuery() as? CollectionReference
+        //collRef = baseQuery() as? CollectionReference
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,10 +36,9 @@ class ListOfProfilesTableViewController: UITableViewController {
     }
     
     func baseQuery() -> Query {
-        return Firestore.firestore().collection("users/testUser/profiles")
-        //return Firestore.firestore().document("users/testUser")
+        return db.collection("\(pathToProfiles)")
      }
-    
+
     func observeQuery() {
       guard let query = query else { return }
         // ?? Разобраться, как создавать addSnapshotListener без параметров, как ниже
@@ -138,15 +139,12 @@ class ListOfProfilesTableViewController: UITableViewController {
         override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let profile = profiles[indexPath.row]
-        let deleteAction = UIContextualAction(style: .destructive, title: "Удалите") {  (contextualAction, view, boolValue) in
-       let deletedDocID = profile.documentID
-           print(deletedDocID)
-            print(Firestore.firestore().document("users/testUser/profiles/\(deletedDocID)"))
-            Firestore.firestore().document("users/testUser/profiles/\(deletedDocID)").delete()
-//            Firestore.firestore().clearPersistence(completion: { Error in
-//                 print("Could not enable persistence")
-//            })
-            //self.tableView.reloadData()
+        let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view, boolValue) in
+        let deletedDocID = profile.documentID
+           
+            print(self.db.document("\(self.pathToProfiles)/\(deletedDocID)"))
+            self.db.document("\(self.pathToProfiles)/\(deletedDocID)").delete()
+            self.profiles.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
         }
@@ -170,6 +168,33 @@ class ListOfProfilesTableViewController: UITableViewController {
 
 
     @IBAction func addProfileTapped(_ sender: UIBarButtonItem) {
+//        let city = Profile(name: "Los Angeles",
+//                        state: "CA",
+//                        country: "USA",
+//                        isCapital: false,
+//                        population: 5000000)
+//
+//        do {
+//            try db.collection("cities").document("LA").setData(from: city)
+//        } catch let error {
+//            print("Error writing city to Firestore: \(error)")
+//        }
+//        
+//        
+//        // Add a new document with a generated id.
+//        var ref: DocumentReference? = nil
+//        ref = db.collection("cities").addDocument(data: [
+//            "name": "Tokyo",
+//            "country": "Japan"
+//        ]) { err in
+//            if let err = err {
+//                print("Error adding document: \(err)")
+//            } else {
+//                print("Document added with ID: \(ref!.documentID)")
+//            }
+//        }
+
+        
         
     }
 }

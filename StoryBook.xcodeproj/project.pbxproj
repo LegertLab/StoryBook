@@ -18,6 +18,7 @@
 		A64E01EE24387FB3003B25C3 /* FamilyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64E01ED24387FB3003B25C3 /* FamilyGroup.swift */; };
 		A64E01F02438817D003B25C3 /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64E01EF2438817D003B25C3 /* DataTypes.swift */; };
 		A64E01F52439D798003B25C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A64E01F42439D798003B25C3 /* GoogleService-Info.plist */; };
+		A65B2DB5244A0731000729B8 /* CreateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B2DB4244A0731000729B8 /* CreateProfileVC.swift */; };
 		A6A83A092439FB3B001EEF67 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A83A082439FB3B001EEF67 /* Default-568h@2x.png */; };
 		A6A83A0B243B3011001EEF67 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A83A0A243B3011001EEF67 /* User.swift */; };
 		A6A83A0D243B3032001EEF67 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A83A0C243B3032001EEF67 /* Memory.swift */; };
@@ -47,6 +48,7 @@
 		A64E01ED24387FB3003B25C3 /* FamilyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyGroup.swift; sourceTree = "<group>"; };
 		A64E01EF2438817D003B25C3 /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
 		A64E01F42439D798003B25C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A65B2DB4244A0731000729B8 /* CreateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileVC.swift; sourceTree = "<group>"; };
 		A6A83A082439FB3B001EEF67 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A6A83A0A243B3011001EEF67 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A6A83A0C243B3032001EEF67 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				A64E01DB24387E2B003B25C3 /* LoginViewController.swift */,
 				A6A83A252441C25B001EEF67 /* CreateMemoryVC.swift */,
+				A65B2DB4244A0731000729B8 /* CreateProfileVC.swift */,
 				A6A83A0F243DF21B001EEF67 /* ListOfProfilesTableViewController.swift */,
 				A6A83A13243F2F71001EEF67 /* ShowProfileVC.swift */,
 				A6A83A1924406F0B001EEF67 /* ShowSectionTableVC.swift */,
@@ -311,6 +314,7 @@
 				A6A83A262441C25B001EEF67 /* CreateMemoryVC.swift in Sources */,
 				A6A83A0D243B3032001EEF67 /* Memory.swift in Sources */,
 				A64E01DC24387E2B003B25C3 /* LoginViewController.swift in Sources */,
+				A65B2DB5244A0731000729B8 /* CreateProfileVC.swift in Sources */,
 				A6A83A1E2440C0A8001EEF67 /* ShowMemoriesTableVC.swift in Sources */,
 				A64E01EC24387E65003B25C3 /* Profile.swift in Sources */,
 				A6A83A12243E25D9001EEF67 /* ProfileTableViewCell.swift in Sources */,
