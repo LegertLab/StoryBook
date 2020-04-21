@@ -9,10 +9,15 @@
 import UIKit
 import Firebase
 
-class ListOfProfilesTableViewController: UITableViewController {
+protocol MainViewControllerDelegate: class {
+    func update(newProfile: Profile)
+}
+
+class ListOfProfilesTableViewController: UITableViewController, MainViewControllerDelegate {
 
     let db = Firestore.firestore()
     let pathToProfiles = "users/testUser/profiles"
+
     //var docRef: DocumentReference!
     var profiles: [Profile] = []
     var documents: [DocumentSnapshot] = []
@@ -20,18 +25,23 @@ class ListOfProfilesTableViewController: UITableViewController {
     var query: Query?
     //var collRef: CollectionReference?
     
+    
+    func update(newProfile: Profile) {
+        profiles.append(newProfile)
+        //print(memories)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         db.clearPersistence(completion: { Error in
              print("Could not enable persistence")
         })
-        //collRef = Firestore.firestore().collection("users/testUser/profiles")
         query = baseQuery()
-        //collRef = baseQuery() as? CollectionReference
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         observeQuery()
     }
     
@@ -45,8 +55,6 @@ class ListOfProfilesTableViewController: UITableViewController {
       listener = query.addSnapshotListener { (snapshot, error) in
         guard let snapshot = snapshot else { return }
         let models = snapshot.documents.map { (document) -> Profile in
-            //print(document.documentID)
-            //print(document.data())
             if let model = Profile(dictionary: document.data(), documentID: document.documentID) {
             return model
           } else {
@@ -92,49 +100,6 @@ class ListOfProfilesTableViewController: UITableViewController {
         return 80
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
-//            self.profiles.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//            }
-//
-//               return [deleteAction]
-//    }
-
     
         override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -162,39 +127,13 @@ class ListOfProfilesTableViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let showProfileVC = segue.destination as! ShowProfileVC
                 showProfileVC.profile = profiles[indexPath.row]
+                showProfileVC.pathToProfiles = pathToProfiles
             }
         }
     }
 
 
     @IBAction func addProfileTapped(_ sender: UIBarButtonItem) {
-//        let city = Profile(name: "Los Angeles",
-//                        state: "CA",
-//                        country: "USA",
-//                        isCapital: false,
-//                        population: 5000000)
-//
-//        do {
-//            try db.collection("cities").document("LA").setData(from: city)
-//        } catch let error {
-//            print("Error writing city to Firestore: \(error)")
-//        }
-//        
-//        
-//        // Add a new document with a generated id.
-//        var ref: DocumentReference? = nil
-//        ref = db.collection("cities").addDocument(data: [
-//            "name": "Tokyo",
-//            "country": "Japan"
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(ref!.documentID)")
-//            }
-//        }
 
-        
-        
     }
 }

@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateProfileVC: UIViewController {
 
+    let db = Firestore.firestore()
+    let pathToProfiles = "users/testUser/profiles"
+    
+    weak var delegate: MainViewControllerDelegate!
+    
     @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var kinshipTextField: UITextField!
     @IBOutlet weak var dateOfBirthTextField: UITextField!
@@ -20,7 +26,65 @@ class CreateProfileVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func saveNewProfile() {
+        
+        let newProfile = Profile(name: nameTextfield.text!,
+                                 kinship: kinshipTextField.text!,
+                                 dateOfBirth: dateOfBirthTextField.text!,
+                                 documentID: "")
+        
+        delegate?.update(newProfile: newProfile)
+        dismiss(animated: true)
+        saveProfileToDatabase()
+        //StorageManager.add(newMemory)
+    }
+    
+    func  saveProfileToDatabase() {
+        var ref: DocumentReference? = nil
+        ref = db.collection("\(pathToProfiles)").addDocument(data: [
+            "name": nameTextfield.text!,
+            "kinship": kinshipTextField.text!,
+            "dateOfBirth": dateOfBirthTextField.text!,
+            "documentID": ""
+            ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
 
+    
+    
+           
+           //        let city = Profile(name: "Los Angeles",
+           //                        state: "CA",
+           //                        country: "USA",
+           //                        isCapital: false,
+           //                        population: 5000000)
+           //
+           //        do {
+           //            try db.collection("cities").document("LA").setData(from: city)
+           //        } catch let error {
+           //            print("Error writing city to Firestore: \(error)")
+           //        }
+           //
+           //
+           //        // Add a new document with a generated id.
+           //        var ref: DocumentReference? = nil
+           //        ref = db.collection("cities").addDocument(data: [
+           //            "name": "Tokyo",
+           //            "country": "Japan"
+           //        ]) { err in
+           //            if let err = err {
+           //                print("Error adding document: \(err)")
+           //            } else {
+           //                print("Document added with ID: \(ref!.documentID)")
+           //            }
+           //        }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -37,6 +101,7 @@ class CreateProfileVC: UIViewController {
     }
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+        saveNewProfile()
     }
     
 }

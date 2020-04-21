@@ -110,26 +110,6 @@
                     <view key="view" contentMode="scaleToFill" id="qbl-yr-K54">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ФИО" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="erC-lw-8zi">
-                                <rect key="frame" x="16" y="82" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="родство" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sky-os-F6W">
-                                <rect key="frame" x="16" y="133" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ucr-SE-NFU">
-                                <rect key="frame" x="16" y="180" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="5MG-eH-0uk"/>
                     </view>
@@ -145,15 +125,62 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="dateOfBirthTextField" destination="ucr-SE-NFU" id="qzr-r8-kxD"/>
-                        <outlet property="kinshipTextField" destination="Sky-os-F6W" id="794-O0-dxf"/>
-                        <outlet property="nameTextfield" destination="erC-lw-8zi" id="GZ4-vk-b09"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3Z-Rf-JZF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2798" y="-563"/>
+        </scene>
+        <!--Редактировать профиль-->
+        <scene sceneID="d80-B3-wPJ">
+            <objects>
+                <viewController id="2nv-tu-QrQ" customClass="EditProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Npj-Z5-0v1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ФИО" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="erC-lw-8zi">
+                                <rect key="frame" x="16" y="78" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="родство" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sky-os-F6W">
+                                <rect key="frame" x="16" y="129" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ucr-SE-NFU">
+                                <rect key="frame" x="16" y="176" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="VaQ-51-3Gz"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Редактировать профиль" id="2eJ-BY-8ed">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Kxh-iv-1kW">
+                            <connections>
+                                <action selector="cancelTapped:" destination="2nv-tu-QrQ" id="3gh-WX-gdl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="K4w-iP-baC">
+                            <connections>
+                                <action selector="saveEditionTapped:" destination="2nv-tu-QrQ" id="dm1-gg-WU1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dateOfBirthTextfield" destination="ucr-SE-NFU" id="09y-VN-NtL"/>
+                        <outlet property="kinshipTextfield" destination="Sky-os-F6W" id="Xgb-Vd-KwX"/>
+                        <outlet property="nameTextfield" destination="erC-lw-8zi" id="zFC-g6-GLP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ISB-uv-0cb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3736.8000000000002" y="878.41079460269873"/>
         </scene>
         <!--Список профилей-->
         <scene sceneID="5zG-eR-Pkd">
@@ -321,7 +348,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="j6Q-4x-t8a">
-                        <barButtonItem key="rightBarButtonItem" title="Add section" id="9nT-b5-SXt"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9nT-b5-SXt">
+                            <connections>
+                                <segue destination="sBE-Rq-68g" kind="presentation" identifier="editProfile" id="OeD-h6-wP5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="kinshipLabel" destination="HUW-Rx-gjs" id="Ipx-qZ-Gkt"/>
@@ -630,7 +661,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oby-Eb-ASw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5391.1999999999998" y="908.9955022488756"/>
+            <point key="canvasLocation" x="7269.6000000000004" y="908.9955022488756"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0gn-ol-AfV">
@@ -665,7 +696,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Rb-uk-aHW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4452" y="908.9955022488756"/>
+            <point key="canvasLocation" x="6330.3999999999996" y="908.9955022488756"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N9K-dr-1aV">
@@ -684,6 +715,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOq-W9-Rgo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1938.4000000000001" y="-562.66866566716647"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CMr-ja-IsP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sBE-Rq-68g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9C0-xS-o2f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2nv-tu-QrQ" kind="relationship" relationship="rootViewController" id="9JM-dw-Lco"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N2u-9O-DeM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2797.5999999999999" y="878.41079460269873"/>
         </scene>
     </scenes>
     <resources>
