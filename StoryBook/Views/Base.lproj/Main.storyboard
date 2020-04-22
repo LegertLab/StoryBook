@@ -185,7 +185,7 @@
         <!--Список профилей-->
         <scene sceneID="5zG-eR-Pkd">
             <objects>
-                <tableViewController id="Rk1-K2-Q9V" customClass="ListOfProfilesTableViewController" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Rk1-K2-Q9V" customClass="ListOfProfilesVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yxm-uX-cYF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,7 +338,7 @@
                                 <connections>
                                     <outlet property="sectionImage" destination="C9H-0d-e5X" id="eJ9-Qt-YXV"/>
                                     <outlet property="titleLabel" destination="8Qf-Tq-zeH" id="ZDg-S6-Tm3"/>
-                                    <segue destination="FhN-gI-g8P" kind="show" identifier="ShowSection" id="4jP-Yx-EUU"/>
+                                    <segue destination="FhN-gI-g8P" kind="show" identifier="showSection" id="4jP-Yx-EUU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -397,7 +397,7 @@
                                             <rect key="frame" x="16" y="6" width="62" height="61"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title of section" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Lt-hXj">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title of subsection" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Lt-hXj">
                                             <rect key="frame" x="86" y="22" width="254" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>

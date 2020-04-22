@@ -11,7 +11,7 @@ import Firebase
 
 class EditProfileVC: UIViewController {
 
-    var profile = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "")
+    var profile = Profile(name: "", kinship: "", dateOfBirth: "", documentID: ""/*, sections: []*/)
     let db = Firestore.firestore()
     var pathToProfile = ""
     

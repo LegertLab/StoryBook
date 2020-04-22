@@ -16,7 +16,7 @@ struct Profile {
     var kinship: String
     var dateOfBirth: String
     var documentID: String
-    //var sections: [Section]
+   // var sections: [Section]
     
     var dictionary: [String: Any] {
       return [
@@ -24,7 +24,7 @@ struct Profile {
         "kinship": kinship,
         "dateOfBirth": dateOfBirth,
         "documentID": documentID//,
-        //"sections": sections
+       // "sections": sections
       ]
     }
 }
@@ -34,23 +34,23 @@ protocol DocumentSerializable {
 }
     
 extension Profile: DocumentSerializable {
-    static let kinship = [
-      "мама", "папа", "дедушка", "бабушка", "дочь", "сын", "брат",
-      "сестра", "тетя", "дядя", "жена", "муж"
-    ]
+//    static let kinship = [
+//      "мама", "папа", "дедушка", "бабушка", "дочь", "сын", "брат",
+//      "сестра", "тетя", "дядя", "жена", "муж"
+//    ]
     
     init?(dictionary: [String : Any], documentID: String) {
       guard let name = dictionary["name"] as? String,
           let kinship = dictionary["kinship"] as? String,
           let dateOfBirth = dictionary["dateOfBirth"] as? String,
-          let documentID = documentID as? String //,
-         //let sections = dictionary["sections"] as? [Section]
+          let documentID = documentID as? String/*,
+        let sections = documentSections["sections"] as? [Section]*/
         else { return nil }
 
       self.init(name: name,
                 kinship: kinship,
                 dateOfBirth: dateOfBirth,
-                documentID: documentID
+                documentID: documentID//,
                 //sections: sections
         )
     }
@@ -70,10 +70,33 @@ extension Profile: DocumentSerializable {
 
 
 struct Section {
-    let title: String
-    let subsections: [Subsection]
+    var title: String
+    var documentID: String
     
+    var dictionary: [String: Any] {
+      return [
+        "title": title,
+        "documentID": documentID
+      ]
+    }
+   // let subsections: [Subsection]
 }
+
+extension Section {
+    init?(dictionary: [String : Any], documentID: String) {
+      guard let title = dictionary["title"] as? String,
+          let documentID = documentID as? String
+          else { return nil }
+
+      self.init(title: title,
+                documentID: documentID
+        )
+    }
+}
+
+
+
+
 
 struct Subsection {
     let title: String

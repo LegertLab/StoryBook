@@ -31,7 +31,8 @@ class CreateProfileVC: UIViewController {
         let newProfile = Profile(name: nameTextfield.text!,
                                  kinship: kinshipTextField.text!,
                                  dateOfBirth: dateOfBirthTextField.text!,
-                                 documentID: "")
+                                 documentID: ""//,
+                                 /*sections: []*/)
         
         delegate?.update(newProfile: newProfile)
         dismiss(animated: true)

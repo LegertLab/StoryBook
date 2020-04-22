@@ -13,30 +13,25 @@ protocol MainViewControllerDelegate: class {
     func update(newProfile: Profile)
 }
 
-class ListOfProfilesTableViewController: UITableViewController, MainViewControllerDelegate {
+class ListOfProfilesVC: UITableViewController, MainViewControllerDelegate {
 
     let db = Firestore.firestore()
-    let pathToProfiles = "users/testUser/profiles"
-
-    //var docRef: DocumentReference!
+    var currentUser: String = "testUser"
+    var pathToDataBase = ""
     var profiles: [Profile] = []
-    var documents: [DocumentSnapshot] = []
     var listener: ListenerRegistration?
     var query: Query?
-    //var collRef: CollectionReference?
-    
-    
-    func update(newProfile: Profile) {
-        profiles.append(newProfile)
-        //print(memories)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         db.clearPersistence(completion: { Error in
              print("Could not enable persistence")
         })
+        
+        pathToDataBase = getPathToDataBase()
         query = baseQuery()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,9 +40,17 @@ class ListOfProfilesTableViewController: UITableViewController, MainViewControll
         observeQuery()
     }
     
+    func getPathToDataBase() -> String {
+        return "users/\(currentUser)/profiles"
+    }
+    
     func baseQuery() -> Query {
-        return db.collection("\(pathToProfiles)")
+        return db.collection(pathToDataBase)
      }
+    
+    func update(newProfile: Profile) {
+        profiles.append(newProfile)
+    }
 
     func observeQuery() {
       guard let query = query else { return }
@@ -63,7 +66,8 @@ class ListOfProfilesTableViewController: UITableViewController, MainViewControll
         }
         }
         self.profiles = models
-        self.documents = snapshot.documents
+    
+        //self.documents = snapshot.documents
 
         self.tableView.reloadData()
       }
@@ -107,8 +111,8 @@ class ListOfProfilesTableViewController: UITableViewController, MainViewControll
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view, boolValue) in
         let deletedDocID = profile.documentID
            
-            print(self.db.document("\(self.pathToProfiles)/\(deletedDocID)"))
-            self.db.document("\(self.pathToProfiles)/\(deletedDocID)").delete()
+            print(self.db.document("\(self.pathToDataBase)/\(deletedDocID)"))
+            self.db.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
             self.profiles.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
@@ -127,7 +131,7 @@ class ListOfProfilesTableViewController: UITableViewController, MainViewControll
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let showProfileVC = segue.destination as! ShowProfileVC
                 showProfileVC.profile = profiles[indexPath.row]
-                showProfileVC.pathToProfiles = pathToProfiles
+                showProfileVC.pathToProfiles = pathToDataBase
             }
         }
     }
