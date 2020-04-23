@@ -10,12 +10,12 @@ import UIKit
 import Firebase
 
 
-class ListOfProfilesVC: UITableViewController, CreateProfileViewControllerDelegate { // нужный протокол подключить для приема созданного объекта
+class ListOfProfilesVC: UITableViewController, CreateProfileVCDelegate {
 
     let db = Firestore.firestore()
     var pathToPreviousItem = "users/testUser"
     var pathToDataBase = ""
-    var currentList: [Profile] = []          //нужно вносить эту переменную с нужным типом                                                              данных для каждого класса
+    var currentList: [Profile] = []
     var listener: ListenerRegistration?
     var query: Query?
 
@@ -37,18 +37,18 @@ class ListOfProfilesVC: UITableViewController, CreateProfileViewControllerDelega
     }
     
     func getPathToDataBase() -> String {
-        return "\(pathToPreviousItem)/profiles"          // нужно менять окончание адреса для                                                                   каждого класса
+        return "\(pathToPreviousItem)/profiles"
     }
     
     func baseQuery() -> Query {
         return db.collection(pathToDataBase)
      }
     
-    func update(newItem: Profile) {     //заменить тип данных для других классов
+    func update(newItem: Profile) {
         currentList.append(newItem)
     }
 
-    func observeQuery() {                       //заменить тип данных для других классов
+    func observeQuery() {
       guard let query = query else { return }
       listener = query.addSnapshotListener { (snapshot, error) in
         guard let snapshot = snapshot else { return }
@@ -74,7 +74,6 @@ class ListOfProfilesVC: UITableViewController, CreateProfileViewControllerDelega
         return currentList.count
     }
 
-    // Меняем cell под каждый класс
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProfileTableViewCell
 
@@ -115,7 +114,7 @@ class ListOfProfilesVC: UITableViewController, CreateProfileViewControllerDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let showDetailsVC = segue.destination as! ShowProfileVC     // менять кастомный                                                                           класс для каждого класса
+                let showDetailsVC = segue.destination as! ShowProfileVC
                 showDetailsVC.itemOfList = currentList[indexPath.row]
                 showDetailsVC.pathToPreviousItem = pathToDataBase
             }

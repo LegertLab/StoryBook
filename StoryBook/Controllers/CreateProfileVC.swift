@@ -14,7 +14,7 @@ class CreateProfileVC: UIViewController {
     let db = Firestore.firestore()
     let pathToProfiles = "users/testUser/profiles"
     
-    weak var delegate: CreateProfileViewControllerDelegate!
+    weak var delegate: CreateProfileVCDelegate!
     
     @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var kinshipTextField: UITextField!
@@ -22,7 +22,6 @@ class CreateProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     func saveNewProfile() {

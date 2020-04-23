@@ -8,14 +8,28 @@
 
 import UIKit
 
-protocol CreateProfileViewControllerDelegate: class {
+protocol CreateProfileVCDelegate: class {
     func update(newItem: Profile)                       
 }
 
-protocol CreateSectionViewControllerDelegate: class {
+protocol CreateSectionVCDelegate: class {
     func update(newItem: Section)
 }
 
-protocol CreateMemoryViewControllerDelegate: class {
+protocol CreateMemoryVCDelegate: class {
     func update(newItem: Memory)
 }
+
+protocol EditProfileVCDelegate: class {
+    func updateAftedEditing(editedItem: Profile)
+}
+
+protocol EditSectionVCDelegate: class {
+    func updateAftedEditing(editedItem: Section)
+}
+
+protocol EditMemoryVCDelegate: class {
+    func updateAftedEditing(editedItem: Memory)
+}
+
+

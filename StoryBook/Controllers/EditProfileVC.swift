@@ -10,10 +10,11 @@ import UIKit
 import Firebase
 
 class EditProfileVC: UIViewController {
-
-    var profile = Profile(name: "", kinship: "", dateOfBirth: "", documentID: ""/*, sections: []*/)
+    
     let db = Firestore.firestore()
-    var pathToProfile = ""
+    var editedItem = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "")
+    var pathToEditedItem = ""
+    weak var delegate: EditProfileVCDelegate!
     
     @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var kinshipTextfield: UITextField!
@@ -21,20 +22,19 @@ class EditProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(profile)
-        nameTextfield.text = profile.name
-        kinshipTextfield.text = profile.kinship
-        dateOfBirthTextfield.text = profile.dateOfBirth
+        nameTextfield.text = editedItem.name
+        kinshipTextfield.text = editedItem.kinship
+        dateOfBirthTextfield.text = editedItem.dateOfBirth
     }
     
     func saveEdition() {
         var ref: DocumentReference? = nil
-        ref = db.document("\(pathToProfile)")
+        ref = db.document("\(pathToEditedItem)")
         ref?.setData([
             "name": nameTextfield.text!,
             "kinship": kinshipTextfield.text!,
             "dateOfBirth": dateOfBirthTextfield.text!,
-            "documentID": profile.documentID
+            "documentID": editedItem.documentID
             ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -42,6 +42,7 @@ class EditProfileVC: UIViewController {
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
+        delegate?.updateAftedEditing(editedItem: editedItem)
         dismiss(animated: true)
     }
 

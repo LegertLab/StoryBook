@@ -311,6 +311,14 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlD-4l-zHz">
+                                    <rect key="frame" x="124" y="162" width="127" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Добавить секцию"/>
+                                    <connections>
+                                        <action selector="addSectionTapped:" destination="pmL-lz-WhP" eventType="touchUpInside" id="7RT-fd-jZy"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
@@ -350,7 +358,7 @@
                     <navigationItem key="navigationItem" id="j6Q-4x-t8a">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9nT-b5-SXt">
                             <connections>
-                                <segue destination="sBE-Rq-68g" kind="presentation" identifier="editProfile" id="OeD-h6-wP5"/>
+                                <segue destination="sBE-Rq-68g" kind="show" identifier="edit" id="OeD-h6-wP5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -375,14 +383,6 @@
                         <view key="tableHeaderView" contentMode="scaleToFill" id="3dQ-IP-GeO">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uop-fS-xFN">
-                                    <rect key="frame" x="143" y="6" width="88" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                    <state key="normal" title="Add memory"/>
-                                </button>
-                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
@@ -419,7 +419,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Nqr-k7-kEf">
-                        <barButtonItem key="rightBarButtonItem" title="Add subsection" id="W4G-vy-sEl"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="W4G-vy-sEl"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3y-Zp-CmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -721,6 +721,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sBE-Rq-68g" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="o0r-dQ-bDJ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9C0-xS-o2f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>

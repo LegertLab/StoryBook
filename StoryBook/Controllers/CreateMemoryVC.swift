@@ -10,7 +10,7 @@ import UIKit
 
 class CreateMemoryVC: UIViewController {
     
-    weak var delegate: FirstViewControllerDelegate?
+    weak var delegate: CreateMemoryVCDelegate?
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
@@ -31,7 +31,7 @@ class CreateMemoryVC: UIViewController {
                                place: placeTextField.text!,
                                documentID: "")
         
-        delegate?.update(newMemory: newMemory)
+        delegate?.update(newItem: newMemory)
         dismiss(animated: true)
         //StorageManager.add(newMemory)
         

@@ -9,20 +9,17 @@
 import UIKit
 import Firebase
 
-class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate {
+class ShowProfileVC: UITableViewController, CreateSectionVCDelegate, EditProfileVCDelegate {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var kinshipLabel: UILabel!
 
     let db = Firestore.firestore()
-    var pathToPreviousItem = "" //String {
-//        get { return "" }
-//        set { "" }
-//    }
+    var pathToPreviousItem = ""
     var pathToDataBase = ""
     var itemOfList = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "")
-    var currentList: [Section] = []          //нужно вносить эту переменную с нужным типом                                                         данных для каждого класса
+    var currentList: [Section] = []
     var listener: ListenerRegistration?
     var query: Query?
 
@@ -41,7 +38,11 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        observeQuery()
+        print(itemOfList)
+    }
+    
+    override func awakeFromNib() {
         observeQuery()
     }
     
@@ -49,8 +50,12 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
         self.currentList.append(newItem)
     }
     
+    func updateAftedEditing(editedItem: Profile) {
+        self.itemOfList = editedItem
+    }
+    
     func getPathToDataBase() -> String {
-        return "\(pathToPreviousItem)/\(itemOfList.documentID)/sections"          // нужно менять окончание адреса для                                                                   каждого класса
+        return "\(pathToPreviousItem)/\(itemOfList.documentID)/sections"
     }
     
     func baseQuery() -> Query {
@@ -58,7 +63,7 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
      }
     
 
-    func observeQuery() {                       //заменить тип данных для других классов
+    func observeQuery() {
       guard let query = query else { return }
       listener = query.addSnapshotListener { (snapshot, error) in
         guard let snapshot = snapshot else { return }
@@ -84,7 +89,6 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
         return currentList.count
     }
 
-    // Меняем cell под каждый класс
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SectionTableViewCell
 
@@ -108,7 +112,6 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
         self.db.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
         self.currentList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-            
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
 
@@ -126,6 +129,14 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
                 showMoreVC.itemOfList = currentList[indexPath.row]
                 showMoreVC.pathToPreviousItem = pathToDataBase
             }
+        } else if segue.identifier == "edit" {
+            let navigationVC = segue.destination as! UINavigationController
+            let editVC = navigationVC.children.first as! EditProfileVC
+            editVC.editedItem = self.itemOfList
+            editVC.pathToEditedItem = "\(self.pathToPreviousItem)/\(itemOfList.documentID)"
         }
+    }
+    
+    @IBAction func addSectionTapped(_ sender: UIButton) {
     }
 }

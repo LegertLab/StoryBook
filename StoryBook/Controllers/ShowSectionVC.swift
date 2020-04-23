@@ -9,10 +9,10 @@
 import UIKit
 import Firebase
 
-class ShowSectionVC: UITableViewController, CreateSectionViewControllerDelegate {
+class ShowSectionVC: UITableViewController, CreateSectionVCDelegate {
     
     let db = Firestore.firestore()
-    var pathToPreviousItem = "" //String { return "" }
+    var pathToPreviousItem = ""
     var pathToDataBase = ""
     var itemOfList = Section(title: "", documentID: "")
     var currentList: [Section] = []
@@ -21,10 +21,12 @@ class ShowSectionVC: UITableViewController, CreateSectionViewControllerDelegate 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = itemOfList.title
         
         db.clearPersistence(completion: { Error in
              print("Could not enable persistence")
-        })
+        }
+    )
         
         pathToDataBase = getPathToDataBase()
         query = baseQuery()
@@ -75,7 +77,6 @@ class ShowSectionVC: UITableViewController, CreateSectionViewControllerDelegate 
         return currentList.count
     }
 
-    // Меняем cell под каждый класс
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SectionTableViewCell
 

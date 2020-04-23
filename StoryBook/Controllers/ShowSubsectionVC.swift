@@ -2,7 +2,7 @@ import UIKit
 import Firebase
 
 
-class ShowSubsectionVC: UITableViewController, CreateMemoryViewControllerDelegate {
+class ShowSubsectionVC: UITableViewController, CreateMemoryVCDelegate {
 
     let db = Firestore.firestore()
     var pathToPreviousItem = ""
@@ -14,7 +14,7 @@ class ShowSubsectionVC: UITableViewController, CreateMemoryViewControllerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = itemOfList.title
         db.clearPersistence(completion: { Error in
              print("Could not enable persistence")
         })
