@@ -1,5 +1,5 @@
 //
-//  ShowProfileVC2.swift
+//  MainVC.swift
 //  StoryBook
 //
 //  Created by Anastasia Legert on 22/4/20.
@@ -9,20 +9,14 @@
 import UIKit
 import Firebase
 
-class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate {
-    
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var kinshipLabel: UILabel!
+
+class MainVC: UITableViewController { // нужный протокол подключить для приема созданного объекта
 
     let db = Firestore.firestore()
-    var pathToPreviousItem = "" //String {
-//        get { return "" }
-//        set { "" }
-//    }
+    var pathToPreviousItem = ""
     var pathToDataBase = ""
-    var itemOfList = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "")
-    var currentList: [Section] = []          //нужно вносить эту переменную с нужным типом                                                         данных для каждого класса
+    var itemOfList = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "") // нужно менять тип данных для каждого класса
+    var currentList: [Profile] = []          //нужно вносить эту переменную с нужным типом                                                              данных для каждого класса
     var listener: ListenerRegistration?
     var query: Query?
 
@@ -32,11 +26,9 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
         db.clearPersistence(completion: { Error in
              print("Could not enable persistence")
         })
-
+        
         pathToDataBase = getPathToDataBase()
         query = baseQuery()
-        nameLabel.text = itemOfList.name
-        kinshipLabel.text = itemOfList.kinship
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,29 +37,28 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
         observeQuery()
     }
     
-    func update(newItem: Section) {
-        self.currentList.append(newItem)
-    }
-    
     func getPathToDataBase() -> String {
-        return "\(pathToPreviousItem)/\(itemOfList.documentID)/sections"          // нужно менять окончание адреса для                                                                   каждого класса
+        return "\(pathToPreviousItem)/profiles"          // нужно менять окончание адреса для                                                                   каждого класса, сначала добавляя \(itemOfList.documentID)
     }
     
     func baseQuery() -> Query {
         return db.collection(pathToDataBase)
      }
     
+    func update(newItem: Profile) {     //заменить тип данных для других классов
+        currentList.append(newItem)
+    }
 
     func observeQuery() {                       //заменить тип данных для других классов
       guard let query = query else { return }
       listener = query.addSnapshotListener { (snapshot, error) in
         guard let snapshot = snapshot else { return }
-        let models = snapshot.documents.map { (document) -> Section in
-            if let model = Section(dictionary: document.data(), documentID: document.documentID) {
+        let models = snapshot.documents.map { (document) -> Profile in
+            if let model = Profile(dictionary: document.data(), documentID: document.documentID) {
             return model
           } else {
             //Don't use fatalError here in a real app.
-        fatalError("Unable to initialize type \(Section.self) with dictionary \(document.data())")
+        fatalError("Unable to initialize type \(Profile.self) with dictionary \(document.data())")
         }
         }
         self.currentList = models
@@ -86,11 +77,10 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
 
     // Меняем cell под каждый класс
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SectionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProfileTableViewCell
 
         let itemOfList = currentList[indexPath.row]
-        cell.sectionImage.image = UIImage(named: "section")
-        cell.titleLabel.text = itemOfList.title
+
         return cell
     }
 
@@ -120,11 +110,11 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showMore" {
+        if segue.identifier == "showDetails" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let showMoreVC = segue.destination as! ShowSectionVC
-                showMoreVC.itemOfList = currentList[indexPath.row]
-                showMoreVC.pathToPreviousItem = pathToDataBase
+                let showDetailsVC = segue.destination as! ShowProfileVC     // менять кастомный                                                                           класс для каждого класса
+                showDetailsVC.itemOfList = currentList[indexPath.row]
+                showDetailsVC.pathToPreviousItem = pathToDataBase
             }
         }
     }

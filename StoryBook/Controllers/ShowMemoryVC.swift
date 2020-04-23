@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ShowMemoryTableVC: UIViewController {
+class ShowMemoryVC: UIViewController {
     
-    var memory = Memory(title: "", note: "", dateOfMemory: "", place: "")
+    var itemOfList = Memory(title: "", note: "", dateOfMemory: "", place: "", documentID: "")
+    var pathToPreviousItem = ""
+
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -20,10 +22,10 @@ class ShowMemoryTableVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = memory.title
-        dateLabel.text = memory.dateOfMemory
-        placeLabel.text = memory.place
-        notesTextField.text = memory.note
+        titleLabel.text = itemOfList.title
+        dateLabel.text = itemOfList.dateOfMemory
+        placeLabel.text = itemOfList.place
+        notesTextField.text = itemOfList.note
     }
 
     

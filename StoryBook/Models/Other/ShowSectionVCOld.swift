@@ -8,9 +8,14 @@
 
 import UIKit
 
-class ShowSectionTableVC: UITableViewController {
+class ShowSectionVCOld: UITableViewController {
 
     var section = Section(title: "", documentID: "")
+    var itemOfList = Section(title: "", documentID: "")
+    var pathToPreviousItem: String {
+        get { return "" }
+        set { "" }
+    }
     //var subsections: [Subsection] = []
     
     override func viewDidLoad() {

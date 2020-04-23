@@ -12,9 +12,11 @@ protocol FirstViewControllerDelegate: class {
     func update(newMemory: Memory)
 }
 
-class ShowMemoriesTableVC: UITableViewController, FirstViewControllerDelegate {
+class ShowMemoriesVCPld: UITableViewController, FirstViewControllerDelegate {
 
     var memories: [Memory] = []
+    var itemOfList = ""
+    var pathToPreviousItem = ""
     
     func update(newMemory: Memory) {
         memories.append(newMemory)
@@ -101,9 +103,9 @@ class ShowMemoriesTableVC: UITableViewController, FirstViewControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MemoryItem" {
                   if let indexPath = self.tableView.indexPathForSelectedRow {
-                  let showMemoryTableVC = segue.destination as! ShowMemoryTableVC
+                  let showMemoryTableVC = segue.destination as! ShowMemoryVC
 
-                    showMemoryTableVC.memory = memories[indexPath.row]
+                    showMemoryTableVC.itemOfList = memories[indexPath.row]
                   }
         }
         if segue.identifier == "AddMemory" {

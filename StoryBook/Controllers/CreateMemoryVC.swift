@@ -28,7 +28,8 @@ class CreateMemoryVC: UIViewController {
         let newMemory = Memory(title: titleTextField.text!,
                                note: noteTextField.text!,
                                dateOfMemory: dateTextField.text!,
-                               place: placeTextField.text!)
+                               place: placeTextField.text!,
+                               documentID: "")
         
         delegate?.update(newMemory: newMemory)
         dismiss(animated: true)

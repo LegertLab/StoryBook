@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 struct Profile {
     // main properties
     var name: String
@@ -79,10 +80,9 @@ struct Section {
         "documentID": documentID
       ]
     }
-   // let subsections: [Subsection]
 }
 
-extension Section {
+extension Section: DocumentSerializable {
     init?(dictionary: [String : Any], documentID: String) {
       guard let title = dictionary["title"] as? String,
           let documentID = documentID as? String
@@ -98,8 +98,8 @@ extension Section {
 
 
 
-struct Subsection {
-    let title: String
-    let memories: [Memory]
-}
+//struct Subsection {
+//    let title: String
+//    let memories: [Memory]
+//}
 

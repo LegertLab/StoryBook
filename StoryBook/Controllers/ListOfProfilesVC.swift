@@ -1,24 +1,21 @@
 //
-//  ListOfProfilesTableViewController.swift
+//  ListOfProfilesVCNewTableViewController.swift
 //  StoryBook
 //
-//  Created by Anastasia Legert on 8/4/20.
+//  Created by Anastasia Legert on 22/4/20.
 //  Copyright © 2020 Anastasia Legert. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-protocol MainViewControllerDelegate: class {
-    func update(newProfile: Profile)
-}
 
-class ListOfProfilesVC: UITableViewController, MainViewControllerDelegate {
+class ListOfProfilesVC: UITableViewController, CreateProfileViewControllerDelegate { // нужный протокол подключить для приема созданного объекта
 
     let db = Firestore.firestore()
-    var currentUser: String = "testUser"
+    var pathToPreviousItem = "users/testUser"
     var pathToDataBase = ""
-    var profiles: [Profile] = []
+    var currentList: [Profile] = []          //нужно вносить эту переменную с нужным типом                                                              данных для каждого класса
     var listener: ListenerRegistration?
     var query: Query?
 
@@ -31,7 +28,6 @@ class ListOfProfilesVC: UITableViewController, MainViewControllerDelegate {
         
         pathToDataBase = getPathToDataBase()
         query = baseQuery()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,20 +37,19 @@ class ListOfProfilesVC: UITableViewController, MainViewControllerDelegate {
     }
     
     func getPathToDataBase() -> String {
-        return "users/\(currentUser)/profiles"
+        return "\(pathToPreviousItem)/profiles"          // нужно менять окончание адреса для                                                                   каждого класса
     }
     
     func baseQuery() -> Query {
         return db.collection(pathToDataBase)
      }
     
-    func update(newProfile: Profile) {
-        profiles.append(newProfile)
+    func update(newItem: Profile) {     //заменить тип данных для других классов
+        currentList.append(newItem)
     }
 
-    func observeQuery() {
+    func observeQuery() {                       //заменить тип данных для других классов
       guard let query = query else { return }
-        // ?? Разобраться, как создавать addSnapshotListener без параметров, как ниже
       listener = query.addSnapshotListener { (snapshot, error) in
         guard let snapshot = snapshot else { return }
         let models = snapshot.documents.map { (document) -> Profile in
@@ -65,10 +60,7 @@ class ListOfProfilesVC: UITableViewController, MainViewControllerDelegate {
         fatalError("Unable to initialize type \(Profile.self) with dictionary \(document.data())")
         }
         }
-        self.profiles = models
-    
-        //self.documents = snapshot.documents
-
+        self.currentList = models
         self.tableView.reloadData()
       }
 
@@ -78,25 +70,20 @@ class ListOfProfilesVC: UITableViewController, MainViewControllerDelegate {
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profiles.count
-        
+        return currentList.count
     }
 
-
+    // Меняем cell под каждый класс
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProfileTableViewCell
 
-        let profile = profiles[indexPath.row]
-        cell.kinshipLabel.text = profile.kinship
-        cell.nameLabel.text = profile.name
+        let itemOfList = currentList[indexPath.row]
+        
+        cell.kinshipLabel.text = itemOfList.kinship
+        cell.nameLabel.text = itemOfList.name
         cell.profileImage.image = UIImage(named: "mom")
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height / 2
-
         return cell
     }
 
@@ -107,14 +94,13 @@ class ListOfProfilesVC: UITableViewController, MainViewControllerDelegate {
     
         override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let profile = profiles[indexPath.row]
+        let itemOfList = currentList[indexPath.row]
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view, boolValue) in
-        let deletedDocID = profile.documentID
+        let deletedDocID = itemOfList.documentID
            
-            print(self.db.document("\(self.pathToDataBase)/\(deletedDocID)"))
-            self.db.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
-            self.profiles.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+        self.db.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
+        self.currentList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
             
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
@@ -127,17 +113,12 @@ class ListOfProfilesVC: UITableViewController, MainViewControllerDelegate {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowProfile" {
+        if segue.identifier == "showDetails" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let showProfileVC = segue.destination as! ShowProfileVC
-                showProfileVC.profile = profiles[indexPath.row]
-                showProfileVC.pathToProfiles = pathToDataBase
+                let showDetailsVC = segue.destination as! ShowProfileVC     // менять кастомный                                                                           класс для каждого класса
+                showDetailsVC.itemOfList = currentList[indexPath.row]
+                showDetailsVC.pathToPreviousItem = pathToDataBase
             }
         }
-    }
-
-
-    @IBAction func addProfileTapped(_ sender: UIBarButtonItem) {
-
     }
 }

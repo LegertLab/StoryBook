@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s5D-D1-0k0">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -238,7 +238,7 @@
                                     <outlet property="kinshipLabel" destination="QHk-mt-NI4" id="002-1o-lb9"/>
                                     <outlet property="nameLabel" destination="KfJ-Pq-9yo" id="9RN-ZV-Fxh"/>
                                     <outlet property="profileImage" destination="s5C-yX-ids" id="OeA-J8-bVg"/>
-                                    <segue destination="pmL-lz-WhP" kind="show" identifier="ShowProfile" id="wCj-Ut-l9a"/>
+                                    <segue destination="pmL-lz-WhP" kind="show" identifier="showDetails" id="wCj-Ut-l9a"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -315,7 +315,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Section" rowHeight="73" id="mCQ-BY-fK2" customClass="SectionTableViewCell" customModule="StoryBook" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="73" id="mCQ-BY-fK2" customClass="SectionTableViewCell" customModule="StoryBook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="228" width="375" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCQ-BY-fK2" id="Og2-dD-M0f">
@@ -338,7 +338,7 @@
                                 <connections>
                                     <outlet property="sectionImage" destination="C9H-0d-e5X" id="eJ9-Qt-YXV"/>
                                     <outlet property="titleLabel" destination="8Qf-Tq-zeH" id="ZDg-S6-Tm3"/>
-                                    <segue destination="FhN-gI-g8P" kind="show" identifier="showSection" id="4jP-Yx-EUU"/>
+                                    <segue destination="FhN-gI-g8P" kind="show" identifier="showMore" id="4jP-Yx-EUU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -364,10 +364,10 @@
             </objects>
             <point key="canvasLocation" x="2797.5999999999999" y="136.28185907046478"/>
         </scene>
-        <!--Show Section TableVC-->
+        <!--Show SectionVC-->
         <scene sceneID="re3-gg-Qi1">
             <objects>
-                <tableViewController id="FhN-gI-g8P" customClass="ShowSectionTableVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="FhN-gI-g8P" customClass="ShowSectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="C9L-1F-aWx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -386,7 +386,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Subsection" rowHeight="73" id="RCf-wO-a83" customClass="SubsectionTableViewCell" customModule="StoryBook" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="73" id="RCf-wO-a83" customClass="SectionTableViewCell" customModule="StoryBook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RCf-wO-a83" id="fJh-bW-Cu8">
@@ -407,9 +407,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="subsectionImage" destination="Lcp-m9-rs9" id="NHP-vg-cbW"/>
-                                    <outlet property="titleLabel" destination="G51-Lt-hXj" id="Kor-Ju-JaT"/>
-                                    <segue destination="hjB-dL-D7H" kind="show" identifier="ShowMemories" id="LDa-DW-mXw"/>
+                                    <outlet property="sectionImage" destination="Lcp-m9-rs9" id="eEA-7W-FfW"/>
+                                    <outlet property="titleLabel" destination="G51-Lt-hXj" id="Pkh-O5-eYX"/>
+                                    <segue destination="hjB-dL-D7H" kind="show" identifier="showMore" id="LDa-DW-mXw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -429,7 +429,7 @@
         <!--Memory-->
         <scene sceneID="PpZ-5R-eLf">
             <objects>
-                <viewController title="Memory" id="DpA-ek-XU6" customClass="ShowMemoryTableVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Memory" id="DpA-ek-XU6" customClass="ShowMemoryVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mCJ-Lq-hZM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -535,16 +535,16 @@
             </objects>
             <point key="canvasLocation" x="5308" y="134.48275862068968"/>
         </scene>
-        <!--Show Memories TableVC-->
+        <!--Show SubsectionVC-->
         <scene sceneID="PP6-Af-4GO">
             <objects>
-                <tableViewController id="hjB-dL-D7H" customClass="ShowMemoriesTableVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hjB-dL-D7H" customClass="ShowSubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3iy-HG-Ug7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Memory" rowHeight="73" id="bcA-OC-sAq" customClass="MemoryTableViewCell" customModule="StoryBook" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="73" id="bcA-OC-sAq" customClass="MemoryTableViewCell" customModule="StoryBook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bcA-OC-sAq" id="Joq-Yk-S9T">
@@ -567,7 +567,7 @@
                                 <connections>
                                     <outlet property="memoryImage" destination="obu-uh-1UF" id="Fw0-pp-J7s"/>
                                     <outlet property="titleLabel" destination="nBO-Iq-31P" id="yPR-3j-WL2"/>
-                                    <segue destination="DpA-ek-XU6" kind="show" identifier="MemoryItem" id="pZB-uk-3UV"/>
+                                    <segue destination="DpA-ek-XU6" kind="show" identifier="showMore" id="pZB-uk-3UV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

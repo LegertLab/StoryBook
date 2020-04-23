@@ -14,7 +14,7 @@ class CreateProfileVC: UIViewController {
     let db = Firestore.firestore()
     let pathToProfiles = "users/testUser/profiles"
     
-    weak var delegate: MainViewControllerDelegate!
+    weak var delegate: CreateProfileViewControllerDelegate!
     
     @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var kinshipTextField: UITextField!
@@ -23,7 +23,6 @@ class CreateProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     func saveNewProfile() {
@@ -31,13 +30,11 @@ class CreateProfileVC: UIViewController {
         let newProfile = Profile(name: nameTextfield.text!,
                                  kinship: kinshipTextField.text!,
                                  dateOfBirth: dateOfBirthTextField.text!,
-                                 documentID: ""//,
-                                 /*sections: []*/)
+                                 documentID: "")
         
-        delegate?.update(newProfile: newProfile)
+        delegate?.update(newItem: newProfile)
         dismiss(animated: true)
         saveProfileToDatabase()
-        //StorageManager.add(newMemory)
     }
     
     func  saveProfileToDatabase() {

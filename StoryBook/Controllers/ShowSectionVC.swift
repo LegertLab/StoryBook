@@ -1,28 +1,21 @@
 //
-//  ShowProfileVC2.swift
+//  ShowSectionVCNew.swift
 //  StoryBook
 //
-//  Created by Anastasia Legert on 22/4/20.
+//  Created by Anastasia Legert on 23/4/20.
 //  Copyright © 2020 Anastasia Legert. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate {
+class ShowSectionVC: UITableViewController, CreateSectionViewControllerDelegate {
     
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var kinshipLabel: UILabel!
-
     let db = Firestore.firestore()
-    var pathToPreviousItem = "" //String {
-//        get { return "" }
-//        set { "" }
-//    }
+    var pathToPreviousItem = "" //String { return "" }
     var pathToDataBase = ""
-    var itemOfList = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "")
-    var currentList: [Section] = []          //нужно вносить эту переменную с нужным типом                                                         данных для каждого класса
+    var itemOfList = Section(title: "", documentID: "")
+    var currentList: [Section] = []
     var listener: ListenerRegistration?
     var query: Query?
 
@@ -32,11 +25,9 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
         db.clearPersistence(completion: { Error in
              print("Could not enable persistence")
         })
-
+        
         pathToDataBase = getPathToDataBase()
         query = baseQuery()
-        nameLabel.text = itemOfList.name
-        kinshipLabel.text = itemOfList.kinship
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,20 +36,20 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
         observeQuery()
     }
     
-    func update(newItem: Section) {
-        self.currentList.append(newItem)
-    }
-    
     func getPathToDataBase() -> String {
-        return "\(pathToPreviousItem)/\(itemOfList.documentID)/sections"          // нужно менять окончание адреса для                                                                   каждого класса
+        return "\(pathToPreviousItem)/\(itemOfList.documentID)/subsections"
+        
     }
     
     func baseQuery() -> Query {
         return db.collection(pathToDataBase)
      }
     
+    func update(newItem: Section) {
+        currentList.append(newItem)
+    }
 
-    func observeQuery() {                       //заменить тип данных для других классов
+    func observeQuery() {
       guard let query = query else { return }
       listener = query.addSnapshotListener { (snapshot, error) in
         guard let snapshot = snapshot else { return }
@@ -89,8 +80,8 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SectionTableViewCell
 
         let itemOfList = currentList[indexPath.row]
-        cell.sectionImage.image = UIImage(named: "section")
         cell.titleLabel.text = itemOfList.title
+        cell.sectionImage.image = UIImage(named: "section")
         return cell
     }
 
@@ -122,7 +113,7 @@ class ShowProfileVC: UITableViewController, CreateSectionViewControllerDelegate 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMore" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let showMoreVC = segue.destination as! ShowSectionVC
+                let showMoreVC = segue.destination as! ShowSubsectionVC
                 showMoreVC.itemOfList = currentList[indexPath.row]
                 showMoreVC.pathToPreviousItem = pathToDataBase
             }
