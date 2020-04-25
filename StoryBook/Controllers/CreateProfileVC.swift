@@ -12,7 +12,7 @@ import Firebase
 class CreateProfileVC: UIViewController {
 
     let db = Firestore.firestore()
-    let pathToProfiles = "users/testUser/profiles"
+    var pathToEditedCollection = ""
     
     weak var delegate: CreateProfileVCDelegate!
     
@@ -31,14 +31,14 @@ class CreateProfileVC: UIViewController {
                                  dateOfBirth: dateOfBirthTextField.text!,
                                  documentID: "")
         
-        delegate?.update(newItem: newProfile)
+        //delegate?.update(newItem: newProfile)
         dismiss(animated: true)
         saveProfileToDatabase()
     }
     
     func  saveProfileToDatabase() {
         var ref: DocumentReference? = nil
-        ref = db.collection("\(pathToProfiles)").addDocument(data: [
+        ref = db.collection(pathToEditedCollection).addDocument(data: [
             "name": nameTextfield.text!,
             "kinship": kinshipTextField.text!,
             "dateOfBirth": dateOfBirthTextField.text!,

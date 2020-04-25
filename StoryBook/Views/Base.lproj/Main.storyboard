@@ -103,34 +103,153 @@
             </objects>
             <point key="canvasLocation" x="138.40000000000001" y="133.5832083958021"/>
         </scene>
-        <!--Новый профиль-->
+        <!--Create ProfileVC-->
         <scene sceneID="BUe-1m-hjp">
             <objects>
                 <viewController id="E7F-DX-RMX" customClass="CreateProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qbl-yr-K54">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k22-F4-fd2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Создать новый профиль" id="fPI-Jk-v6X">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="67s-sD-lT8">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="E7F-DX-RMX" id="kZ2-dC-638"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wte-3n-xs1">
+                                            <connections>
+                                                <action selector="saveTapped:" destination="E7F-DX-RMX" id="fRi-7d-D7b"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tse-Mw-qOJ">
+                                <rect key="frame" x="16" y="79" width="333" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="родство" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rX7-LF-Zsz">
+                                <rect key="frame" x="16" y="134" width="333" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F5e-qB-ayH">
+                                <rect key="frame" x="16" y="184" width="333" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="5MG-eH-0uk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Новый профиль" id="laY-6r-XEH">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Vog-If-eWn">
-                            <connections>
-                                <action selector="cancelTapped:" destination="E7F-DX-RMX" id="eAY-eh-DQg"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="11v-jJ-V3Y">
-                            <connections>
-                                <action selector="saveTapped:" destination="E7F-DX-RMX" id="ifw-eZ-c7T"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <connections>
+                        <outlet property="dateOfBirthTextField" destination="F5e-qB-ayH" id="ZqW-ob-xqa"/>
+                        <outlet property="kinshipTextField" destination="rX7-LF-Zsz" id="8yP-DM-Gbg"/>
+                        <outlet property="nameTextfield" destination="tse-Mw-qOJ" id="3Nm-M7-lpS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3Z-Rf-JZF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2798" y="-563"/>
+            <point key="canvasLocation" x="1942" y="-564"/>
         </scene>
-        <!--Редактировать профиль-->
+        <!--Create SectionVC-->
+        <scene sceneID="sfe-66-ZgZ">
+            <objects>
+                <viewController id="Y3h-Wx-WKc" customClass="CreateSectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eIN-iV-FyR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1p-5k-5y3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Создать новый раздел" id="ubB-8Q-HXT">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Cq8-rK-q5I">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="Y3h-Wx-WKc" id="39y-Gi-q7W"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="4cG-NH-rnE">
+                                            <connections>
+                                                <action selector="saveTapped:" destination="Y3h-Wx-WKc" id="Mw3-1k-iPH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название раздела" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ke2-21-2ya">
+                                <rect key="frame" x="16" y="72" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="qzs-8Z-IU9"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="Ke2-21-2ya" id="i4p-Tp-WQS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QU1-ty-8Y7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2797.5999999999999" y="-564.46776611694156"/>
+        </scene>
+        <!--Create SubsectionVC-->
+        <scene sceneID="oQD-9p-dag">
+            <objects>
+                <viewController id="e4s-SA-LQD" customClass="CreateSubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zar-PZ-7pG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ByN-94-3gZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Создать новый подраздел" id="ROy-rs-g5F">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JaE-8K-MpR">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="e4s-SA-LQD" id="XEC-e9-9Xg"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZIN-vm-SEy">
+                                            <connections>
+                                                <action selector="saveTapped:" destination="e4s-SA-LQD" id="AKu-5E-wbH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="название подраздела" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9Y-VX-Kkf">
+                                <rect key="frame" x="16" y="71" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="c4K-r1-5gp"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="S9Y-VX-Kkf" id="OOM-NX-j3t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MVc-X2-IEN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3613.5999999999999" y="-564.46776611694156"/>
+        </scene>
+        <!--Edit ProfileVC-->
         <scene sceneID="d80-B3-wPJ">
             <objects>
                 <viewController id="2nv-tu-QrQ" customClass="EditProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -156,22 +275,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gB-4V-VAG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Редактировать профиль" id="Xmz-as-aTY">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Lcb-jW-ZF1">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="2nv-tu-QrQ" id="LQw-l6-dyY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="X4l-6o-9wU">
+                                            <connections>
+                                                <action selector="saveEditionTapped:" destination="2nv-tu-QrQ" id="y7B-EI-jgP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="VaQ-51-3Gz"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Редактировать профиль" id="2eJ-BY-8ed">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Kxh-iv-1kW">
-                            <connections>
-                                <action selector="cancelTapped:" destination="2nv-tu-QrQ" id="3gh-WX-gdl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="K4w-iP-baC">
-                            <connections>
-                                <action selector="saveEditionTapped:" destination="2nv-tu-QrQ" id="dm1-gg-WU1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="dateOfBirthTextfield" destination="ucr-SE-NFU" id="09y-VN-NtL"/>
                         <outlet property="kinshipTextfield" destination="Sky-os-F6W" id="Xgb-Vd-KwX"/>
@@ -180,7 +305,95 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISB-uv-0cb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3736.8000000000002" y="878.41079460269873"/>
+            <point key="canvasLocation" x="1942" y="909"/>
+        </scene>
+        <!--Edit SectionVC-->
+        <scene sceneID="OUU-jS-H1l">
+            <objects>
+                <viewController id="Dz6-J8-XC7" customClass="EditSectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="agA-2X-VZK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OAT-Kt-2Xb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Редактировать раздел" id="KIO-0A-kV0">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4vq-Tg-OTa">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="Dz6-J8-XC7" id="S9Q-HD-eOH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6Vp-qK-ocJ">
+                                            <connections>
+                                                <action selector="saveEditionTapped:" destination="Dz6-J8-XC7" id="aYl-RC-lDV"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название раздела" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ju7-9w-rnt">
+                                <rect key="frame" x="16" y="85" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="rCu-Ho-VCl"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="ju7-9w-rnt" id="5sY-ym-QaT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o1C-Yq-DZb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2798" y="909"/>
+        </scene>
+        <!--Edit SubsectionVC-->
+        <scene sceneID="J0W-GR-ZZ2">
+            <objects>
+                <viewController id="bFq-df-aze" customClass="EditSubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y8T-y3-AX7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UTU-dL-AT7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Редактировать подраздел" id="WXN-sy-apR">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yF9-aq-YEl">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="bFq-df-aze" id="h5i-76-YKF"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wGp-qH-R3w">
+                                            <connections>
+                                                <action selector="saveEditionTapped:" destination="bFq-df-aze" id="Sbp-Ob-0ne"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpk-OE-zYW">
+                                <rect key="frame" x="16" y="72" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="pML-KM-wJz"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="wpk-OE-zYW" id="LUQ-FZ-w30"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sak-Bb-o8o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3613.5999999999999" y="908.9955022488756"/>
         </scene>
         <!--Список профилей-->
         <scene sceneID="5zG-eR-Pkd">
@@ -251,10 +464,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cpj-md-uGW">
                             <connections>
                                 <action selector="addProfileTapped:" destination="Rk1-K2-Q9V" id="nmM-6d-wKU"/>
-                                <segue destination="9Og-QJ-aay" kind="presentation" id="fan-db-Hg1"/>
+                                <segue destination="E7F-DX-RMX" kind="presentation" identifier="createNewItem" id="cF3-wt-l3w"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="2nv-tu-QrQ" kind="presentation" identifier="editProfile" id="xCX-Kf-30D"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0v-bp-f6j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -312,11 +528,11 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlD-4l-zHz">
-                                    <rect key="frame" x="124" y="162" width="127" height="30"/>
+                                    <rect key="frame" x="126" y="162" width="123" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Добавить секцию"/>
+                                    <state key="normal" title="Добавить раздел"/>
                                     <connections>
-                                        <action selector="addSectionTapped:" destination="pmL-lz-WhP" eventType="touchUpInside" id="7RT-fd-jZy"/>
+                                        <segue destination="Y3h-Wx-WKc" kind="presentation" identifier="create" id="pSg-yr-8wk"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -355,17 +571,12 @@
                             <outlet property="delegate" destination="pmL-lz-WhP" id="SI7-cs-YAz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="j6Q-4x-t8a">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9nT-b5-SXt">
-                            <connections>
-                                <segue destination="sBE-Rq-68g" kind="show" identifier="edit" id="OeD-h6-wP5"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="j6Q-4x-t8a"/>
                     <connections>
                         <outlet property="kinshipLabel" destination="HUW-Rx-gjs" id="Ipx-qZ-Gkt"/>
                         <outlet property="nameLabel" destination="KTI-UB-MGC" id="QXc-mB-DkF"/>
                         <outlet property="profileImage" destination="dmb-id-0hc" id="G7S-Aa-D0A"/>
+                        <segue destination="Dz6-J8-XC7" kind="presentation" identifier="editSection" id="P0h-68-gjb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98U-t0-ppg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -419,8 +630,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Nqr-k7-kEf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="W4G-vy-sEl"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="W4G-vy-sEl">
+                            <connections>
+                                <segue destination="e4s-SA-LQD" kind="presentation" identifier="create" id="fgd-Zz-q41"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="bFq-df-aze" kind="presentation" identifier="editSubsection" id="m2c-Ci-XW3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3y-Zp-CmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -697,43 +915,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Rb-uk-aHW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6330.3999999999996" y="908.9955022488756"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="N9K-dr-1aV">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Og-QJ-aay" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jms-Mw-k6V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="E7F-DX-RMX" kind="relationship" relationship="rootViewController" id="7kd-cc-R2n"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dOq-W9-Rgo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1938.4000000000001" y="-562.66866566716647"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CMr-ja-IsP">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sBE-Rq-68g" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="o0r-dQ-bDJ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9C0-xS-o2f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="2nv-tu-QrQ" kind="relationship" relationship="rootViewController" id="9JM-dw-Lco"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N2u-9O-DeM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2797.5999999999999" y="878.41079460269873"/>
         </scene>
     </scenes>
     <resources>

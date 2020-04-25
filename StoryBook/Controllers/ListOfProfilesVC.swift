@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class ListOfProfilesVC: UITableViewController, CreateProfileVCDelegate {
+class ListOfProfilesVC: UITableViewController {
 
     let db = Firestore.firestore()
     var pathToPreviousItem = "users/testUser"
@@ -22,9 +22,9 @@ class ListOfProfilesVC: UITableViewController, CreateProfileVCDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        db.clearPersistence(completion: { Error in
-             print("Could not enable persistence")
-        })
+//        db.clearPersistence(completion: { Error in
+//             print("Could not enable persistence")
+//        })
         
         pathToDataBase = getPathToDataBase()
         query = baseQuery()
@@ -32,7 +32,6 @@ class ListOfProfilesVC: UITableViewController, CreateProfileVCDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         observeQuery()
     }
     
@@ -43,10 +42,6 @@ class ListOfProfilesVC: UITableViewController, CreateProfileVCDelegate {
     func baseQuery() -> Query {
         return db.collection(pathToDataBase)
      }
-    
-    func update(newItem: Profile) {
-        currentList.append(newItem)
-    }
 
     func observeQuery() {
       guard let query = query else { return }
@@ -63,10 +58,7 @@ class ListOfProfilesVC: UITableViewController, CreateProfileVCDelegate {
         self.currentList = models
         self.tableView.reloadData()
       }
-
     }
-    
-
     
     // MARK: - Table view data source
 
@@ -102,8 +94,13 @@ class ListOfProfilesVC: UITableViewController, CreateProfileVCDelegate {
         tableView.deleteRows(at: [indexPath], with: .automatic)
             
         }
-        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
-
+        let editAction = UIContextualAction(style: .normal, title: "Изменить", handler: {
+         (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.performSegue(withIdentifier: "editProfile", sender: self.currentList[indexPath.row])
+            success(true)
+        })
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
         return swipeActions
     }
     
@@ -118,6 +115,14 @@ class ListOfProfilesVC: UITableViewController, CreateProfileVCDelegate {
                 showDetailsVC.itemOfList = currentList[indexPath.row]
                 showDetailsVC.pathToPreviousItem = pathToDataBase
             }
+        }  else if segue.identifier == "createNewItem" {
+            let createVC = segue.destination as! CreateProfileVC
+            createVC.pathToEditedCollection = self.pathToDataBase
+        } else if segue.identifier == "editProfile" {
+        let editedItem = sender as! Profile
+            let editProfileVC = segue.destination as! EditProfileVC
+            editProfileVC.editedItem = editedItem
+            editProfileVC.pathToEditedItem = "\(self.pathToDataBase)/\(editedItem.documentID)"
         }
     }
 }

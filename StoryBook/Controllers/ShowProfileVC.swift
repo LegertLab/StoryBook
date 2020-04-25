@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ShowProfileVC: UITableViewController, CreateSectionVCDelegate, EditProfileVCDelegate {
+class ShowProfileVC: UITableViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,11 +25,6 @@ class ShowProfileVC: UITableViewController, CreateSectionVCDelegate, EditProfile
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        db.clearPersistence(completion: { Error in
-             print("Could not enable persistence")
-        })
-
         pathToDataBase = getPathToDataBase()
         query = baseQuery()
         nameLabel.text = itemOfList.name
@@ -39,19 +34,6 @@ class ShowProfileVC: UITableViewController, CreateSectionVCDelegate, EditProfile
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         observeQuery()
-        print(itemOfList)
-    }
-    
-    override func awakeFromNib() {
-        observeQuery()
-    }
-    
-    func update(newItem: Section) {
-        self.currentList.append(newItem)
-    }
-    
-    func updateAftedEditing(editedItem: Profile) {
-        self.itemOfList = editedItem
     }
     
     func getPathToDataBase() -> String {
@@ -70,18 +52,16 @@ class ShowProfileVC: UITableViewController, CreateSectionVCDelegate, EditProfile
         let models = snapshot.documents.map { (document) -> Section in
             if let model = Section(dictionary: document.data(), documentID: document.documentID) {
             return model
-          } else {
+            } else {
             //Don't use fatalError here in a real app.
-        fatalError("Unable to initialize type \(Section.self) with dictionary \(document.data())")
-        }
+            fatalError("Unable to initialize type \(Section.self) with dictionary \(document.data())")
+            }
         }
         self.currentList = models
         self.tableView.reloadData()
       }
-
     }
     
-
     
     // MARK: - Table view data source
 
@@ -103,8 +83,8 @@ class ShowProfileVC: UITableViewController, CreateSectionVCDelegate, EditProfile
     }
 
     
-        override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    
         let itemOfList = currentList[indexPath.row]
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view, boolValue) in
         let deletedDocID = itemOfList.documentID
@@ -113,7 +93,14 @@ class ShowProfileVC: UITableViewController, CreateSectionVCDelegate, EditProfile
         self.currentList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+        
+        let editAction = UIContextualAction(style: .normal, title: "Изменить", handler: {
+         (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.performSegue(withIdentifier: "editSection", sender: itemOfList)
+            success(true)
+        })
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
 
         return swipeActions
     }
@@ -129,14 +116,18 @@ class ShowProfileVC: UITableViewController, CreateSectionVCDelegate, EditProfile
                 showMoreVC.itemOfList = currentList[indexPath.row]
                 showMoreVC.pathToPreviousItem = pathToDataBase
             }
-        } else if segue.identifier == "edit" {
-            let navigationVC = segue.destination as! UINavigationController
-            let editVC = navigationVC.children.first as! EditProfileVC
+        } else if segue.identifier == "editProfile" {
+            let editVC = segue.destination as! EditProfileVC
             editVC.editedItem = self.itemOfList
             editVC.pathToEditedItem = "\(self.pathToPreviousItem)/\(itemOfList.documentID)"
+        } else if segue.identifier == "create" {
+            let createVC = segue.destination as! CreateSectionVC
+            createVC.pathToEditedCollection = pathToDataBase
+        } else if segue.identifier == "editSection" {
+            let editedItem = sender as! Section
+                let editSectionVC = segue.destination as! EditSectionVC
+                editSectionVC.editedItem = editedItem
+                editSectionVC.pathToEditedItem = "\(self.pathToDataBase)/\(editedItem.documentID)"
+            }
         }
     }
-    
-    @IBAction func addSectionTapped(_ sender: UIButton) {
-    }
-}

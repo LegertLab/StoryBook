@@ -2,7 +2,7 @@ import UIKit
 import Firebase
 
 
-class ShowSubsectionVC: UITableViewController, CreateMemoryVCDelegate {
+class ShowSubsectionVC: UITableViewController {
 
     let db = Firestore.firestore()
     var pathToPreviousItem = ""
@@ -15,13 +15,9 @@ class ShowSubsectionVC: UITableViewController, CreateMemoryVCDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = itemOfList.title
-        db.clearPersistence(completion: { Error in
-             print("Could not enable persistence")
-        })
         
         pathToDataBase = getPathToDataBase()
         query = baseQuery()
-        print(pathToPreviousItem)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,10 +34,6 @@ class ShowSubsectionVC: UITableViewController, CreateMemoryVCDelegate {
     func baseQuery() -> Query {
         return db.collection(pathToDataBase)
      }
-    
-    func update(newItem: Memory) {
-        currentList.append(newItem)
-    }
 
     func observeQuery() {
       guard let query = query else { return }
@@ -69,7 +61,6 @@ class ShowSubsectionVC: UITableViewController, CreateMemoryVCDelegate {
         return currentList.count
     }
 
-    // Меняем cell под каждый класс
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MemoryTableViewCell
 
@@ -94,8 +85,8 @@ class ShowSubsectionVC: UITableViewController, CreateMemoryVCDelegate {
         self.db.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
         self.currentList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-            
         }
+           
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
 
         return swipeActions

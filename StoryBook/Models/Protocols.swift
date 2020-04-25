@@ -21,15 +21,15 @@ protocol CreateMemoryVCDelegate: class {
 }
 
 protocol EditProfileVCDelegate: class {
-    func updateAftedEditing(editedItem: Profile)
+    func updateAfterEditing(editedItem: Profile)
 }
 
 protocol EditSectionVCDelegate: class {
-    func updateAftedEditing(editedItem: Section)
+    func updateAfterEditing(editedItem: Section)
 }
 
 protocol EditMemoryVCDelegate: class {
-    func updateAftedEditing(editedItem: Memory)
+    func updateAfterEditing(editedItem: Memory)
 }
 
 

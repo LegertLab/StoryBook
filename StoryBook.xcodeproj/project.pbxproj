@@ -33,6 +33,10 @@
 		A6B2C9FD24508E8B004FFE59 /* ListOfProfilesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2C9FC24508E8B004FFE59 /* ListOfProfilesVC.swift */; };
 		A6B2C9FF2451954B004FFE59 /* ShowSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2C9FE2451954B004FFE59 /* ShowSectionVC.swift */; };
 		A6B2CA012451AD62004FFE59 /* ShowSubsectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA002451AD62004FFE59 /* ShowSubsectionVC.swift */; };
+		A6B2CA0324532C60004FFE59 /* CreateSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA0224532C60004FFE59 /* CreateSectionVC.swift */; };
+		A6B2CA0524534028004FFE59 /* EditSectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA0424534028004FFE59 /* EditSectionVC.swift */; };
+		A6B2CA0724541F7D004FFE59 /* CreateSubsectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA0624541F7D004FFE59 /* CreateSubsectionVC.swift */; };
+		A6B2CA0924541FF8004FFE59 /* EditSubsectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA0824541FF8004FFE59 /* EditSubsectionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		A6B2C9FC24508E8B004FFE59 /* ListOfProfilesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfProfilesVC.swift; sourceTree = "<group>"; };
 		A6B2C9FE2451954B004FFE59 /* ShowSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSectionVC.swift; sourceTree = "<group>"; };
 		A6B2CA002451AD62004FFE59 /* ShowSubsectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSubsectionVC.swift; sourceTree = "<group>"; };
+		A6B2CA0224532C60004FFE59 /* CreateSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSectionVC.swift; sourceTree = "<group>"; };
+		A6B2CA0424534028004FFE59 /* EditSectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSectionVC.swift; sourceTree = "<group>"; };
+		A6B2CA0624541F7D004FFE59 /* CreateSubsectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubsectionVC.swift; sourceTree = "<group>"; };
+		A6B2CA0824541FF8004FFE59 /* EditSubsectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubsectionVC.swift; sourceTree = "<group>"; };
 		B450D73E3A65892F6766D402 /* Pods-StoryBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryBook.release.xcconfig"; path = "Target Support Files/Pods-StoryBook/Pods-StoryBook.release.xcconfig"; sourceTree = "<group>"; };
 		E194BF59D0C17ED0EC294602 /* Pods_StoryBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoryBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -129,7 +137,11 @@
 				A64E01DB24387E2B003B25C3 /* LoginViewController.swift */,
 				A6A83A252441C25B001EEF67 /* CreateMemoryVC.swift */,
 				A65B2DB4244A0731000729B8 /* CreateProfileVC.swift */,
+				A6B2CA0224532C60004FFE59 /* CreateSectionVC.swift */,
+				A6B2CA0624541F7D004FFE59 /* CreateSubsectionVC.swift */,
 				A65B2DB6244DAAA3000729B8 /* EditProfileVC.swift */,
+				A6B2CA0824541FF8004FFE59 /* EditSubsectionVC.swift */,
+				A6B2CA0424534028004FFE59 /* EditSectionVC.swift */,
 				A6B2C9FC24508E8B004FFE59 /* ListOfProfilesVC.swift */,
 				A6B2C9F824508BBA004FFE59 /* ShowProfileVC.swift */,
 				A6B2CA002451AD62004FFE59 /* ShowSubsectionVC.swift */,
@@ -313,7 +325,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6B2CA0324532C60004FFE59 /* CreateSectionVC.swift in Sources */,
 				A6A83A212440C447001EEF67 /* MemoryTableViewCell.swift in Sources */,
+				A6B2CA0724541F7D004FFE59 /* CreateSubsectionVC.swift in Sources */,
+				A6B2CA0524534028004FFE59 /* EditSectionVC.swift in Sources */,
 				A6A83A262441C25B001EEF67 /* CreateMemoryVC.swift in Sources */,
 				A6A83A0D243B3032001EEF67 /* Memory.swift in Sources */,
 				A64E01DC24387E2B003B25C3 /* LoginViewController.swift in Sources */,
@@ -333,6 +348,7 @@
 				A6A83A242440C821001EEF67 /* ShowMemoryVC.swift in Sources */,
 				A6B2C9F924508BBA004FFE59 /* ShowProfileVC.swift in Sources */,
 				A6B2C9FF2451954B004FFE59 /* ShowSectionVC.swift in Sources */,
+				A6B2CA0924541FF8004FFE59 /* EditSubsectionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
