@@ -103,6 +103,10 @@ class ShowSubsectionVC: UITableViewController {
                 showMoreVC.itemOfList = currentList[indexPath.row]
                 showMoreVC.pathToPreviousItem = pathToDataBase
             }
+        } else if segue.identifier == "create" {
+            let navigationVC = segue.destination as! UINavigationController
+            let createVC = navigationVC.children.first as! CreateMemoryVC
+            createVC.pathToEditedCollection = pathToDataBase
         }
     }
 }

@@ -740,7 +740,11 @@
                         <viewLayoutGuide key="safeArea" id="ylw-vW-cQN"/>
                     </view>
                     <navigationItem key="navigationItem" id="5x0-hw-xxQ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="swp-f9-8PF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="swp-f9-8PF">
+                            <connections>
+                                <segue destination="glC-U8-KPF" kind="presentation" identifier="edit" id="FXY-GU-x9l"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="egF-Lz-0Sh" id="aDa-mK-R1o"/>
@@ -752,6 +756,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xY2-qG-ptF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5308" y="134.48275862068968"/>
+        </scene>
+        <!--Edit MemoryVC-->
+        <scene sceneID="Flu-PS-3di">
+            <objects>
+                <viewController id="glC-U8-KPF" customClass="EditMemoryVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S9H-Vm-MhC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pfz-iW-FsS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Редактировать воспоминание" id="5JS-pZ-bNy">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VI9-JR-fls">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="glC-U8-KPF" id="Fhp-6p-kjt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="t1h-8a-E0b">
+                                            <connections>
+                                                <action selector="saveEditionTapped:" destination="glC-U8-KPF" id="hDs-Wq-mkP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mA9-th-0PE">
+                                <rect key="frame" x="16" y="102" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hB7-nX-8nl">
+                                <rect key="frame" x="16" y="174" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTo-RT-iAd">
+                                <rect key="frame" x="16" y="251" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p7X-R8-oDH">
+                                <rect key="frame" x="16" y="320" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Название" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAA-jU-rPI">
+                                <rect key="frame" x="16" y="63" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Дата" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxT-RM-LTt">
+                                <rect key="frame" x="23" y="145" width="39" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Место" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuX-aG-uWB">
+                                <rect key="frame" x="23" y="216" width="51" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Текст воспоминания" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qu-QS-Q57">
+                                <rect key="frame" x="16" y="293" width="166" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FZx-4V-nLG"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateOfMemoryTextField" destination="hB7-nX-8nl" id="thf-Ei-p58"/>
+                        <outlet property="noteTextField" destination="p7X-R8-oDH" id="PPv-97-pmR"/>
+                        <outlet property="placeTextField" destination="dTo-RT-iAd" id="GSL-d0-sFo"/>
+                        <outlet property="titleTextField" destination="mA9-th-0PE" id="aey-8O-Bz9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jFZ-Yg-bYO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5308" y="908.9955022488756"/>
         </scene>
         <!--Show SubsectionVC-->
         <scene sceneID="PP6-Af-4GO">
@@ -797,7 +894,7 @@
                     <navigationItem key="navigationItem" id="cxb-4Z-oJc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dqf-Hi-cbi">
                             <connections>
-                                <segue destination="Mw1-DB-bua" kind="presentation" id="0YC-xD-NHY"/>
+                                <segue destination="Ryq-dY-amu" kind="show" identifier="create" id="SO1-DA-Cuy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -858,15 +955,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="BBw-ga-WLi"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8VM-GO-ric">
+                    <navigationItem key="navigationItem" title="Новое воспоминание" id="8VM-GO-ric">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="CpP-kl-rgn">
                             <connections>
-                                <action selector="cancelTapped:" destination="V0u-2p-jF6" id="VdU-wL-pnZ"/>
+                                <action selector="cancelTapped:" destination="V0u-2p-jF6" id="oyK-aQ-aAv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="gkw-fV-a8t">
                             <connections>
-                                <action selector="saveTapped:" destination="V0u-2p-jF6" id="KFQ-gV-ise"/>
+                                <action selector="saveTapped:" destination="V0u-2p-jF6" id="STb-JS-EZL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -879,7 +976,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oby-Eb-ASw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7269.6000000000004" y="908.9955022488756"/>
+            <point key="canvasLocation" x="5308" y="-564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0gn-ol-AfV">
@@ -899,22 +996,23 @@
             <point key="canvasLocation" x="996" y="137"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="ZSY-wp-Gkg">
+        <scene sceneID="h2p-on-L0I">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mw1-DB-bua" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ryq-dY-amu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wLQ-kf-RME">
+                    <navigationItem key="navigationItem" id="yrX-KX-fdi"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gwm-Kq-83e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="V0u-2p-jF6" kind="relationship" relationship="rootViewController" id="cNw-F7-Fd3"/>
+                        <segue destination="V0u-2p-jF6" kind="relationship" relationship="rootViewController" id="J1E-pb-T2Z"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Rb-uk-aHW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzS-QJ-day" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6330.3999999999996" y="908.9955022488756"/>
+            <point key="canvasLocation" x="4452" y="-564"/>
         </scene>
     </scenes>
     <resources>

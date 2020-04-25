@@ -1,4 +1,4 @@
-//
+
 //  CreateSubsectionVC.swift
 //  StoryBook
 //
@@ -15,16 +15,6 @@ class CreateSubsectionVC: UIViewController {
     var pathToEditedCollection = ""
     
     @IBOutlet weak var titleTextField: UITextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-   
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(pathToEditedCollection)
-    }
     
     func  saveSubsectionToDatabase() {
         var ref: DocumentReference? = nil

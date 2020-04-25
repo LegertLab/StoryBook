@@ -27,4 +27,12 @@ class ShowMemoryVC: UIViewController {
         placeLabel.text = itemOfList.place
         notesTextField.text = itemOfList.note
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "edit" {
+            let editVC = segue.destination as! EditMemoryVC
+            editVC.editedItem = itemOfList
+            editVC.pathToEditedItem = "\(pathToPreviousItem)/\(itemOfList.documentID)"
+        }
+    }
 }
