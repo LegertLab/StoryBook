@@ -38,6 +38,8 @@
 		A6B2CA0724541F7D004FFE59 /* CreateSubsectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA0624541F7D004FFE59 /* CreateSubsectionVC.swift */; };
 		A6B2CA0924541FF8004FFE59 /* EditSubsectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA0824541FF8004FFE59 /* EditSubsectionVC.swift */; };
 		A6B2CA0B245441E2004FFE59 /* EditMemoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA0A245441E2004FFE59 /* EditMemoryVC.swift */; };
+		A6B2CA0D24548DFB004FFE59 /* addPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA0C24548DFB004FFE59 /* addPhoto.swift */; };
+		A6B2CA0F2454A12A004FFE59 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2CA0E2454A12A004FFE59 /* TestVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		A6B2CA0624541F7D004FFE59 /* CreateSubsectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubsectionVC.swift; sourceTree = "<group>"; };
 		A6B2CA0824541FF8004FFE59 /* EditSubsectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubsectionVC.swift; sourceTree = "<group>"; };
 		A6B2CA0A245441E2004FFE59 /* EditMemoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryVC.swift; sourceTree = "<group>"; };
+		A6B2CA0C24548DFB004FFE59 /* addPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addPhoto.swift; sourceTree = "<group>"; };
+		A6B2CA0E2454A12A004FFE59 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		B450D73E3A65892F6766D402 /* Pods-StoryBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryBook.release.xcconfig"; path = "Target Support Files/Pods-StoryBook/Pods-StoryBook.release.xcconfig"; sourceTree = "<group>"; };
 		E194BF59D0C17ED0EC294602 /* Pods_StoryBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoryBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -140,6 +144,7 @@
 				A6A83A252441C25B001EEF67 /* CreateMemoryVC.swift */,
 				A65B2DB4244A0731000729B8 /* CreateProfileVC.swift */,
 				A6B2CA0224532C60004FFE59 /* CreateSectionVC.swift */,
+				A6B2CA0E2454A12A004FFE59 /* TestVC.swift */,
 				A6B2CA0624541F7D004FFE59 /* CreateSubsectionVC.swift */,
 				A65B2DB6244DAAA3000729B8 /* EditProfileVC.swift */,
 				A6B2CA0A245441E2004FFE59 /* EditMemoryVC.swift */,
@@ -150,6 +155,7 @@
 				A6B2CA002451AD62004FFE59 /* ShowSubsectionVC.swift */,
 				A6B2C9FE2451954B004FFE59 /* ShowSectionVC.swift */,
 				A6A83A232440C821001EEF67 /* ShowMemoryVC.swift */,
+				A6B2CA0C24548DFB004FFE59 /* addPhoto.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -157,10 +163,9 @@
 		A64E01F32439D3B8003B25C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A6B2C9F624508AB0004FFE59 /* Protocols.swift */,
 				A6A83A17243F5BF1001EEF67 /* Custom cells */,
-				A6A83A0A243B3011001EEF67 /* User.swift */,
 				A6A83A1824406796001EEF67 /* Other */,
+				A6A83A0A243B3011001EEF67 /* User.swift */,
 				A6A83A0C243B3032001EEF67 /* Memory.swift */,
 				A64E01EB24387E65003B25C3 /* ProfileSection.swift */,
 			);
@@ -188,6 +193,7 @@
 		A6A83A1824406796001EEF67 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A6B2C9F624508AB0004FFE59 /* Protocols.swift */,
 				A64E01ED24387FB3003B25C3 /* FamilyGroup.swift */,
 				A64E01EF2438817D003B25C3 /* DataTypes.swift */,
 			);
@@ -344,10 +350,12 @@
 				A64E01EE24387FB3003B25C3 /* FamilyGroup.swift in Sources */,
 				A65B2DB7244DAAA3000729B8 /* EditProfileVC.swift in Sources */,
 				A64E01DA24387E2B003B25C3 /* SceneDelegate.swift in Sources */,
+				A6B2CA0F2454A12A004FFE59 /* TestVC.swift in Sources */,
 				A64E01F02438817D003B25C3 /* DataTypes.swift in Sources */,
 				A6A83A0B243B3011001EEF67 /* User.swift in Sources */,
 				A6B2CA012451AD62004FFE59 /* ShowSubsectionVC.swift in Sources */,
 				A6A83A16243F5BD8001EEF67 /* SectionTableViewCell.swift in Sources */,
+				A6B2CA0D24548DFB004FFE59 /* addPhoto.swift in Sources */,
 				A6B2CA0B245441E2004FFE59 /* EditMemoryVC.swift in Sources */,
 				A6A83A242440C821001EEF67 /* ShowMemoryVC.swift in Sources */,
 				A6B2C9F924508BBA004FFE59 /* ShowProfileVC.swift in Sources */,
