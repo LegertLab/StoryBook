@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56101C792458236000C246FB /* ListOfProfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56101C782458236000C246FB /* ListOfProfilesViewModel.swift */; };
 		8DDE3CED8FFA8A98F61AF8A4 /* Pods_StoryBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E194BF59D0C17ED0EC294602 /* Pods_StoryBook.framework */; };
 		A64E01D824387E2B003B25C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64E01D724387E2B003B25C3 /* AppDelegate.swift */; };
 		A64E01DA24387E2B003B25C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64E01D924387E2B003B25C3 /* SceneDelegate.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		33A5F1036BC6BC4C4CF02566 /* Pods-StoryBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoryBook.debug.xcconfig"; path = "Target Support Files/Pods-StoryBook/Pods-StoryBook.debug.xcconfig"; sourceTree = "<group>"; };
+		56101C782458236000C246FB /* ListOfProfilesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfProfilesViewModel.swift; sourceTree = "<group>"; };
 		A64E01D424387E2B003B25C3 /* StoryBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A64E01D724387E2B003B25C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A64E01D924387E2B003B25C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56101C742458223A00C246FB /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				56101C75245822E500C246FB /* ProfileList */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		56101C75245822E500C246FB /* ProfileList */ = {
+			isa = PBXGroup;
+			children = (
+				A6B2C9FC24508E8B004FFE59 /* ListOfProfilesVC.swift */,
+				56101C782458236000C246FB /* ListOfProfilesViewModel.swift */,
+			);
+			path = ProfileList;
+			sourceTree = "<group>";
+		};
 		A64E01CB24387E2B003B25C3 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +135,7 @@
 		A64E01D624387E2B003B25C3 /* StoryBook */ = {
 			isa = PBXGroup;
 			children = (
+				56101C742458223A00C246FB /* MVVM */,
 				A6A83A0E243B33A5001EEF67 /* Views */,
 				A64E01F12439D36B003B25C3 /* SupportingFiles */,
 				A64E01F22439D3A0003B25C3 /* Controllers */,
@@ -150,7 +170,6 @@
 				A6B2CA0A245441E2004FFE59 /* EditMemoryVC.swift */,
 				A6B2CA0824541FF8004FFE59 /* EditSubsectionVC.swift */,
 				A6B2CA0424534028004FFE59 /* EditSectionVC.swift */,
-				A6B2C9FC24508E8B004FFE59 /* ListOfProfilesVC.swift */,
 				A6B2C9F824508BBA004FFE59 /* ShowProfileVC.swift */,
 				A6B2CA002451AD62004FFE59 /* ShowSubsectionVC.swift */,
 				A6B2C9FE2451954B004FFE59 /* ShowSectionVC.swift */,
@@ -347,6 +366,7 @@
 				A6A83A12243E25D9001EEF67 /* ProfileTableViewCell.swift in Sources */,
 				A64E01D824387E2B003B25C3 /* AppDelegate.swift in Sources */,
 				A6B2C9F724508AB0004FFE59 /* Protocols.swift in Sources */,
+				56101C792458236000C246FB /* ListOfProfilesViewModel.swift in Sources */,
 				A64E01EE24387FB3003B25C3 /* FamilyGroup.swift in Sources */,
 				A65B2DB7244DAAA3000729B8 /* EditProfileVC.swift in Sources */,
 				A64E01DA24387E2B003B25C3 /* SceneDelegate.swift in Sources */,
