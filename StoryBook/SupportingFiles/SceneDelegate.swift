@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = UIWindow(windowScene: windowScene)
 
-        let viewModel = ListOfProfilesViewModel()
+        let viewModel = ProfileListViewModel()
         if let profileListController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "ListOfProfilesVC") as? ListOfProfilesVC {
+            .instantiateViewController(withIdentifier: "ListOfProfilesVC") as? ProfileListVC {
             
             profileListController.initViewModel(viewModel: viewModel)
             let navigationController = UINavigationController(rootViewController: profileListController)

@@ -6,12 +6,13 @@ target 'StoryBook' do
   use_frameworks!
 
   # Pods for StoryBook
-# add the Firebase pod for Google Analytics
+
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Firestore'
+pod 'RxSwift', '~> 5'
+pod 'RxCocoa', '~> 5'
 
-# add pods for any other desired Firebase products
-# https://firebase.google.com/docs/ios/setup#available-pods
 
 end
+
