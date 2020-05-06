@@ -93,13 +93,3 @@ extension Section: DocumentSerializable {
         )
     }
 }
-
-
-
-
-
-//struct Subsection {
-//    let title: String
-//    let memories: [Memory]
-//}
-

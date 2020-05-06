@@ -1,32 +1,32 @@
 //
-//  ProfileViewModel.swift
+//  SectionViewModel.swift
 //  StoryBook
 //
-//  Created by Anastasia Legert on 5/5/20.
+//  Created by Anastasia Legert on 6/5/20.
 //  Copyright © 2020 Anastasia Legert. All rights reserved.
 //
 
 import Foundation
 import Firebase
 
-class ProfileViewModel {
-    var profile = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "")
-    var sections: [Section] = []
+class SectionViewModel {
+    var section = Section(title: "", documentID: "")
+    var subsections: [Section] = []
     var pathToPreviousLevel = ""
     private let firestore = Firestore.firestore()
     private var listener: ListenerRegistration?
     private var query: Query?
 
     var pathToDataBase: String {
-        return "\(pathToPreviousLevel)/\(profile.documentID)/sections"
+        return "\(pathToPreviousLevel)/\(section.documentID)/subsections"
     }
     
     init() {
         query = firestore.collection(pathToDataBase)
     }
     
-    init(profile: Profile, pathToPreviousLevel: String) {
-        self.profile = profile;
+    init(section: Section, pathToPreviousLevel: String) {
+        self.section = section;
         self.pathToPreviousLevel = pathToPreviousLevel
         query = firestore.collection(pathToDataBase)
     }
@@ -52,23 +52,23 @@ class ProfileViewModel {
                 $0
             }
 
-        self.sections = models
+        self.subsections = models
         completion(models)
       }
     }
     
     func getSection(by index: Int) -> Section? {
-        if index > sections.count {
+        if index > subsections.count {
             return nil
         }
-        return sections[index]
+        return subsections[index]
     }
     
     func delete(by index: Int) {
         if let section = getSection(by: index) {
             let deletedDocID = section.documentID
             self.firestore.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
-            self.sections.remove(at: index)
+            self.subsections.remove(at: index)
         }
     }
     

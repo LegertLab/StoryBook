@@ -89,25 +89,32 @@ class ProfileVC: UITableViewController {
     
     // MARK: - Navigation
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showMore" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                let showMoreVC = segue.destination as! ShowSectionVC
-//                showMoreVC.itemOfList = currentList[indexPath.row]
-//                showMoreVC.pathToPreviousItem = pathToDataBase
-//            }
-//        } else if segue.identifier == "editProfile" {
-//            let editVC = segue.destination as! EditProfileVC
-//            editVC.editedItem = self.itemOfList
-//            editVC.pathToEditedItem = "\(self.pathToPreviousItem)/\(itemOfList.documentID)"
-//        } else if segue.identifier == "create" {
-//            let createVC = segue.destination as! CreateSectionVC
-//            createVC.pathToEditedCollection = pathToDataBase
-//        } else if segue.identifier == "editSection" {
-//            let editedItem = sender as! Section
-//                let editSectionVC = segue.destination as! EditSectionVC
-//                editSectionVC.editedItem = editedItem
-//                editSectionVC.pathToEditedItem = "\(self.pathToDataBase)/\(editedItem.documentID)"
-//            }
-//        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let viewModel = self.viewModel else {
+            fatalError()
+        }
+        
+        if segue.identifier == "showDetails" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let showDetailsVC = segue.destination as! SectionVC
+                let sectionViewModel = SectionViewModel(
+                    section: viewModel.sections[indexPath.row],
+                    pathToPreviousLevel: viewModel.pathToDataBase
+                    )
+                showDetailsVC.viewModel = sectionViewModel
+            }
+        } else if segue.identifier == "editProfile" {
+            let editVC = segue.destination as! EditProfileVC
+            editVC.editedItem = viewModel.profile
+            editVC.pathToEditedItem = "\(viewModel.pathToPreviousLevel)/\(viewModel.profile.documentID)"
+        } else if segue.identifier == "create" {
+            let createVC = segue.destination as! CreateSectionVC
+            createVC.pathToEditedCollection = viewModel.pathToDataBase
+        } else if segue.identifier == "editSection" {
+            let editedItem = sender as! Section
+                let editSectionVC = segue.destination as! EditSectionVC
+                editSectionVC.editedItem = editedItem
+            editSectionVC.pathToEditedItem = "\(viewModel.pathToDataBase)/\(editedItem.documentID)"
+            }
+        }
     }

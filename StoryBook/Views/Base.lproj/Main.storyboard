@@ -579,7 +579,7 @@
                                 <connections>
                                     <outlet property="sectionImage" destination="C9H-0d-e5X" id="eJ9-Qt-YXV"/>
                                     <outlet property="titleLabel" destination="8Qf-Tq-zeH" id="ZDg-S6-Tm3"/>
-                                    <segue destination="FhN-gI-g8P" kind="show" identifier="showMore" id="4jP-Yx-EUU"/>
+                                    <segue destination="FhN-gI-g8P" kind="show" identifier="showDetails" id="4jP-Yx-EUU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -601,10 +601,10 @@
             </objects>
             <point key="canvasLocation" x="2797.5999999999999" y="136.28185907046478"/>
         </scene>
-        <!--Show SectionVC-->
+        <!--SectionVC-->
         <scene sceneID="re3-gg-Qi1">
             <objects>
-                <tableViewController id="FhN-gI-g8P" customClass="ShowSectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="FhN-gI-g8P" customClass="SectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="C9L-1F-aWx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
