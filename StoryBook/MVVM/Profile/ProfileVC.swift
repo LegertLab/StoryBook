@@ -7,72 +7,50 @@
 //
 
 import UIKit
-import Firebase
 
 class ProfileVC: UITableViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var kinshipLabel: UILabel!
+    @IBOutlet weak var dateOfBirthLabel: UILabel!
 
-    let db = Firestore.firestore()
-    var pathToPreviousItem = ""
-    var pathToDataBase = ""
-    var itemOfList = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "")
-    var currentList: [Section] = []
-    var listener: ListenerRegistration?
-    var query: Query?
+    var viewModel: ProfileViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        pathToDataBase = getPathToDataBase()
-        query = baseQuery()
-        nameLabel.text = itemOfList.name
-        kinshipLabel.text = itemOfList.kinship
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        observeQuery()
-    }
-    
-    func getPathToDataBase() -> String {
-        return "\(pathToPreviousItem)/\(itemOfList.documentID)/sections"
-    }
-    
-    func baseQuery() -> Query {
-        return db.collection(pathToDataBase)
-     }
-    
 
-    func observeQuery() {
-      guard let query = query else { return }
-      listener = query.addSnapshotListener { (snapshot, error) in
-        guard let snapshot = snapshot else { return }
-        let models = snapshot.documents.map { (document) -> Section in
-            if let model = Section(dictionary: document.data(), documentID: document.documentID) {
-            return model
-            } else {
-            //Don't use fatalError here in a real app.
-            fatalError("Unable to initialize type \(Section.self) with dictionary \(document.data())")
-            }
+        nameLabel.text = viewModel?.profile.name
+        kinshipLabel.text = viewModel?.profile.kinship
+        dateOfBirthLabel.text = viewModel?.profile.dateOfBirth
+        
+        guard let viewModel = viewModel else {
+            return
         }
-        self.currentList = models
-        self.tableView.reloadData()
-      }
+        
+        viewModel.observeQuery { [weak self] (sections) in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        }
     }
-    
     
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentList.count
+        guard let viewModel = viewModel else {
+            return 0
+        }
+        return viewModel.sections.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewModel = viewModel else {
+            return UITableViewCell()
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SectionTableViewCell
 
-        let itemOfList = currentList[indexPath.row]
+        let itemOfList = viewModel.sections[indexPath.row]
         cell.sectionImage.image = UIImage(named: "section")
         cell.titleLabel.text = itemOfList.title
         return cell
@@ -84,18 +62,20 @@ class ProfileVC: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    
-        let itemOfList = currentList[indexPath.row]
+        guard let viewModel = viewModel else {
+            fatalError()
+        }
+        
+        let profileIndex = indexPath.row
+        let itemOfList = viewModel.sections[profileIndex]
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view, boolValue) in
-        let deletedDocID = itemOfList.documentID
-           
-        self.db.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
-        self.currentList.remove(at: indexPath.row)
+        viewModel.delete(by: profileIndex)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
         let editAction = UIContextualAction(style: .normal, title: "Изменить", handler: {
          (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+             viewModel.edit(by: profileIndex)
             self.performSegue(withIdentifier: "editSection", sender: itemOfList)
             success(true)
         })
@@ -109,25 +89,25 @@ class ProfileVC: UITableViewController {
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showMore" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let showMoreVC = segue.destination as! ShowSectionVC
-                showMoreVC.itemOfList = currentList[indexPath.row]
-                showMoreVC.pathToPreviousItem = pathToDataBase
-            }
-        } else if segue.identifier == "editProfile" {
-            let editVC = segue.destination as! EditProfileVC
-            editVC.editedItem = self.itemOfList
-            editVC.pathToEditedItem = "\(self.pathToPreviousItem)/\(itemOfList.documentID)"
-        } else if segue.identifier == "create" {
-            let createVC = segue.destination as! CreateSectionVC
-            createVC.pathToEditedCollection = pathToDataBase
-        } else if segue.identifier == "editSection" {
-            let editedItem = sender as! Section
-                let editSectionVC = segue.destination as! EditSectionVC
-                editSectionVC.editedItem = editedItem
-                editSectionVC.pathToEditedItem = "\(self.pathToDataBase)/\(editedItem.documentID)"
-            }
-        }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showMore" {
+//            if let indexPath = self.tableView.indexPathForSelectedRow {
+//                let showMoreVC = segue.destination as! ShowSectionVC
+//                showMoreVC.itemOfList = currentList[indexPath.row]
+//                showMoreVC.pathToPreviousItem = pathToDataBase
+//            }
+//        } else if segue.identifier == "editProfile" {
+//            let editVC = segue.destination as! EditProfileVC
+//            editVC.editedItem = self.itemOfList
+//            editVC.pathToEditedItem = "\(self.pathToPreviousItem)/\(itemOfList.documentID)"
+//        } else if segue.identifier == "create" {
+//            let createVC = segue.destination as! CreateSectionVC
+//            createVC.pathToEditedCollection = pathToDataBase
+//        } else if segue.identifier == "editSection" {
+//            let editedItem = sender as! Section
+//                let editSectionVC = segue.destination as! EditSectionVC
+//                editSectionVC.editedItem = editedItem
+//                editSectionVC.pathToEditedItem = "\(self.pathToDataBase)/\(editedItem.documentID)"
+//            }
+//        }
     }
