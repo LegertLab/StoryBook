@@ -47,7 +47,9 @@ class EditProfileVC: UIViewController {
 
     @IBAction func saveEditionTapped(_ sender: UIBarButtonItem) {
         saveEdition()
+        navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
