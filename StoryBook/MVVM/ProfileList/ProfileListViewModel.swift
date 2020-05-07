@@ -9,7 +9,19 @@
 import Foundation
 import Firebase
 
-class ProfileListViewModel {
+protocol ProfileListViewModelViewOutput {
+    var profiles: [Profile] { get }
+    var pathToDataBase: String { get }
+    func observeQuery(completion: @escaping (_ profiles: [Profile]) -> Void)
+    func delete(by index: Int)
+    func routeToEdit(by index: Int)
+    func routeToAddNewProfile()
+    func routeToDetailProfile(by index: Int)    
+}
+
+class ProfileListViewModel: ProfileListViewModelViewOutput {
+    
+    var router: ProfileListRouter!
     var profiles: [Profile] = []
     private let firestore = Firestore.firestore()
     private var pathToPreviousLevel = "users/testUser"
@@ -51,7 +63,7 @@ class ProfileListViewModel {
     }
     
     func getProfile(by index: Int) -> Profile? {
-        if index > profiles.count {
+        guard index < profiles.count else {
             return nil
         }
         return profiles[index]
@@ -65,7 +77,22 @@ class ProfileListViewModel {
         }
     }
     
-    func edit(by index: Int) {
+    func routeToEdit(by index: Int) {
+        if let profile = getProfile(by: index) {
+            router.routeToEdit(profile: profile, pathToDataBase: pathToDataBase)
+        }
         
     }
+    
+    func routeToAddNewProfile() {
+        router.routeToAddNewProfile()
+    }
+
+    func routeToDetailProfile(by index: Int) {
+        if let profile = getProfile(by: index) {
+            router.routeToDetailProfile(profile: profile, pathToDataBase: pathToDataBase)
+        }
+    }
+
+    
 }

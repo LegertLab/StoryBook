@@ -20,17 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         self.window = UIWindow(windowScene: windowScene)
-
-        let viewModel = ProfileListViewModel()
-        if let profileListController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "ListOfProfilesVC") as? ProfileListVC {
-            
-            profileListController.initViewModel(viewModel: viewModel)
-            let navigationController = UINavigationController(rootViewController: profileListController)
-            self.window?.rootViewController = navigationController
-            self.window?.makeKeyAndVisible()
+        
+        if let window = self.window {
+            ProfileListRouter.start(window: window)
         }
-
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

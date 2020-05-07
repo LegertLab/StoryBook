@@ -10,6 +10,8 @@ import Foundation
 import Firebase
 
 class ProfileViewModel {
+    var router: ProfileRouter!
+    
     var profile = Profile(name: "", kinship: "", dateOfBirth: "", documentID: "")
     var sections: [Section] = []
     var pathToPreviousLevel = ""

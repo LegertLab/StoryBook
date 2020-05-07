@@ -16,7 +16,6 @@ class ProfileListVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         guard let viewModel = viewModel else {
             return
         }
@@ -34,13 +33,8 @@ class ProfileListVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
 
-
-
-    
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let viewModel = viewModel else {
             return 0
@@ -80,9 +74,7 @@ class ProfileListVC: UITableViewController {
         }
         let editAction = UIContextualAction(style: .normal, title: "Изменить", handler: {
          (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            viewModel.edit(by: profileIndex)
-            self.performSegue(withIdentifier: "editProfile", sender: viewModel.profiles[indexPath.row])
- 
+            viewModel.routeToEdit(by: profileIndex)
             success(true)
         })
         

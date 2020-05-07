@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s5D-D1-0k0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s5D-D1-0k0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -273,31 +273,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5VJ-DA-uVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="911"/>
+            <point key="canvasLocation" x="310" y="885"/>
         </scene>
-        <!--Edit ProfileVC-->
+        <!--Navigation Controller-->
+        <scene sceneID="Zqf-oy-3SB">
+            <objects>
+                <navigationController id="TqB-Jb-ewi" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ATn-lH-Ggt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2nv-tu-QrQ" kind="relationship" relationship="rootViewController" id="Zku-97-gQW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ASu-SL-0jI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-443" y="1884"/>
+        </scene>
+        <!--Редактировать профиль-->
         <scene sceneID="d80-B3-wPJ">
             <objects>
-                <viewController id="2nv-tu-QrQ" customClass="EditProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProfileVC" id="2nv-tu-QrQ" customClass="EditProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Npj-Z5-0v1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ФИО" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="erC-lw-8zi">
-                                <rect key="frame" x="16" y="78" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ФИО" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="erC-lw-8zi">
+                                <rect key="frame" x="16" y="104" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="родство" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sky-os-F6W">
-                                <rect key="frame" x="16" y="129" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ucr-SE-NFU">
-                                <rect key="frame" x="16" y="176" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="родство" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sky-os-F6W">
+                                <rect key="frame" x="16" y="154" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -319,10 +327,33 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ucr-SE-NFU">
+                                <rect key="frame" x="16" y="204" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ucr-SE-NFU" firstAttribute="top" secondItem="Sky-os-F6W" secondAttribute="bottom" constant="16" id="2jI-hQ-nZR"/>
+                            <constraint firstItem="erC-lw-8zi" firstAttribute="leading" secondItem="VaQ-51-3Gz" secondAttribute="leading" constant="16" id="8NM-Af-0Bz"/>
+                            <constraint firstItem="VaQ-51-3Gz" firstAttribute="trailing" secondItem="ucr-SE-NFU" secondAttribute="trailing" constant="16" id="EMG-hE-Ntl"/>
+                            <constraint firstItem="Sky-os-F6W" firstAttribute="leading" secondItem="VaQ-51-3Gz" secondAttribute="leading" constant="16" id="Ed9-sg-bXE"/>
+                            <constraint firstItem="VaQ-51-3Gz" firstAttribute="trailing" secondItem="erC-lw-8zi" secondAttribute="trailing" constant="16" id="W7Q-LF-OFm"/>
+                            <constraint firstItem="Sky-os-F6W" firstAttribute="top" secondItem="erC-lw-8zi" secondAttribute="bottom" constant="16" id="dlE-tr-reW"/>
+                            <constraint firstItem="erC-lw-8zi" firstAttribute="top" secondItem="VaQ-51-3Gz" secondAttribute="top" constant="16" id="k6A-p5-r0s"/>
+                            <constraint firstItem="ucr-SE-NFU" firstAttribute="leading" secondItem="VaQ-51-3Gz" secondAttribute="leading" constant="16" id="xLl-OF-qS4"/>
+                            <constraint firstItem="VaQ-51-3Gz" firstAttribute="trailing" secondItem="Sky-os-F6W" secondAttribute="trailing" constant="16" id="xV2-nD-Thu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VaQ-51-3Gz"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Редактировать профиль" id="pPh-F1-M8G">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="v0M-4X-X0z">
+                            <connections>
+                                <action selector="saveEditionTapped:" destination="2nv-tu-QrQ" id="5jB-Ab-SI3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateOfBirthTextfield" destination="ucr-SE-NFU" id="09y-VN-NtL"/>
                         <outlet property="kinshipTextfield" destination="Sky-os-F6W" id="Xgb-Vd-KwX"/>
@@ -331,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISB-uv-0cb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942" y="909"/>
+            <point key="canvasLocation" x="425" y="1885"/>
         </scene>
         <!--Edit SectionVC-->
         <scene sceneID="OUU-jS-H1l">
@@ -499,9 +530,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="2nv-tu-QrQ" kind="presentation" identifier="editProfile" id="xCX-Kf-30D"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0v-bp-f6j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -510,7 +538,7 @@
         <!--ProfileVC-->
         <scene sceneID="NSi-Wa-Ea2">
             <objects>
-                <tableViewController id="pmL-lz-WhP" customClass="ProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ProfileVC" id="pmL-lz-WhP" customClass="ProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ety-pK-55G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
