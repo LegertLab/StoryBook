@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s5D-D1-0k0">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="1cH-A2-Z9C">
-                                <rect key="frame" x="70.5" y="145.5" width="234.5" height="376"/>
+                                <rect key="frame" x="90" y="260" width="234.5" height="376"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="cSh-bN-S0m">
                                         <rect key="frame" x="0.0" y="0.0" width="234.5" height="127"/>
@@ -103,20 +103,343 @@
             </objects>
             <point key="canvasLocation" x="138.40000000000001" y="133.5832083958021"/>
         </scene>
+        <!--Create ProfileVC-->
+        <scene sceneID="BUe-1m-hjp">
+            <objects>
+                <viewController id="E7F-DX-RMX" customClass="CreateProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qbl-yr-K54">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k22-F4-fd2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Создать новый профиль" id="fPI-Jk-v6X">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="67s-sD-lT8">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="E7F-DX-RMX" id="kZ2-dC-638"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wte-3n-xs1">
+                                            <connections>
+                                                <action selector="saveTapped:" destination="E7F-DX-RMX" id="fRi-7d-D7b"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tse-Mw-qOJ">
+                                <rect key="frame" x="16" y="79" width="333" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="родство" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rX7-LF-Zsz">
+                                <rect key="frame" x="16" y="134" width="333" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F5e-qB-ayH">
+                                <rect key="frame" x="16" y="184" width="333" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5MG-eH-0uk"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateOfBirthTextField" destination="F5e-qB-ayH" id="ZqW-ob-xqa"/>
+                        <outlet property="kinshipTextField" destination="rX7-LF-Zsz" id="8yP-DM-Gbg"/>
+                        <outlet property="nameTextfield" destination="tse-Mw-qOJ" id="3Nm-M7-lpS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3Z-Rf-JZF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942" y="-564"/>
+        </scene>
+        <!--Create SectionVC-->
+        <scene sceneID="sfe-66-ZgZ">
+            <objects>
+                <viewController id="Y3h-Wx-WKc" customClass="CreateSectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eIN-iV-FyR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1p-5k-5y3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Создать новый раздел" id="ubB-8Q-HXT">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Cq8-rK-q5I">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="Y3h-Wx-WKc" id="39y-Gi-q7W"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="4cG-NH-rnE">
+                                            <connections>
+                                                <action selector="saveTapped:" destination="Y3h-Wx-WKc" id="Mw3-1k-iPH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название раздела" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ke2-21-2ya">
+                                <rect key="frame" x="16" y="72" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="qzs-8Z-IU9"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="Ke2-21-2ya" id="i4p-Tp-WQS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QU1-ty-8Y7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2797.5999999999999" y="-564.46776611694156"/>
+        </scene>
+        <!--Create SubsectionVC-->
+        <scene sceneID="oQD-9p-dag">
+            <objects>
+                <viewController id="e4s-SA-LQD" customClass="CreateSubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zar-PZ-7pG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ByN-94-3gZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Создать новый подраздел" id="ROy-rs-g5F">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JaE-8K-MpR">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="e4s-SA-LQD" id="XEC-e9-9Xg"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZIN-vm-SEy">
+                                            <connections>
+                                                <action selector="saveTapped:" destination="e4s-SA-LQD" id="AKu-5E-wbH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="название подраздела" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9Y-VX-Kkf">
+                                <rect key="frame" x="16" y="71" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="c4K-r1-5gp"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="S9Y-VX-Kkf" id="OOM-NX-j3t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MVc-X2-IEN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3613.5999999999999" y="-564.46776611694156"/>
+        </scene>
+        <!--тест базы данных-->
+        <scene sceneID="hgm-lU-Mrv">
+            <objects>
+                <viewController title="тест базы данных" id="vdq-tD-ZDe" customClass="TestVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P3k-zz-3Zn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dv9-Vd-Gj9">
+                                <rect key="frame" x="67" y="106" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Sx-ew-Vpn">
+                                <rect key="frame" x="122" y="267" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Выбрать картинку"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gG2-Ta-g56"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5VJ-DA-uVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="998" y="911"/>
+        </scene>
+        <!--Edit ProfileVC-->
+        <scene sceneID="d80-B3-wPJ">
+            <objects>
+                <viewController id="2nv-tu-QrQ" customClass="EditProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Npj-Z5-0v1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ФИО" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="erC-lw-8zi">
+                                <rect key="frame" x="16" y="78" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="родство" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sky-os-F6W">
+                                <rect key="frame" x="16" y="129" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ucr-SE-NFU">
+                                <rect key="frame" x="16" y="176" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gB-4V-VAG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Редактировать профиль" id="Xmz-as-aTY">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Lcb-jW-ZF1">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="2nv-tu-QrQ" id="LQw-l6-dyY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="X4l-6o-9wU">
+                                            <connections>
+                                                <action selector="saveEditionTapped:" destination="2nv-tu-QrQ" id="y7B-EI-jgP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="VaQ-51-3Gz"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateOfBirthTextfield" destination="ucr-SE-NFU" id="09y-VN-NtL"/>
+                        <outlet property="kinshipTextfield" destination="Sky-os-F6W" id="Xgb-Vd-KwX"/>
+                        <outlet property="nameTextfield" destination="erC-lw-8zi" id="zFC-g6-GLP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ISB-uv-0cb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942" y="909"/>
+        </scene>
+        <!--Edit SectionVC-->
+        <scene sceneID="OUU-jS-H1l">
+            <objects>
+                <viewController id="Dz6-J8-XC7" customClass="EditSectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="agA-2X-VZK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OAT-Kt-2Xb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Редактировать раздел" id="KIO-0A-kV0">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4vq-Tg-OTa">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="Dz6-J8-XC7" id="S9Q-HD-eOH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6Vp-qK-ocJ">
+                                            <connections>
+                                                <action selector="saveEditionTapped:" destination="Dz6-J8-XC7" id="aYl-RC-lDV"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название раздела" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ju7-9w-rnt">
+                                <rect key="frame" x="16" y="85" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="rCu-Ho-VCl"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="ju7-9w-rnt" id="5sY-ym-QaT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o1C-Yq-DZb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2798" y="909"/>
+        </scene>
+        <!--Edit SubsectionVC-->
+        <scene sceneID="J0W-GR-ZZ2">
+            <objects>
+                <viewController id="bFq-df-aze" customClass="EditSubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y8T-y3-AX7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UTU-dL-AT7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Редактировать подраздел" id="WXN-sy-apR">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yF9-aq-YEl">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="bFq-df-aze" id="h5i-76-YKF"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wGp-qH-R3w">
+                                            <connections>
+                                                <action selector="saveEditionTapped:" destination="bFq-df-aze" id="Sbp-Ob-0ne"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wpk-OE-zYW">
+                                <rect key="frame" x="16" y="72" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="pML-KM-wJz"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="wpk-OE-zYW" id="LUQ-FZ-w30"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sak-Bb-o8o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3613.5999999999999" y="908.9955022488756"/>
+        </scene>
         <!--Список профилей-->
         <scene sceneID="5zG-eR-Pkd">
             <objects>
-                <tableViewController id="Rk1-K2-Q9V" customClass="ListOfProfilesTableViewController" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListOfProfilesVC" id="Rk1-K2-Q9V" customClass="ProfileListVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yxm-uX-cYF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="k8T-6q-zDt">
+                            <rect key="frame" x="0.0" y="173" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="117" id="RmJ-C4-Ed2" customClass="ProfileTableViewCell" customModule="StoryBook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="117"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RmJ-C4-Ed2" id="18A-4Y-ZcM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s5C-yX-ids">
@@ -127,16 +450,16 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7ea-BC-baD">
-                                            <rect key="frame" x="97" y="19" width="254" height="54"/>
+                                            <rect key="frame" x="97" y="19" width="289" height="54"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfJ-Pq-9yo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="25.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="289" height="25.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kinship" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHk-mt-NI4">
-                                                    <rect key="frame" x="0.0" y="33.5" width="254" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="33.5" width="289" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="12.5" id="JLw-jd-rla"/>
                                                     </constraints>
@@ -159,7 +482,7 @@
                                     <outlet property="kinshipLabel" destination="QHk-mt-NI4" id="002-1o-lb9"/>
                                     <outlet property="nameLabel" destination="KfJ-Pq-9yo" id="9RN-ZV-Fxh"/>
                                     <outlet property="profileImage" destination="s5C-yX-ids" id="OeA-J8-bVg"/>
-                                    <segue destination="pmL-lz-WhP" kind="show" identifier="ShowProfile" id="wCj-Ut-l9a"/>
+                                    <segue destination="pmL-lz-WhP" kind="show" identifier="showDetails" id="wCj-Ut-l9a"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -172,24 +495,28 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cpj-md-uGW">
                             <connections>
                                 <action selector="addProfileTapped:" destination="Rk1-K2-Q9V" id="nmM-6d-wKU"/>
+                                <segue destination="E7F-DX-RMX" kind="presentation" identifier="createNewItem" id="cF3-wt-l3w"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="2nv-tu-QrQ" kind="presentation" identifier="editProfile" id="xCX-Kf-30D"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0v-bp-f6j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1941.5999999999999" y="136.28185907046478"/>
         </scene>
-        <!--Show ProfileVC-->
+        <!--ProfileVC-->
         <scene sceneID="NSi-Wa-Ea2">
             <objects>
-                <tableViewController id="pmL-lz-WhP" customClass="ShowProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="pmL-lz-WhP" customClass="ProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ety-pK-55G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Egn-Y2-GIm">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mom" translatesAutoresizingMaskIntoConstraints="NO" id="dmb-id-0hc">
@@ -217,29 +544,23 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place of birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0h-Lj-lyN">
-                                    <rect key="frame" x="189" y="95" width="178" height="21"/>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlD-4l-zHz">
+                                    <rect key="frame" x="126" y="162" width="123" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place of living" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWn-pO-A83">
-                                    <rect key="frame" x="189" y="124" width="171" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                    <state key="normal" title="Добавить раздел"/>
+                                    <connections>
+                                        <segue destination="Y3h-Wx-WKc" kind="presentation" identifier="create" id="pSg-yr-8wk"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Section" rowHeight="73" id="mCQ-BY-fK2" customClass="SectionTableViewCell" customModule="StoryBook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="228" width="375" height="73"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="73" id="mCQ-BY-fK2" customClass="SectionTableViewCell" customModule="StoryBook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="228" width="414" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCQ-BY-fK2" id="Og2-dD-M0f">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="73"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9H-0d-e5X">
@@ -258,7 +579,7 @@
                                 <connections>
                                     <outlet property="sectionImage" destination="C9H-0d-e5X" id="eJ9-Qt-YXV"/>
                                     <outlet property="titleLabel" destination="8Qf-Tq-zeH" id="ZDg-S6-Tm3"/>
-                                    <segue destination="FhN-gI-g8P" kind="show" identifier="ShowSection" id="4jP-Yx-EUU"/>
+                                    <segue destination="FhN-gI-g8P" kind="show" identifier="showDetails" id="4jP-Yx-EUU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -267,53 +588,45 @@
                             <outlet property="delegate" destination="pmL-lz-WhP" id="SI7-cs-YAz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="j6Q-4x-t8a">
-                        <barButtonItem key="rightBarButtonItem" title="Add section" id="9nT-b5-SXt"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="j6Q-4x-t8a"/>
                     <connections>
+                        <outlet property="dateOfBirthLabel" destination="duQ-kN-Us1" id="JlB-Vn-Mjy"/>
                         <outlet property="kinshipLabel" destination="HUW-Rx-gjs" id="Ipx-qZ-Gkt"/>
                         <outlet property="nameLabel" destination="KTI-UB-MGC" id="QXc-mB-DkF"/>
                         <outlet property="profileImage" destination="dmb-id-0hc" id="G7S-Aa-D0A"/>
+                        <segue destination="Dz6-J8-XC7" kind="presentation" identifier="editSection" id="P0h-68-gjb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98U-t0-ppg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2797.5999999999999" y="136.28185907046478"/>
         </scene>
-        <!--Show Section TableVC-->
+        <!--SectionVC-->
         <scene sceneID="re3-gg-Qi1">
             <objects>
-                <tableViewController id="FhN-gI-g8P" customClass="ShowSectionTableVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="FhN-gI-g8P" customClass="SectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="C9L-1F-aWx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="3dQ-IP-GeO">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uop-fS-xFN">
-                                    <rect key="frame" x="143" y="6" width="88" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                    <state key="normal" title="Add memory"/>
-                                </button>
-                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Subsection" rowHeight="73" id="RCf-wO-a83" customClass="SubsectionTableViewCell" customModule="StoryBook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="73"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="73" id="RCf-wO-a83" customClass="SectionTableViewCell" customModule="StoryBook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RCf-wO-a83" id="fJh-bW-Cu8">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="73"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lcp-m9-rs9">
                                             <rect key="frame" x="16" y="6" width="62" height="61"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title of section" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Lt-hXj">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title of subsection" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Lt-hXj">
                                             <rect key="frame" x="86" y="22" width="254" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -323,9 +636,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="subsectionImage" destination="Lcp-m9-rs9" id="NHP-vg-cbW"/>
-                                    <outlet property="titleLabel" destination="G51-Lt-hXj" id="Kor-Ju-JaT"/>
-                                    <segue destination="hjB-dL-D7H" kind="show" identifier="ShowMemories" id="LDa-DW-mXw"/>
+                                    <outlet property="sectionImage" destination="Lcp-m9-rs9" id="eEA-7W-FfW"/>
+                                    <outlet property="titleLabel" destination="G51-Lt-hXj" id="Pkh-O5-eYX"/>
+                                    <segue destination="hjB-dL-D7H" kind="show" identifier="showMore" id="LDa-DW-mXw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -335,8 +648,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Nqr-k7-kEf">
-                        <barButtonItem key="rightBarButtonItem" title="Add subsection" id="W4G-vy-sEl"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="W4G-vy-sEl">
+                            <connections>
+                                <segue destination="e4s-SA-LQD" kind="presentation" identifier="create" id="fgd-Zz-q41"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="bFq-df-aze" kind="presentation" identifier="editSubsection" id="m2c-Ci-XW3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3y-Zp-CmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -345,9 +665,9 @@
         <!--Memory-->
         <scene sceneID="PpZ-5R-eLf">
             <objects>
-                <viewController title="Memory" id="DpA-ek-XU6" customClass="ShowMemoryTableVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Memory" id="DpA-ek-XU6" customClass="ShowMemoryVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mCJ-Lq-hZM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title of memory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwC-VP-aQU">
@@ -438,7 +758,11 @@
                         <viewLayoutGuide key="safeArea" id="ylw-vW-cQN"/>
                     </view>
                     <navigationItem key="navigationItem" id="5x0-hw-xxQ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="swp-f9-8PF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="swp-f9-8PF">
+                            <connections>
+                                <segue destination="glC-U8-KPF" kind="presentation" identifier="edit" id="FXY-GU-x9l"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="egF-Lz-0Sh" id="aDa-mK-R1o"/>
@@ -451,20 +775,113 @@
             </objects>
             <point key="canvasLocation" x="5308" y="134.48275862068968"/>
         </scene>
-        <!--Show Memories TableVC-->
+        <!--Edit MemoryVC-->
+        <scene sceneID="Flu-PS-3di">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="glC-U8-KPF" customClass="EditMemoryVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S9H-Vm-MhC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pfz-iW-FsS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Редактировать воспоминание" id="5JS-pZ-bNy">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VI9-JR-fls">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="glC-U8-KPF" id="Fhp-6p-kjt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="t1h-8a-E0b">
+                                            <connections>
+                                                <action selector="saveEditionTapped:" destination="glC-U8-KPF" id="hDs-Wq-mkP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mA9-th-0PE">
+                                <rect key="frame" x="16" y="102" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hB7-nX-8nl">
+                                <rect key="frame" x="16" y="174" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTo-RT-iAd">
+                                <rect key="frame" x="16" y="251" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p7X-R8-oDH">
+                                <rect key="frame" x="16" y="320" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Название" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAA-jU-rPI">
+                                <rect key="frame" x="16" y="63" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Дата" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxT-RM-LTt">
+                                <rect key="frame" x="23" y="145" width="39" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Место" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuX-aG-uWB">
+                                <rect key="frame" x="23" y="216" width="51" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Текст воспоминания" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qu-QS-Q57">
+                                <rect key="frame" x="16" y="293" width="166" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FZx-4V-nLG"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateOfMemoryTextField" destination="hB7-nX-8nl" id="thf-Ei-p58"/>
+                        <outlet property="noteTextField" destination="p7X-R8-oDH" id="PPv-97-pmR"/>
+                        <outlet property="placeTextField" destination="dTo-RT-iAd" id="GSL-d0-sFo"/>
+                        <outlet property="titleTextField" destination="mA9-th-0PE" id="aey-8O-Bz9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jFZ-Yg-bYO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5308" y="908.9955022488756"/>
+        </scene>
+        <!--Show SubsectionVC-->
         <scene sceneID="PP6-Af-4GO">
             <objects>
-                <tableViewController id="hjB-dL-D7H" customClass="ShowMemoriesTableVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hjB-dL-D7H" customClass="ShowSubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3iy-HG-Ug7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Memory" rowHeight="73" id="bcA-OC-sAq" customClass="MemoryTableViewCell" customModule="StoryBook" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="73"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="73" id="bcA-OC-sAq" customClass="MemoryTableViewCell" customModule="StoryBook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bcA-OC-sAq" id="Joq-Yk-S9T">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="73"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obu-uh-1UF">
@@ -483,7 +900,7 @@
                                 <connections>
                                     <outlet property="memoryImage" destination="obu-uh-1UF" id="Fw0-pp-J7s"/>
                                     <outlet property="titleLabel" destination="nBO-Iq-31P" id="yPR-3j-WL2"/>
-                                    <segue destination="DpA-ek-XU6" kind="show" identifier="MemoryItem" id="pZB-uk-3UV"/>
+                                    <segue destination="DpA-ek-XU6" kind="show" identifier="showMore" id="pZB-uk-3UV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -495,7 +912,7 @@
                     <navigationItem key="navigationItem" id="cxb-4Z-oJc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dqf-Hi-cbi">
                             <connections>
-                                <segue destination="Mw1-DB-bua" kind="presentation" id="0YC-xD-NHY"/>
+                                <segue destination="Ryq-dY-amu" kind="show" identifier="create" id="SO1-DA-Cuy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -509,7 +926,7 @@
             <objects>
                 <viewController title="CreateMemory" id="V0u-2p-jF6" customClass="CreateMemoryVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yoO-WP-m8L">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title of memory" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j6D-QA-Kv3">
@@ -556,15 +973,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="BBw-ga-WLi"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8VM-GO-ric">
+                    <navigationItem key="navigationItem" title="Новое воспоминание" id="8VM-GO-ric">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="CpP-kl-rgn">
                             <connections>
-                                <action selector="cancelTapped:" destination="V0u-2p-jF6" id="VdU-wL-pnZ"/>
+                                <action selector="cancelTapped:" destination="V0u-2p-jF6" id="oyK-aQ-aAv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="gkw-fV-a8t">
                             <connections>
-                                <action selector="saveTapped:" destination="V0u-2p-jF6" id="KFQ-gV-ise"/>
+                                <action selector="saveTapped:" destination="V0u-2p-jF6" id="STb-JS-EZL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -577,7 +994,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oby-Eb-ASw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5391.1999999999998" y="908.9955022488756"/>
+            <point key="canvasLocation" x="5308" y="-564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0gn-ol-AfV">
@@ -585,7 +1002,7 @@
                 <navigationController id="s5D-D1-0k0" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="s3i-r8-1j9"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JFN-B1-3hs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -597,22 +1014,23 @@
             <point key="canvasLocation" x="996" y="137"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="ZSY-wp-Gkg">
+        <scene sceneID="h2p-on-L0I">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mw1-DB-bua" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ryq-dY-amu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wLQ-kf-RME">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                    <navigationItem key="navigationItem" id="yrX-KX-fdi"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gwm-Kq-83e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="V0u-2p-jF6" kind="relationship" relationship="rootViewController" id="cNw-F7-Fd3"/>
+                        <segue destination="V0u-2p-jF6" kind="relationship" relationship="rootViewController" id="J1E-pb-T2Z"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Rb-uk-aHW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzS-QJ-day" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4452" y="908.9955022488756"/>
+            <point key="canvasLocation" x="4452" y="-564"/>
         </scene>
     </scenes>
     <resources>

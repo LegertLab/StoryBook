@@ -1,33 +1,29 @@
 //
-//  CreateMemoryVC.swift
+//  CreateSectionVC.swift
 //  StoryBook
 //
-//  Created by Anastasia Legert on 11/4/20.
+//  Created by Anastasia Legert on 24/4/20.
 //  Copyright © 2020 Anastasia Legert. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class CreateMemoryVC: UIViewController {
-       
+class CreateSectionVC: UIViewController {
+
     let db = Firestore.firestore()
     var pathToEditedCollection = ""
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var placeTextField: UITextField!
-    @IBOutlet weak var noteTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
-    func saveNewMemoryToDatabase() {
-        
+    func  saveSectionToDatabase() {
         var ref: DocumentReference? = nil
         ref = db.collection(pathToEditedCollection).addDocument(data: [
             "title": titleTextField.text!,
-            "note": noteTextField.text!,
-            "dateOfMemory": dateTextField.text!,
-            "place": placeTextField.text!,
             "documentID": ""
             ]) { err in
             if let err = err {
@@ -37,19 +33,13 @@ class CreateMemoryVC: UIViewController {
             }
         }
     }
-
-    @IBAction func addPhotoTapped(_ sender: UIButton) {
-    }
-    @IBAction func recordAudioTapped(_ sender: UIButton) {
-    }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
+    
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
-        saveNewMemoryToDatabase()
+        saveSectionToDatabase()
         dismiss(animated: true)
     }
-    
-    
 }
