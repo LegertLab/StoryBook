@@ -73,6 +73,7 @@ class ProfileListViewModel: ProfileListViewModelViewOutput {
         if let profile = getProfile(by: index) {
             let deletedDocID = profile.documentID
             self.firestore.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
+            // Вопрос - если мы удалаем сущность из базы данных, и у нас стоит observer, который должен обновлять данные в режиме реального времени, то почему наш profiles не обновляется автоматом? Почему мы должны еще и вручную удалять сущность из нашего локального массива profiles?
             self.profiles.remove(at: index)
         }
     }
@@ -85,7 +86,7 @@ class ProfileListViewModel: ProfileListViewModelViewOutput {
     }
     
     func routeToAddNewProfile() {
-        router.routeToAddNewProfile()
+//        router.routeToAddNewProfile()
     }
 
     func routeToDetailProfile(by index: Int) {

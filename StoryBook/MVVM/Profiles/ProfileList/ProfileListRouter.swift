@@ -71,8 +71,17 @@ class ProfileListRouter {
         navigationController.pushViewController(profileEditController, animated: true)
     }
     
-    func routeToAddNewProfile() {
-        // TODO: - 
+    func routeToAddNewProfile(pathToDataBase: String) {
+//        guard
+//            let profileAddController = UIStoryboard(name: "AddProfile", bundle: nil)
+//            .instantiateViewController(withIdentifier: "AddProfileVC") as? AddProfileVC,
+//            let navigationController = self.navigationController
+//        else {
+//                return
+//        }
+//        profileAddController.pathToEditedCollection = "\(pathToDataBase)"
+//        
+//        navigationController.pushViewController(profileEditController, animated: true)
     }
 
     func routeToDetailProfile(profile: Profile, pathToDataBase: String) {

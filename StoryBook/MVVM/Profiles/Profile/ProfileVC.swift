@@ -23,6 +23,7 @@ class ProfileVC: UITableViewController {
         nameLabel.text = viewModel?.profile.name
         kinshipLabel.text = viewModel?.profile.kinship
         dateOfBirthLabel.text = viewModel?.profile.dateOfBirth
+        UINavigationItem.init(title: viewModel!.profile.name)
         
         guard let viewModel = viewModel else {
             return

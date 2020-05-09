@@ -17,8 +17,8 @@ class ProfileListConfigurator {
         let viewModel = ProfileListViewModel()
         let router = ProfileListRouter()
         viewModel.router = router
-        guard let viewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "ListOfProfilesVC") as? ProfileListVC
+        guard let viewController = UIStoryboard(name: "ProfileList", bundle: nil)
+            .instantiateViewController(withIdentifier: "ProfileListVC") as? ProfileListVC
             else {
                 return nil
         }

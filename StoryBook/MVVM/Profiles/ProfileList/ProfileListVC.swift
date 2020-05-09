@@ -25,13 +25,16 @@ class ProfileListVC: UITableViewController {
             self.tableView.reloadData()
         }
         
-    }
-    func initViewModel(viewModel: ProfileListViewModel) {
-        self.viewModel = viewModel
-    }
+    } // Для чего здесь этот инициализатор?
+//    func initViewModel(viewModel: ProfileListViewModel) {
+//        self.viewModel = viewModel
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: animated)
+        }
     }
 
     // MARK: - Table view data source
@@ -83,32 +86,39 @@ class ProfileListVC: UITableViewController {
         return swipeActions
     }
     
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else {
+            fatalError()
+        }
+        let profileIndex = indexPath.row
+        viewModel.routeToDetailProfile(by: profileIndex)
+        
+    }
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let viewModel = self.viewModel else {
-            fatalError()
-        }
-        
-        if segue.identifier == "showDetails" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let showDetailsVC = segue.destination as! ProfileVC
-                let profileViewModel = ProfileViewModel(
-                    profile: viewModel.profiles[indexPath.row],
-                    pathToPreviousLevel: viewModel.pathToDataBase
-                )
-                showDetailsVC.viewModel = profileViewModel
-            }
-        }  else if segue.identifier == "createNewItem" {
-            let createVC = segue.destination as! CreateProfileVC
-            createVC.pathToEditedCollection = viewModel.pathToDataBase
-        } else if segue.identifier == "editProfile" {
-        let editedItem = sender as! Profile
-            let editProfileVC = segue.destination as! EditProfileVC
-            editProfileVC.editedItem = editedItem
-            editProfileVC.pathToEditedItem = "\(viewModel.pathToDataBase)/\(editedItem.documentID)"
-        }
-    }
+//    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let viewModel = self.viewModel else {
+//            fatalError()
+//        }
+//
+//        if segue.identifier == "showDetails" {
+//            if let indexPath = self.tableView.indexPathForSelectedRow {
+//                let showDetailsVC = segue.destination as! ProfileVC
+//                let profileViewModel = ProfileViewModel(
+//                    profile: viewModel.profiles[indexPath.row],
+//                    pathToPreviousLevel: viewModel.pathToDataBase
+//                )
+//                showDetailsVC.viewModel = profileViewModel
+//            }
+//        }  else if segue.identifier == "createNewItem" {
+//            let createVC = segue.destination as! AddProfileVC
+//            createVC.pathToEditedCollection = viewModel.pathToDataBase
+//          } //else if segue.identifier == "editProfile" {
+////        let editedItem = sender as! Profile
+////            let editProfileVC = segue.destination as! EditProfileVC
+////            editProfileVC.editedItem = editedItem
+////            editProfileVC.pathToEditedItem = "\(viewModel.pathToDataBase)/\(editedItem.documentID)"
+////        }
+//    }
 }

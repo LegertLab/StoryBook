@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CreateProfileVC: UIViewController {
+class AddProfileVC: UIViewController {
 
     let db = Firestore.firestore()
     var pathToEditedCollection = ""

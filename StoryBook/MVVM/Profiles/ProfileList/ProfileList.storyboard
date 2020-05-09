@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cvg-bP-TSj">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Список профилей-->
+        <scene sceneID="4zD-dG-ZJa">
+            <objects>
+                <tableViewController storyboardIdentifier="ProfileListVC" id="X6K-aB-pMO" customClass="ProfileListVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fbP-Ew-ptt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="elw-fK-jLf">
+                            <rect key="frame" x="0.0" y="173" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="117" id="a3J-jI-Ja3" customClass="ProfileTableViewCell" customModule="StoryBook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="117"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a3J-jI-Ja3" id="TLv-e6-DCS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dTd-Zg-qvK">
+                                            <rect key="frame" x="16" y="26" width="65" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="fiR-09-muc"/>
+                                                <constraint firstAttribute="height" constant="65" id="i9x-Pg-CSF"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mr1-VJ-mUK">
+                                            <rect key="frame" x="97" y="19" width="289" height="54"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lye-jn-zcv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="289" height="25.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kinship" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwU-ia-cQX">
+                                                    <rect key="frame" x="0.0" y="33.5" width="289" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="12.5" id="Ypr-xe-GDU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="mr1-VJ-mUK" secondAttribute="trailing" constant="8" id="Cad-Pf-dAn"/>
+                                        <constraint firstItem="dTd-Zg-qvK" firstAttribute="leading" secondItem="TLv-e6-DCS" secondAttribute="leading" constant="16" id="XvF-He-n80"/>
+                                        <constraint firstItem="mr1-VJ-mUK" firstAttribute="top" secondItem="TLv-e6-DCS" secondAttribute="topMargin" constant="8" id="bL0-2j-LQt"/>
+                                        <constraint firstItem="mr1-VJ-mUK" firstAttribute="leading" secondItem="dTd-Zg-qvK" secondAttribute="trailing" constant="16" id="dhj-g8-SES"/>
+                                        <constraint firstItem="dTd-Zg-qvK" firstAttribute="centerY" secondItem="TLv-e6-DCS" secondAttribute="centerY" id="gz7-Lw-TNy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="kinshipLabel" destination="NwU-ia-cQX" id="hI7-Rr-WHa"/>
+                                    <outlet property="nameLabel" destination="Lye-jn-zcv" id="kq9-4h-buq"/>
+                                    <outlet property="profileImage" destination="dTd-Zg-qvK" id="gAg-On-P4K"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="X6K-aB-pMO" id="go1-ER-qvE"/>
+                            <outlet property="delegate" destination="X6K-aB-pMO" id="RUy-C7-DUP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Список профилей" id="TFZ-60-6s7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MrE-PO-aQJ">
+                            <connections>
+                                <action selector="addProfileTapped:" destination="X6K-aB-pMO" id="Ejb-tq-gun"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pzy-sQ-wyS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2850.7246376811595" y="135.9375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ET2-e0-neC">
+            <objects>
+                <navigationController storyboardIdentifier="ProfileList" automaticallyAdjustsScrollViewInsets="NO" id="Cvg-bP-TSj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pqv-tx-kws">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="X6K-aB-pMO" kind="relationship" relationship="rootViewController" id="zlU-CV-d1V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nJX-US-z4T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1940.5797101449277" y="135.9375"/>
+        </scene>
+    </scenes>
+</document>

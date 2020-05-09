@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="blW-hf-JC3">
+            <objects>
+                <navigationController id="cf6-uD-E0f" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QCS-MX-o45">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="w3O-UY-f9O" kind="relationship" relationship="rootViewController" id="0Ts-jh-SPh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCx-e8-vtc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-443" y="1884"/>
+        </scene>
+        <!--Редактировать профиль-->
+        <scene sceneID="UoG-HY-9tm">
+            <objects>
+                <viewController storyboardIdentifier="EditProfileVC" id="w3O-UY-f9O" customClass="EditProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cSH-tv-PVj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ФИО" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-lB-JSa">
+                                <rect key="frame" x="16" y="104" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="родство" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jff-pa-foJ">
+                                <rect key="frame" x="16" y="154" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mnh-Iw-8Gr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Редактировать профиль" id="dmk-eJ-7Ss">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="CPB-dc-HQK">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="w3O-UY-f9O" id="ojF-aP-OPc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="JQ5-G3-MoH">
+                                            <connections>
+                                                <action selector="saveEditionTapped:" destination="w3O-UY-f9O" id="t1s-E8-jVU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VG2-rt-RRJ">
+                                <rect key="frame" x="16" y="204" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jff-pa-foJ" firstAttribute="leading" secondItem="OF7-ZI-S5x" secondAttribute="leading" constant="16" id="0Lv-Va-MYq"/>
+                            <constraint firstItem="VG2-rt-RRJ" firstAttribute="leading" secondItem="OF7-ZI-S5x" secondAttribute="leading" constant="16" id="7De-1R-z52"/>
+                            <constraint firstItem="VG2-rt-RRJ" firstAttribute="top" secondItem="jff-pa-foJ" secondAttribute="bottom" constant="16" id="FM6-Bq-2e5"/>
+                            <constraint firstItem="OF7-ZI-S5x" firstAttribute="trailing" secondItem="jff-pa-foJ" secondAttribute="trailing" constant="16" id="GdZ-tz-uWV"/>
+                            <constraint firstItem="OF7-ZI-S5x" firstAttribute="trailing" secondItem="F8g-lB-JSa" secondAttribute="trailing" constant="16" id="JFT-7i-qRl"/>
+                            <constraint firstItem="F8g-lB-JSa" firstAttribute="top" secondItem="OF7-ZI-S5x" secondAttribute="top" constant="16" id="e3R-Yl-9nl"/>
+                            <constraint firstItem="jff-pa-foJ" firstAttribute="top" secondItem="F8g-lB-JSa" secondAttribute="bottom" constant="16" id="fvA-el-q9R"/>
+                            <constraint firstItem="OF7-ZI-S5x" firstAttribute="trailing" secondItem="VG2-rt-RRJ" secondAttribute="trailing" constant="16" id="kzn-JE-rCQ"/>
+                            <constraint firstItem="F8g-lB-JSa" firstAttribute="leading" secondItem="OF7-ZI-S5x" secondAttribute="leading" constant="16" id="vMf-oh-1wv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OF7-ZI-S5x"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Редактировать профиль" id="dGD-SJ-HDy">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="toY-5T-5wo">
+                            <connections>
+                                <action selector="saveEditionTapped:" destination="w3O-UY-f9O" id="amK-cN-rpT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dateOfBirthTextfield" destination="VG2-rt-RRJ" id="yzj-iq-SxO"/>
+                        <outlet property="kinshipTextfield" destination="jff-pa-foJ" id="FAb-ra-kY4"/>
+                        <outlet property="nameTextfield" destination="F8g-lB-JSa" id="SDM-qr-Xcl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aBf-Ih-UEf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="425" y="1885"/>
+        </scene>
+    </scenes>
+</document>

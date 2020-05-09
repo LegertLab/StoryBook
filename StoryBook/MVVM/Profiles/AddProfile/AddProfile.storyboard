@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add ProfileVC-->
+        <scene sceneID="8yh-kA-NTs">
+            <objects>
+                <viewController storyboardIdentifier="AddProfileVC" id="z4V-t2-v9a" customClass="AddProfileVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PdM-8b-VcZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Sz-XF-MyU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Создать новый профиль" id="i4E-pF-r62">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ffb-5u-Q8Y">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="z4V-t2-v9a" id="bBH-Bs-xRH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xmR-2P-4F0">
+                                            <connections>
+                                                <action selector="saveTapped:" destination="z4V-t2-v9a" id="SDz-dx-SLI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-3h-6io">
+                                <rect key="frame" x="16" y="79" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="родство" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tzR-k3-G8p">
+                                <rect key="frame" x="16" y="134" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IUx-Iz-aqr">
+                                <rect key="frame" x="16" y="184" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hNf-Wa-wug" firstAttribute="trailing" secondItem="IUx-Iz-aqr" secondAttribute="trailing" constant="16" id="0pa-HY-VAc"/>
+                            <constraint firstItem="hNf-Wa-wug" firstAttribute="trailing" secondItem="tzR-k3-G8p" secondAttribute="trailing" constant="16" id="9M4-nL-mYW"/>
+                            <constraint firstItem="hNf-Wa-wug" firstAttribute="trailing" secondItem="PcE-3h-6io" secondAttribute="trailing" constant="16" id="BDI-2h-GRL"/>
+                            <constraint firstItem="IUx-Iz-aqr" firstAttribute="top" secondItem="tzR-k3-G8p" secondAttribute="bottom" constant="16" id="Cip-vp-ICq"/>
+                            <constraint firstItem="PcE-3h-6io" firstAttribute="top" secondItem="2Sz-XF-MyU" secondAttribute="bottom" constant="16" id="Q0K-GN-iF5"/>
+                            <constraint firstItem="tzR-k3-G8p" firstAttribute="top" secondItem="PcE-3h-6io" secondAttribute="bottom" constant="16" id="o7s-Gm-P4l"/>
+                            <constraint firstItem="IUx-Iz-aqr" firstAttribute="leading" secondItem="hNf-Wa-wug" secondAttribute="leading" constant="16" id="r2B-Tv-khf"/>
+                            <constraint firstItem="tzR-k3-G8p" firstAttribute="leading" secondItem="hNf-Wa-wug" secondAttribute="leading" constant="16" id="u6z-48-poe"/>
+                            <constraint firstItem="PcE-3h-6io" firstAttribute="leading" secondItem="hNf-Wa-wug" secondAttribute="leading" constant="16" id="v94-XJ-2zX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hNf-Wa-wug"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bi4-KR-zTP"/>
+                    <connections>
+                        <outlet property="dateOfBirthTextField" destination="IUx-Iz-aqr" id="ZBG-iO-pJs"/>
+                        <outlet property="kinshipTextField" destination="tzR-k3-G8p" id="PAM-Tk-Oj4"/>
+                        <outlet property="nameTextfield" destination="PcE-3h-6io" id="f4l-wx-BJp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IXL-KX-mWb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2850.7246376811595" y="-564.50892857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4ze-G7-kDf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kux-59-Izh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3pL-ef-C4u">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="z4V-t2-v9a" kind="relationship" relationship="rootViewController" id="jgc-dd-p8C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Clz-fA-cyt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1940.5797101449277" y="-564.50892857142856"/>
+        </scene>
+    </scenes>
+</document>
