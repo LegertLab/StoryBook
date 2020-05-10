@@ -115,18 +115,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Создать новый профиль" id="fPI-Jk-v6X">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="67s-sD-lT8">
-                                            <connections>
-                                                <action selector="cancelTapped:" destination="E7F-DX-RMX" id="kZ2-dC-638"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wte-3n-xs1">
-                                            <connections>
-                                                <action selector="saveTapped:" destination="E7F-DX-RMX" id="fRi-7d-D7b"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Создать новый профиль" id="fPI-Jk-v6X"/>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tse-Mw-qOJ">

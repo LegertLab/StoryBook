@@ -14,10 +14,10 @@ class ProfileListRouter {
     // 1) через window
     static func start(window: UIWindow) {
         guard   let configurator = ProfileListConfigurator(),
-                let viewController = configurator.viewController,
-                let router = configurator.router
-        else {
-            return
+            let viewController = configurator.viewController,
+            let router = configurator.router
+            else {
+                return
         }
         
         let navigationController = UINavigationController(rootViewController: viewController)
@@ -30,11 +30,11 @@ class ProfileListRouter {
     // 2) через NavigationController
     static func push(navigationController: UINavigationController, animated: Bool = true) {
         guard   let configurator = ProfileListConfigurator(),
-                let viewController = configurator.viewController,
-                let router = configurator.router
-
-        else {
-            return
+            let viewController = configurator.viewController,
+            let router = configurator.router
+            
+            else {
+                return
         }
         router.navigationController = navigationController
         
@@ -44,9 +44,9 @@ class ProfileListRouter {
     // 3) через present поверх контроллера
     static func present(parentViewController: UIViewController, animated: Bool = true) {
         guard   let configurator = ProfileListConfigurator(),
-                let viewController = configurator.viewController
-        else {
-            return
+            let viewController = configurator.viewController
+            else {
+                return
         }
         
         viewController.modalPresentationStyle = .fullScreen
@@ -56,34 +56,23 @@ class ProfileListRouter {
         }
     }
     
-    func routeToEdit(profile: Profile, pathToDataBase: String) {
-        
-        guard
-            let profileEditController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "EditProfileVC") as? EditProfileVC,
-            let navigationController = self.navigationController
-        else {
-                return
+    func routeToEdit(editedProfile: Profile, pathToEditedProfile: String) {
+        if let navigationController = self.navigationController {
+            EditProfileRouter.push(
+                navigationController: navigationController,
+                editedProfile: editedProfile,
+                pathToEditedProfile: pathToEditedProfile)
         }
-        profileEditController.editedItem = profile
-        profileEditController.pathToEditedItem = "\(pathToDataBase)/\(profile.documentID)"
-        
-        navigationController.pushViewController(profileEditController, animated: true)
     }
     
     func routeToAddNewProfile(pathToDataBase: String) {
-//        guard
-//            let profileAddController = UIStoryboard(name: "AddProfile", bundle: nil)
-//            .instantiateViewController(withIdentifier: "AddProfileVC") as? AddProfileVC,
-//            let navigationController = self.navigationController
-//        else {
-//                return
-//        }
-//        profileAddController.pathToEditedCollection = "\(pathToDataBase)"
-//        
-//        navigationController.pushViewController(profileEditController, animated: true)
+        if let navigationController = self.navigationController {
+            AddProfileRouter.push(
+                navigationController: navigationController,
+                pathToDataBase: pathToDataBase)
+        }
     }
-
+    
     func routeToDetailProfile(profile: Profile, pathToDataBase: String) {
         if let navigationController = self.navigationController {
             ProfileRouter.push(

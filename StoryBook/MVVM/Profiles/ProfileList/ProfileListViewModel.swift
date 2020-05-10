@@ -13,8 +13,8 @@ protocol ProfileListViewModelViewOutput {
     var profiles: [Profile] { get }
     var pathToDataBase: String { get }
     func observeQuery(completion: @escaping (_ profiles: [Profile]) -> Void)
-    func delete(by index: Int)
-    func routeToEdit(by index: Int)
+    func deleteProfile(by index: Int)
+    func routeToEditProfile(by index: Int)
     func routeToAddNewProfile()
     func routeToDetailProfile(by index: Int)    
 }
@@ -27,7 +27,7 @@ class ProfileListViewModel: ProfileListViewModelViewOutput {
     private var pathToPreviousLevel = "users/testUser"
     private var listener: ListenerRegistration?
     private var query: Query?
-
+    
     var pathToDataBase: String {
         return "\(pathToPreviousLevel)/profiles"
     }
@@ -37,29 +37,29 @@ class ProfileListViewModel: ProfileListViewModelViewOutput {
     }
     
     func observeQuery(completion: @escaping (_ profiles: [Profile]) -> Void) {
-      guard let query = query else { return }
-      listener = query.addSnapshotListener { (snapshot, error) in
-        guard let snapshot = snapshot else {
-            if let error = error {
-                print(error)
-                completion([])
+        guard let query = query else { return }
+        listener = query.addSnapshotListener { (snapshot, error) in
+            guard let snapshot = snapshot else {
+                if let error = error {
+                    print(error)
+                    completion([])
+                }
+                return
             }
-            return
-        }
-        let models = snapshot.documents
-            .map { (document) -> Profile? in
-                return Profile(
-                    dictionary: document.data(),
-                    documentID: document.documentID
-                )
+            let models = snapshot.documents
+                .map { (document) -> Profile? in
+                    return Profile(
+                        dictionary: document.data(),
+                        documentID: document.documentID
+                    )
             }
             .compactMap {
                 $0
             }
-
-        self.profiles = models
-        completion(models)
-      }
+            
+            self.profiles = models
+            completion(models)
+        }
     }
     
     func getProfile(by index: Int) -> Profile? {
@@ -69,7 +69,7 @@ class ProfileListViewModel: ProfileListViewModelViewOutput {
         return profiles[index]
     }
     
-    func delete(by index: Int) {
+    func deleteProfile(by index: Int) {
         if let profile = getProfile(by: index) {
             let deletedDocID = profile.documentID
             self.firestore.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
@@ -78,22 +78,20 @@ class ProfileListViewModel: ProfileListViewModelViewOutput {
         }
     }
     
-    func routeToEdit(by index: Int) {
+    func routeToEditProfile(by index: Int) {
         if let profile = getProfile(by: index) {
-            router.routeToEdit(profile: profile, pathToDataBase: pathToDataBase)
+            let pathToEditedProfile = "\(self.pathToDataBase)/\(profile.documentID)"
+            router.routeToEdit(editedProfile: profile, pathToEditedProfile: pathToEditedProfile)
         }
-        
     }
     
     func routeToAddNewProfile() {
-//        router.routeToAddNewProfile()
+        router.routeToAddNewProfile(pathToDataBase: pathToDataBase)
     }
-
+    
     func routeToDetailProfile(by index: Int) {
         if let profile = getProfile(by: index) {
             router.routeToDetailProfile(profile: profile, pathToDataBase: pathToDataBase)
         }
     }
-
-    
 }

@@ -41,24 +41,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mnh-Iw-8Gr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Редактировать профиль" id="dmk-eJ-7Ss">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="CPB-dc-HQK">
-                                            <connections>
-                                                <action selector="cancelTapped:" destination="w3O-UY-f9O" id="ojF-aP-OPc"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="JQ5-G3-MoH">
-                                            <connections>
-                                                <action selector="saveEditionTapped:" destination="w3O-UY-f9O" id="t1s-E8-jVU"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VG2-rt-RRJ">
                                 <rect key="frame" x="16" y="204" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -80,6 +62,11 @@
                         <viewLayoutGuide key="safeArea" id="OF7-ZI-S5x"/>
                     </view>
                     <navigationItem key="navigationItem" title="Редактировать профиль" id="dGD-SJ-HDy">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uMS-Ot-qPe">
+                            <connections>
+                                <action selector="cancelTapped:" destination="w3O-UY-f9O" id="ui8-ak-7lE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="toY-5T-5wo">
                             <connections>
                                 <action selector="saveEditionTapped:" destination="w3O-UY-f9O" id="amK-cN-rpT"/>

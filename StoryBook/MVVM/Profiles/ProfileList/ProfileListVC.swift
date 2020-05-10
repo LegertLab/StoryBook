@@ -10,12 +10,12 @@ import UIKit
 
 
 class ProfileListVC: UITableViewController {
-
+    
     var viewModel: ProfileListViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         guard let viewModel = viewModel else {
             return
         }
@@ -24,11 +24,7 @@ class ProfileListVC: UITableViewController {
             guard let self = self else { return }
             self.tableView.reloadData()
         }
-        
-    } // Для чего здесь этот инициализатор?
-//    func initViewModel(viewModel: ProfileListViewModel) {
-//        self.viewModel = viewModel
-//    }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,7 +32,7 @@ class ProfileListVC: UITableViewController {
             tableView.deselectRow(at: selectedIndexPath, animated: animated)
         }
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let viewModel = viewModel else {
@@ -44,14 +40,14 @@ class ProfileListVC: UITableViewController {
         }
         return viewModel.profiles.count
     }
-
-   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let viewModel = viewModel else {
             return UITableViewCell()
         }
-    
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProfileTableViewCell
-
+        
         let itemOfList = viewModel.profiles[indexPath.row]
         
         cell.kinshipLabel.text = itemOfList.kinship
@@ -60,11 +56,10 @@ class ProfileListVC: UITableViewController {
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height / 2
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let viewModel = viewModel else {
@@ -72,17 +67,16 @@ class ProfileListVC: UITableViewController {
         }
         let profileIndex = indexPath.row
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view, boolValue) in
-            viewModel.delete(by: profileIndex)
+            viewModel.deleteProfile(by: profileIndex)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         let editAction = UIContextualAction(style: .normal, title: "Изменить", handler: {
-         (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            viewModel.routeToEdit(by: profileIndex)
+            (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            viewModel.routeToEditProfile(by: profileIndex)
             success(true)
         })
-        
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
-         
+        
         return swipeActions
     }
     
@@ -92,33 +86,12 @@ class ProfileListVC: UITableViewController {
         }
         let profileIndex = indexPath.row
         viewModel.routeToDetailProfile(by: profileIndex)
-        
     }
     
-    // MARK: - Navigation
-
-//    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let viewModel = self.viewModel else {
-//            fatalError()
-//        }
-//
-//        if segue.identifier == "showDetails" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                let showDetailsVC = segue.destination as! ProfileVC
-//                let profileViewModel = ProfileViewModel(
-//                    profile: viewModel.profiles[indexPath.row],
-//                    pathToPreviousLevel: viewModel.pathToDataBase
-//                )
-//                showDetailsVC.viewModel = profileViewModel
-//            }
-//        }  else if segue.identifier == "createNewItem" {
-//            let createVC = segue.destination as! AddProfileVC
-//            createVC.pathToEditedCollection = viewModel.pathToDataBase
-//          } //else if segue.identifier == "editProfile" {
-////        let editedItem = sender as! Profile
-////            let editProfileVC = segue.destination as! EditProfileVC
-////            editProfileVC.editedItem = editedItem
-////            editProfileVC.pathToEditedItem = "\(viewModel.pathToDataBase)/\(editedItem.documentID)"
-////        }
-//    }
+    @IBAction func addTappedButton(_ sender: UIBarButtonItem) {
+        guard let viewModel = viewModel else {
+            fatalError()
+        }
+        viewModel.routeToAddNewProfile()
+    }
 }

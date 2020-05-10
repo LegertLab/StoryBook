@@ -18,7 +18,7 @@ class ProfileViewModel {
     private let firestore = Firestore.firestore()
     private var listener: ListenerRegistration?
     private var query: Query?
-
+    
     var pathToDataBase: String {
         return "\(pathToPreviousLevel)/\(profile.documentID)/sections"
     }
@@ -34,29 +34,29 @@ class ProfileViewModel {
     }
     
     func observeQuery(completion: @escaping (_ sections: [Section]) -> Void) {
-      guard let query = query else { return }
-      listener = query.addSnapshotListener { (snapshot, error) in
-        guard let snapshot = snapshot else {
-            if let error = error {
-                print(error)
-                completion([])
+        guard let query = query else { return }
+        listener = query.addSnapshotListener { (snapshot, error) in
+            guard let snapshot = snapshot else {
+                if let error = error {
+                    print(error)
+                    completion([])
+                }
+                return
             }
-            return
-        }
-        let models = snapshot.documents
-            .map { (document) -> Section? in
-                return Section(
-                    dictionary: document.data(),
-                    documentID: document.documentID
-                )
+            let models = snapshot.documents
+                .map { (document) -> Section? in
+                    return Section(
+                        dictionary: document.data(),
+                        documentID: document.documentID
+                    )
             }
             .compactMap {
                 $0
             }
-
-        self.sections = models
-        completion(models)
-      }
+            
+            self.sections = models
+            completion(models)
+        }
     }
     
     func getSection(by index: Int) -> Section? {
@@ -77,5 +77,4 @@ class ProfileViewModel {
     func edit(by index: Int) {
         
     }
-
 }

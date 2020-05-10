@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" title="Список профилей" id="TFZ-60-6s7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MrE-PO-aQJ">
                             <connections>
-                                <action selector="addProfileTapped:" destination="X6K-aB-pMO" id="Ejb-tq-gun"/>
+                                <action selector="addTappedButton:" destination="X6K-aB-pMO" id="6ub-LW-5U4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

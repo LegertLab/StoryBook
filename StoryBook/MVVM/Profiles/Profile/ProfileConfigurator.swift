@@ -11,12 +11,12 @@ import UIKit
 class ProfileConfigurator {
     
     weak var viewController: ProfileVC?
-
+    
     init?(profile: Profile, pathToPreviousLevel: String){
         let viewModel = ProfileViewModel(profile: profile, pathToPreviousLevel: pathToPreviousLevel)
         let router = ProfileRouter()
         viewModel.router = router
-        guard let viewController = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = UIStoryboard(name: "Profile", bundle: nil)
             .instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC else {
                 return nil
         }

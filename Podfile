@@ -10,8 +10,7 @@ target 'StoryBook' do
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Firestore'
-pod 'RxSwift', '~> 5'
-pod 'RxCocoa', '~> 5'
+
 
 
 end

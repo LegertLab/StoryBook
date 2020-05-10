@@ -32,6 +32,11 @@
 		A66222382466A13D00399766 /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A66222372466A13D00399766 /* EditProfile.storyboard */; };
 		A662223A2466A17000399766 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A66222392466A17000399766 /* Profile.storyboard */; };
 		A662223C2466A6EE00399766 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A662223B2466A6EE00399766 /* EditProfileViewModel.swift */; };
+		A662223E2466AE1700399766 /* EditProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A662223D2466AE1700399766 /* EditProfileRouter.swift */; };
+		A66222402466AEE800399766 /* EditProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A662223F2466AEE800399766 /* EditProfileConfigurator.swift */; };
+		A66222422467056C00399766 /* AddProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66222412467056C00399766 /* AddProfileViewModel.swift */; };
+		A66222442467057E00399766 /* AddProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66222432467057E00399766 /* AddProfileRouter.swift */; };
+		A66222462467059500399766 /* AddProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66222452467059500399766 /* AddProfileConfigurator.swift */; };
 		A6A83A092439FB3B001EEF67 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A83A082439FB3B001EEF67 /* Default-568h@2x.png */; };
 		A6A83A0B243B3011001EEF67 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A83A0A243B3011001EEF67 /* User.swift */; };
 		A6A83A0D243B3032001EEF67 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A83A0C243B3032001EEF67 /* Memory.swift */; };
@@ -81,6 +86,11 @@
 		A66222372466A13D00399766 /* EditProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfile.storyboard; sourceTree = "<group>"; };
 		A66222392466A17000399766 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		A662223B2466A6EE00399766 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		A662223D2466AE1700399766 /* EditProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRouter.swift; sourceTree = "<group>"; };
+		A662223F2466AEE800399766 /* EditProfileConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfigurator.swift; sourceTree = "<group>"; };
+		A66222412467056C00399766 /* AddProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileViewModel.swift; sourceTree = "<group>"; };
+		A66222432467057E00399766 /* AddProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileRouter.swift; sourceTree = "<group>"; };
+		A66222452467059500399766 /* AddProfileConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileConfigurator.swift; sourceTree = "<group>"; };
 		A6A83A082439FB3B001EEF67 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A6A83A0A243B3011001EEF67 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A6A83A0C243B3032001EEF67 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
@@ -240,6 +250,9 @@
 			isa = PBXGroup;
 			children = (
 				A65B2DB4244A0731000729B8 /* AddProfileVC.swift */,
+				A66222412467056C00399766 /* AddProfileViewModel.swift */,
+				A66222432467057E00399766 /* AddProfileRouter.swift */,
+				A66222452467059500399766 /* AddProfileConfigurator.swift */,
 				A66222352466A09300399766 /* AddProfile.storyboard */,
 			);
 			path = AddProfile;
@@ -250,6 +263,8 @@
 			children = (
 				A65B2DB6244DAAA3000729B8 /* EditProfileVC.swift */,
 				A662223B2466A6EE00399766 /* EditProfileViewModel.swift */,
+				A662223D2466AE1700399766 /* EditProfileRouter.swift */,
+				A662223F2466AEE800399766 /* EditProfileConfigurator.swift */,
 				A66222372466A13D00399766 /* EditProfile.storyboard */,
 			);
 			path = EditProfile;
@@ -533,10 +548,12 @@
 				A6A83A0D243B3032001EEF67 /* Memory.swift in Sources */,
 				A66222202461510900399766 /* ProfileViewModel.swift in Sources */,
 				A64E01DC24387E2B003B25C3 /* LoginVC.swift in Sources */,
+				A66222402466AEE800399766 /* EditProfileConfigurator.swift in Sources */,
 				A65B2DB5244A0731000729B8 /* AddProfileVC.swift in Sources */,
 				A6B2C9FD24508E8B004FFE59 /* ProfileListVC.swift in Sources */,
 				A64E01EC24387E65003B25C3 /* ProfileSection.swift in Sources */,
 				A6A83A12243E25D9001EEF67 /* ProfileTableViewCell.swift in Sources */,
+				A662223E2466AE1700399766 /* EditProfileRouter.swift in Sources */,
 				A64E01D824387E2B003B25C3 /* AppDelegate.swift in Sources */,
 				A6B2C9F724508AB0004FFE59 /* Protocols.swift in Sources */,
 				56101C792458236000C246FB /* ProfileListViewModel.swift in Sources */,
@@ -545,6 +562,7 @@
 				A64E01DA24387E2B003B25C3 /* SceneDelegate.swift in Sources */,
 				A64E01F02438817D003B25C3 /* DataTypes.swift in Sources */,
 				568517DA24640D1E0016DBAE /* ProfileRouter.swift in Sources */,
+				A66222442467057E00399766 /* AddProfileRouter.swift in Sources */,
 				A6A83A0B243B3011001EEF67 /* User.swift in Sources */,
 				A6B2CA012451AD62004FFE59 /* ShowSubsectionVC.swift in Sources */,
 				A6A83A16243F5BD8001EEF67 /* SectionTableViewCell.swift in Sources */,
@@ -554,9 +572,11 @@
 				A6B2CA0B245441E2004FFE59 /* EditMemoryVC.swift in Sources */,
 				A6A83A242440C821001EEF67 /* ShowMemoryVC.swift in Sources */,
 				A6B2C9F924508BBA004FFE59 /* ProfileVC.swift in Sources */,
+				A66222422467056C00399766 /* AddProfileViewModel.swift in Sources */,
 				A6B2C9FF2451954B004FFE59 /* SectionVC.swift in Sources */,
 				A6B2CA0924541FF8004FFE59 /* EditSubsectionVC.swift in Sources */,
 				568517D62463FC280016DBAE /* ProfileListConfigurator.swift in Sources */,
+				A66222462467059500399766 /* AddProfileConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
