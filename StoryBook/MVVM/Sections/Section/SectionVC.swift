@@ -27,6 +27,12 @@ class SectionVC: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: animated)
+        }
+    }
     
     // MARK: - Table view data source
     
@@ -59,41 +65,19 @@ class SectionVC: UITableViewController {
             fatalError()
         }
         let subsectionIndex = indexPath.row
-        let itemOfList = viewModel.subsections[subsectionIndex]
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view, boolValue) in
-        viewModel.delete(by: subsectionIndex)
+        viewModel.deleteSubsection(by: subsectionIndex)
         tableView.deleteRows(at: [indexPath], with: .automatic)
             
         }
         let editAction = UIContextualAction(style: .normal, title: "Изменить", handler: {
             (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            self.performSegue(withIdentifier: "editSubsection", sender: itemOfList)
+            viewModel.routeToEditSubsection(by: subsectionIndex)
             success(true)
         })
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
         return swipeActions
     }
-    
-    
-    // MARK: - Navigation
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showMore" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                let showMoreVC = segue.destination as! ShowSubsectionVC
-//                showMoreVC.itemOfList = currentList[indexPath.row]
-//                showMoreVC.pathToPreviousItem = pathToDataBase
-//            }
-//        } else if segue.identifier == "create" {
-//            let createVC = segue.destination as! CreateSubsectionVC
-//            createVC.pathToEditedCollection = pathToDataBase
-//        } else if segue.identifier == "editSubsection" {
-//            let editedItem = sender as! Section
-//            let editSubsectionVC = segue.destination as! EditSubsectionVC
-//            editSubsectionVC.editedItem = editedItem
-//            editSubsectionVC.pathToEditedItem = "\(self.pathToDataBase)/\(editedItem.documentID)"
-//        }
-//    }
 }
 
 

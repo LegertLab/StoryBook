@@ -23,10 +23,6 @@ struct Profile {
       ]
     }
 }
-
-protocol DocumentSerializable {
-    init?(dictionary: [String: Any], documentID: String)
-}
     
 extension Profile: DocumentSerializable {
     
@@ -40,30 +36,6 @@ extension Profile: DocumentSerializable {
       self.init(name: name,
                 kinship: kinship,
                 dateOfBirth: dateOfBirth,
-                documentID: documentID
-        )
-    }
-}
-
-struct Section {
-    var title: String
-    var documentID: String
-    
-    var dictionary: [String: Any] {
-      return [
-        "title": title,
-        "documentID": documentID
-      ]
-    }
-}
-
-extension Section: DocumentSerializable {
-    init?(dictionary: [String : Any], documentID: String) {
-      guard let title = dictionary["title"] as? String,
-          let documentID = documentID as? String
-          else { return nil }
-
-      self.init(title: title,
                 documentID: documentID
         )
     }

@@ -81,7 +81,7 @@ class ProfileListViewModel: ProfileListViewModelViewOutput {
     func routeToEditProfile(by index: Int) {
         if let profile = getProfile(by: index) {
             let pathToEditedProfile = "\(self.pathToDataBase)/\(profile.documentID)"
-            router.routeToEdit(editedProfile: profile, pathToEditedProfile: pathToEditedProfile)
+            router.routeToEditProfile(editedProfile: profile, pathToEditedProfile: pathToEditedProfile)
         }
     }
     

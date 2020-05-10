@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class AuthVC: UIViewController {
 
     let segueIdentifier = "profileListSegue"
     

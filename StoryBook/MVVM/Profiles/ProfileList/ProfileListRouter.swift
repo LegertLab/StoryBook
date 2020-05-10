@@ -56,7 +56,7 @@ class ProfileListRouter {
         }
     }
     
-    func routeToEdit(editedProfile: Profile, pathToEditedProfile: String) {
+    func routeToEditProfile(editedProfile: Profile, pathToEditedProfile: String) {
         if let navigationController = self.navigationController {
             EditProfileRouter.push(
                 navigationController: navigationController,

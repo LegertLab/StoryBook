@@ -10,6 +10,9 @@ import Foundation
 import Firebase
 
 class SectionViewModel {
+    
+    var router: SectionRouter!
+    
     var section = Section(title: "", documentID: "")
     var subsections: [Section] = []
     var pathToPreviousLevel = ""
@@ -57,23 +60,35 @@ class SectionViewModel {
       }
     }
     
-    func getSection(by index: Int) -> Section? {
+        func getSubsection(by index: Int) -> Section? {
         if index > subsections.count {
             return nil
         }
         return subsections[index]
     }
     
-    func delete(by index: Int) {
-        if let section = getSection(by: index) {
-            let deletedDocID = section.documentID
+    func deleteSubsection(by index: Int) {
+        if let subsection = getSubsection(by: index) {
+            let deletedDocID = subsection.documentID
             self.firestore.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
             self.subsections.remove(at: index)
         }
     }
     
-    func edit(by index: Int) {
-        
+    func routeToEditSubsection(by index: Int) {
+        if let subsection = getSubsection(by: index) {
+            let pathToEditedSubsection = "\(self.pathToDataBase)/\(subsection.documentID)"
+            router.routeToEditSubsection(editedSubsection: subsection, pathToEditedSubsection: pathToEditedSubsection)
+        }
     }
-
+    
+    func routeToAddNewsection() {
+        router.routeToAddNewSubsection(pathToDataBase: pathToDataBase)
+    }
+    
+    func routeToDetailSubsection(by index: Int) {
+        if let subsection = getSubsection(by: index) {
+            router.routeToDetailSubsection(subsection: subsection, pathToDataBase: pathToDataBase)
+        }
+    }
 }

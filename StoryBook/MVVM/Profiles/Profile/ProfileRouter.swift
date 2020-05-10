@@ -30,4 +30,30 @@ class ProfileRouter {
         
         navigationController.pushViewController(viewController, animated: animated)
     }
+    
+    func routeToEditSection(editedSection: Section, pathToEditedSection: String) {
+        if let navigationController = self.navigationController {
+            EditSectionRouter.push(
+                navigationController: navigationController,
+                editedSection: editedSection,
+                pathToEditedSection: pathToEditedSection)
+        }
+    }
+    
+    func routeToAddNewSection(pathToDataBase: String) {
+        if let navigationController = self.navigationController {
+            AddSectionRouter.push(
+                navigationController: navigationController,
+                pathToDataBase: pathToDataBase)
+        }
+    }
+    
+    func routeToDetailSection(section: Section, pathToDataBase: String) {
+        if let navigationController = self.navigationController {
+            SectionRouter.push(
+                navigationController: navigationController,
+                section: section,
+                pathToPreviousLevel: pathToDataBase)
+        }
+    }
 }

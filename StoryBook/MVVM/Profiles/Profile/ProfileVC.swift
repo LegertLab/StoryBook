@@ -34,6 +34,13 @@ class ProfileVC: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: animated)
+        }
+    }
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,17 +72,15 @@ class ProfileVC: UITableViewController {
             fatalError()
         }
         
-        let profileIndex = indexPath.row
-        let itemOfList = viewModel.sections[profileIndex]
+        let sectionIndex = indexPath.row
         let deleteAction = UIContextualAction(style: .destructive, title: "Удалить") {  (contextualAction, view, boolValue) in
-            viewModel.delete(by: profileIndex)
+            viewModel.deleteSection(by: sectionIndex)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
         let editAction = UIContextualAction(style: .normal, title: "Изменить", handler: {
             (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            viewModel.edit(by: profileIndex)
-            self.performSegue(withIdentifier: "editSection", sender: itemOfList)
+            viewModel.routeToEditSection(by: sectionIndex)
             success(true)
         })
         
@@ -84,7 +89,18 @@ class ProfileVC: UITableViewController {
         return swipeActions
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else {
+            fatalError()
+        }
+        let sectionIndex = indexPath.row
+        viewModel.routeToDetailSection(by: sectionIndex)
+    }
+    
     @IBAction func AddTappedButton(_ sender: UIButton) {
-        //TODO addSection
+        guard let viewModel = viewModel else {
+            fatalError()
+        }
+        viewModel.routeToAddNewSection()
     }
 }

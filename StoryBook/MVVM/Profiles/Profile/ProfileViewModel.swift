@@ -66,7 +66,7 @@ class ProfileViewModel {
         return sections[index]
     }
     
-    func delete(by index: Int) {
+    func deleteSection(by index: Int) {
         if let section = getSection(by: index) {
             let deletedDocID = section.documentID
             self.firestore.document("\(self.pathToDataBase)/\(deletedDocID)").delete()
@@ -74,7 +74,20 @@ class ProfileViewModel {
         }
     }
     
-    func edit(by index: Int) {
-        
+    func routeToEditSection(by index: Int) {
+        if let section = getSection(by: index) {
+            let pathToEditedSection = "\(self.pathToDataBase)/\(section.documentID)"
+            router.routeToEditSection(editedSection: section, pathToEditedSection: pathToEditedSection)
+        }
+    }
+    
+    func routeToAddNewSection() {
+        router.routeToAddNewSection(pathToDataBase: pathToDataBase)
+    }
+    
+    func routeToDetailSection(by index: Int) {
+        if let section = getSection(by: index) {
+            router.routeToDetailSection(section: section, pathToDataBase: pathToDataBase)
+        }
     }
 }
