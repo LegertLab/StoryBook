@@ -1,25 +1,25 @@
 //
-//  SectionRouter.swift
+//  SubsectionRouter.swift
 //  StoryBook
 //
-//  Created by Anastasia Legert on 10/5/20.
+//  Created by Anastasia Legert on 11/5/20.
 //  Copyright © 2020 Anastasia Legert. All rights reserved.
 //
 
 import UIKit
 
-class SectionRouter {
+class SubsectionRouter {
     weak var navigationController: UINavigationController?
     
     static func push(
         navigationController: UINavigationController,
-        section: Section,
+        subsection: Section,
         pathToPreviousLevel: String,
         animated: Bool = true
     ) {
         guard
-            let configurator = SectionConfigurator(
-                section: section,
+            let configurator = SubsectionConfigurator(
+                subsection: subsection,
                 pathToPreviousLevel: pathToPreviousLevel
             ),
             let viewController = configurator.viewController
@@ -31,28 +31,28 @@ class SectionRouter {
         navigationController.pushViewController(viewController, animated: animated)
     }
     
-    func routeToEditSubsection(editedSubsection: Section, pathToEditedSubsection: String) {
+    func routeToEditMemory(editedMemory: Memory, pathToEditedMemory: String) {
         if let navigationController = self.navigationController {
-            EditSubsectionRouter.push(
+            EditMemoryRouter.push(
                 navigationController: navigationController,
-                editedSubsection: editedSubsection,
-                pathToEditedSubsection: pathToEditedSubsection)
+                editedMemory: editedMemory,
+                pathToEditedMemory: pathToEditedMemory)
         }
     }
     
-    func routeToAddNewSubsection(pathToDataBase: String) {
+    func routeToAddNewMemory(pathToDataBase: String) {
         if let navigationController = self.navigationController {
-            AddSubsectionRouter.push(
+            AddMemoryRouter.push(
                 navigationController: navigationController,
                 pathToDataBase: pathToDataBase)
         }
     }
     
-    func routeToDetailSubsection(subsection: Section, pathToDataBase: String) {
+    func routeToDetailMemory(memory: Memory, pathToDataBase: String) {
         if let navigationController = self.navigationController {
-            SubsectionRouter.push(
+            MemoryRouter.push(
                 navigationController: navigationController,
-                subsection: subsection,
+                memory: memory,
                 pathToPreviousLevel: pathToDataBase)
         }
     }

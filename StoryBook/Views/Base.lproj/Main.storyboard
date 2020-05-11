@@ -194,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="2797.5999999999999" y="-564.46776611694156"/>
         </scene>
-        <!--Create SubsectionVC-->
+        <!--Add SubsectionVC-->
         <scene sceneID="oQD-9p-dag">
             <objects>
-                <viewController id="e4s-SA-LQD" customClass="CreateSubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="e4s-SA-LQD" customClass="AddSubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zar-PZ-7pG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -206,18 +206,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Создать новый подраздел" id="ROy-rs-g5F">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JaE-8K-MpR">
-                                            <connections>
-                                                <action selector="cancelTapped:" destination="e4s-SA-LQD" id="XEC-e9-9Xg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZIN-vm-SEy">
-                                            <connections>
-                                                <action selector="saveTapped:" destination="e4s-SA-LQD" id="AKu-5E-wbH"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Создать новый подраздел" id="ROy-rs-g5F"/>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="название подраздела" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9Y-VX-Kkf">
@@ -384,16 +373,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Редактировать подраздел" id="WXN-sy-apR">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yF9-aq-YEl">
-                                            <connections>
-                                                <action selector="cancelTapped:" destination="bFq-df-aze" id="h5i-76-YKF"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wGp-qH-R3w">
-                                            <connections>
-                                                <action selector="saveEditionTapped:" destination="bFq-df-aze" id="Sbp-Ob-0ne"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wGp-qH-R3w"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -656,7 +636,7 @@
         <!--Memory-->
         <scene sceneID="PpZ-5R-eLf">
             <objects>
-                <viewController title="Memory" id="DpA-ek-XU6" customClass="ShowMemoryVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Memory" id="DpA-ek-XU6" customClass="MemoryVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mCJ-Lq-hZM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -778,18 +758,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Редактировать воспоминание" id="5JS-pZ-bNy">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VI9-JR-fls">
-                                            <connections>
-                                                <action selector="cancelTapped:" destination="glC-U8-KPF" id="Fhp-6p-kjt"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="t1h-8a-E0b">
-                                            <connections>
-                                                <action selector="saveEditionTapped:" destination="glC-U8-KPF" id="hDs-Wq-mkP"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Редактировать воспоминание" id="5JS-pZ-bNy"/>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mA9-th-0PE">
@@ -859,10 +828,10 @@
             </objects>
             <point key="canvasLocation" x="5308" y="908.9955022488756"/>
         </scene>
-        <!--Show SubsectionVC-->
+        <!--SubsectionVC-->
         <scene sceneID="PP6-Af-4GO">
             <objects>
-                <tableViewController id="hjB-dL-D7H" customClass="ShowSubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hjB-dL-D7H" customClass="SubsectionVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3iy-HG-Ug7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -915,7 +884,7 @@
         <!--CreateMemory-->
         <scene sceneID="xEB-5S-5ph">
             <objects>
-                <viewController title="CreateMemory" id="V0u-2p-jF6" customClass="CreateMemoryVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="CreateMemory" id="V0u-2p-jF6" customClass="AddMemoryVC" customModule="StoryBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yoO-WP-m8L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,44 +7,24 @@
 //
 
 import UIKit
-import Firebase
 
 class EditSubsectionVC: UIViewController {
     
-    let db = Firestore.firestore()
-    var editedItem = Section(title: "", documentID: "")
-    var pathToEditedItem = ""
-    
-
     @IBOutlet weak var titleTextField: UITextField!
+    
+    var viewModel: EditSubsectionViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleTextField.text = editedItem.title
-    }
-    
-    func saveEdition() {
-        var ref: DocumentReference? = nil
-        ref = db.document(pathToEditedItem)
-        ref?.setData([
-            "title": titleTextField.text!,
-            "documentID": editedItem.documentID
-            ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
-        dismiss(animated: true)
+        titleTextField.text = viewModel?.editedSubsection.title
     }
 
     @IBAction func saveEditionTapped(_ sender: UIBarButtonItem) {
-        saveEdition()
+        viewModel?.saveSubsection(title: titleTextField.text!)
+        viewModel?.closeVC()
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
-         dismiss(animated: true)
+        viewModel?.closeVC()
     }
-    
 }

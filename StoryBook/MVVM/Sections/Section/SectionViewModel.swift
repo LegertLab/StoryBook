@@ -82,7 +82,7 @@ class SectionViewModel {
         }
     }
     
-    func routeToAddNewsection() {
+    func routeToAddNewSubsection() {
         router.routeToAddNewSubsection(pathToDataBase: pathToDataBase)
     }
     
