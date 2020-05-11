@@ -239,7 +239,6 @@
 			children = (
 				56101C742458223A00C246FB /* MVVM */,
 				A6A83A17243F5BF1001EEF67 /* Custom cells */,
-				A6A83A0E243B33A5001EEF67 /* Views */,
 				A64E01F12439D36B003B25C3 /* SupportingFiles */,
 				A64E01F32439D3B8003B25C3 /* DataTypes */,
 			);
@@ -464,13 +463,6 @@
 				A6893046246949EF00429EDE /* Memory.storyboard */,
 			);
 			path = Memory;
-			sourceTree = "<group>";
-		};
-		A6A83A0E243B33A5001EEF67 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		A6A83A17243F5BF1001EEF67 /* Custom cells */ = {
