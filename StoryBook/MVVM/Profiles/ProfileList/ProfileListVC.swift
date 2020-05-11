@@ -47,14 +47,10 @@ class ProfileListVC: UITableViewController {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProfileTableViewCell
+        let profile = viewModel.profiles[indexPath.row]
         
-        let itemOfList = viewModel.profiles[indexPath.row]
-        
-        cell.kinshipLabel.text = itemOfList.kinship
-        cell.nameLabel.text = itemOfList.name
-        cell.profileImage.image = UIImage(named: "mom")
-        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height / 2
-        return cell
+        let configurator = ProfileCellConfigurator(cell: cell, profile: profile)
+        return configurator.cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
