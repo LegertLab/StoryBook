@@ -47,12 +47,11 @@ class SectionVC: UITableViewController {
         guard let viewModel = viewModel else {
             return UITableViewCell()
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SectionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SubsectionCell
         
-        let itemOfList = viewModel.subsections[indexPath.row]
-        cell.titleLabel.text = itemOfList.title
-        cell.sectionImage.image = UIImage(named: "section")
-        return cell
+        let subsection = viewModel.subsections[indexPath.row]
+        let configurator = SubsectionCellConfigurator(cell: cell, subsection: subsection)
+        return configurator.cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

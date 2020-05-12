@@ -40,12 +40,11 @@ class SubsectionVC: UITableViewController {
         guard let viewModel = viewModel else {
             return UITableViewCell()
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MemoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MemoryCell
         
-        let itemOfList = viewModel.memories[indexPath.row]
-        cell.titleLabel.text = itemOfList.title
-        cell.memoryImage.image = UIImage(named: "section")
-        return cell
+        let memory = viewModel.memories[indexPath.row]
+        let configurator = MemoryCellConfigurator(cell: cell, memory: memory)
+        return configurator.cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

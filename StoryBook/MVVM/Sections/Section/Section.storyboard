@@ -20,7 +20,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="73" id="Bg3-NQ-LSn" customClass="SectionTableViewCell" customModule="StoryBook" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="73" id="Bg3-NQ-LSn" customClass="SubsectionCell" customModule="StoryBook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bg3-NQ-LSn" id="dzf-wh-z6c">
@@ -41,8 +41,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="sectionImage" destination="FcT-M8-WlT" id="fRO-Xr-MAw"/>
-                                    <outlet property="titleLabel" destination="C8i-9e-u99" id="q8t-uF-qcR"/>
+                                    <outlet property="subsectionImage" destination="FcT-M8-WlT" id="fTo-hC-8Zt"/>
+                                    <outlet property="subsectionTitleLabel" destination="C8i-9e-u99" id="O7p-MW-Fsj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

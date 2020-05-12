@@ -55,12 +55,13 @@ class ProfileVC: UITableViewController {
             return UITableViewCell()
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SectionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SectionCell
         
-        let itemOfList = viewModel.sections[indexPath.row]
-        cell.sectionImage.image = UIImage(named: "section")
-        cell.titleLabel.text = itemOfList.title
-        return cell
+        let section = viewModel.sections[indexPath.row]
+        
+        let configurator = SectionCellConfigurator(cell: cell, section: section)
+        return configurator.cell
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -33,5 +33,4 @@ class ProfileTableViewCell: UITableViewCell {
         nameLabel.text = profile.name
         profileImage.image = UIImage(named: "mom")
     }
-
 }
